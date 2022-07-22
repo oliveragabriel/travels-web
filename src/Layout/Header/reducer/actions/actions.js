@@ -1,0 +1,18 @@
+export const actions = {
+  controlShowModalLogin: 'CONTROL_SHOW_MODAL_LOGIN',
+  controlShowModalForgetPassword: 'CONTROL_SHOW_MODAL_FORGET_PASSWORD',
+  controlShowModalAddNewUser: 'CONTROL_SHOW_MODAL_ADD_NEW_USER',
+  controlShowModalMyPerfil: 'CONTROL_SHOW_MODAL_MY_PERFIL',
+  controlShowModalChangePassword: 'CONTROL_SHOW_MODAL_CHANGE_PASSWORD',
+  controlShowModalAddNewAdress: 'CONTROL_SHOW_MODAL_ADD_NEW_ADRESS',
+  controlShowModalAddNewContact: 'CONTROL_SHOW_MODAL_ADD_NEW_CONTACT',
+  setLoggedUserData: 'SET_LOGGED_USER_DATA',
+  setActionForTitle: 'SET_ACTION_FOR_TITLE',
+  setInitialStateObject: 'SET_INITIAL_STATE_OBJECT',
+  setEditingAdress: 'SET_EDITING_ADRESS',
+  setEditingContact: 'SET_EDITING_CONTACT',
+  toogleEditAdress: 'TOOGLE_EDIT_ADRESS',
+  toogleEditContact: 'TOOGLE_EDIT_CONTACT',
+  toogleAddNewAdress: 'TOOGLE_ADD_NEW_ADRESS',
+  toogleAddNewContact: 'TOOGLE_ADD-NEW_CONTACT',
+};
