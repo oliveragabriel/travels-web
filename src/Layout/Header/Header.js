@@ -23,17 +23,24 @@ import { headerReducer, initialState } from './reducer';
 import { actions } from './reducer/actions';
 import { styleIconSizeTwenty } from '../../utils/styles';
 import { userMock } from './MyPerfil/userMock';
+import { openNotification } from '../../utils/functions/notification';
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   const [state, dispatch] = useReducer(headerReducer, initialState);
 
   const getLoggedUserData = useCallback(() => {
-    dispatch({type: actions.setLoggedUserData, payload: userMock});
+    try {
+      // const resp =  
+      dispatch({type: actions.setLoggedUserData, payload: userMock});
+    } catch (error) {
+      openNotification.error({
+        message: 'Erro',
+        description: 'Não foi possível carregar as informações do seu Usuário!'
+      });
+    }
   }, []);
 
-  useEffect(() => getLoggedUserData(), [getLoggedUserData])
-
-  useEffect(() => {}, [state]);
+  useEffect(() => getLoggedUserData())
   
   return (
     <Layout.Header>

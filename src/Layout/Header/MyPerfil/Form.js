@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Row, Col, Form, Collapse, Avatar } from 'antd';
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Input, DatePicker, CountrySelector, Button } from '../../../components'
@@ -24,8 +24,6 @@ export const FormMyPerfil = ({ form, state, dispatch = () => {} }) => {
       setLoading(false);
     }
   },[form, dispatch]);
-
-  useEffect(() => {}, [state]);
 
   return (
     <Form form={form} layout='vertical' size='middle' initialValues={state.user}> 

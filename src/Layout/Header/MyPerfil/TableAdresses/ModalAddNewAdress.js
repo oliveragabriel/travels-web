@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewAdress } from './Form';
 import { HomeOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -18,8 +18,6 @@ export const ModalAddNewAdress = ({ state, dispatch = () => {} }) => {
     if(state.action === 'edit') { return 'Editar Endereço'}
     return 'Endereço'
   }, [state]);
-
-  useEffect(()=>{}, [state]);
   
   return (
     <Modal

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormForgetPassword } from './Form';
 import { LockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -6,9 +6,7 @@ import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
 
 export const ModalForgetPassword = ({ state, dispatch = () => {} }) => {
-  const [form] = Form.useForm();  
-  
-  useEffect(()=>{}, [state]);
+  const [form] = Form.useForm();
 
   return (
     <Modal

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormChangePassword } from './Form';
 import { UnlockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -7,7 +7,7 @@ import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../ut
 
 export const ModalChangePassword = ({ state, dispatch = () => {} }) => {
   const [form] = Form.useForm();
-  useEffect(()=>{}, [state]);
+
   return (
     <Modal  
       title={

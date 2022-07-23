@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Table, Button } from '../../../../components';
 import { columns } from './columns';
 import { actions } from '../../reducer/actions';
@@ -8,11 +8,7 @@ export const TableContacts = ({ state, dispatch = () => {} }) => {
   
   const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewContact}), [dispatch])
 
-  const handleEdit = useCallback((record) => {
-    dispatch({type: actions.toogleEditContact, payload: record})
-  }, [dispatch])
-  
-  useEffect(() => {},[state]);
+  const handleEdit = useCallback((record) => dispatch({type: actions.toogleEditContact, payload: record}), [dispatch])
 
   return (
     <>

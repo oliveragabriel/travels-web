@@ -10,60 +10,16 @@ import { TableNextTrips } from './TableNextTrips'
 import { TablePreviousTrips } from "./TablePreviousTrips";
 import { requestGenericTextMsg } from "../utils/messages";
 import { ModalAddNewTrip } from './ModalAddNewTrip';
+import { userMock } from "../Layout/Header/MyPerfil/userMock";
 
 export const Travels = ({state, dispatch = () => {}}) => {
-  const [user, setUser] = useState({
-    username: 'Gabriel',
-    birth: '',
-    nacionality: 'Brazil',
-    hometown: 'Florianópolis',
-    contacts: [
-      {
-        email: 'g.olivera@gmail.com',
-        ddd: '048',
-        phone: '99951728'
-      }
-    ],
-    adresses: [
-      {
-        adress: 'Rua José Jacques',
-        complement: 'Ap 301 - Em frente a Sanduícheria da Mafalda',
-        number: '163',
-        district: 'Centro',
-        city: 'Florianópolis',
-        state: 'SC',
-        country: 'Brasil',
-        zipcode: '88020080'
-      }
-    ],
-    nextTravels: [
-      {
-        title: 'Egito 2023',
-        description: 'Viagem em família ao Egito - 10 dias - Cairo, Alexandria e Luxor.',
-        arrival: '',
-        departure: '',
-        type: 'Lazer',
-        quantity: 4,
-      }
-    ],
-    previousTravels: [
-      {
-        title: 'México 2022',
-        description: 'Viagem em família ao México - 20 dias - Cancún, Playa del Carmen e Ciudad de México.',
-        arrival: '',
-        departure: '',
-        type: 'Lazer',
-        quantity: 4,
-      }
-    ]
-  });
-  const [action, setAction] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const getUserTravels = useCallback( async () => {
+  
+  const getLoggedUserData = useCallback(async () => {
     try {
       setLoading(true);
-      // const resp = await 'functionplace'
+      // const resp = await 
+      dispatch({type: actions.setLoggedUserData, payload: userMock});
     } catch (error) {
       notification.error({
         message: 'Erro',
@@ -74,9 +30,7 @@ export const Travels = ({state, dispatch = () => {}}) => {
     }
   }, []);
 
-  useEffect(() => {
-    getUserTravels()
-  }, [state, action, getUserTravels]);
+  useEffect(() => getLoggedUserData(), [getLoggedUserData]);
 
   return (
     <>

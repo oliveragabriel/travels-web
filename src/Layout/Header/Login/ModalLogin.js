@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormLogin } from './Form';
 import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -7,8 +7,6 @@ import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../utils
 
 export const ModalLogin = ({ state, dispatch = () => {} }) => {
   const [form] = Form.useForm();
-
-  useEffect(()=>{}, [state]);
 
   return (
     <Modal
