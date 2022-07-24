@@ -3,10 +3,10 @@ import { Row, Col, notification, Select, Tooltip, Form } from 'antd';
 import { FormOutlined, QuestionCircleTwoTone } from '@ant-design/icons';
 import { Input, Button, DatePicker, InputNumber } from '../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../utils/messages';
-import { actions } from '../reducer/actions';
+import { actions } from './reducer/actions';
 import { options } from './options';
 
-export const FormAddNewTrip = ({ form, dispatch = () => {} }) => {
+export const FormAddNewTrip = ({ state, form, dispatch = () => {} }) => {
   const [loading, setLoading] = useState(false);
   
   const handleSubmit = useCallback(async () => {
@@ -30,12 +30,13 @@ export const FormAddNewTrip = ({ form, dispatch = () => {} }) => {
   },[form, dispatch]);
 
   return (
-    <Form form={form} layout='vertical' size='middle' initialValues={{ quantity: 1 }}> 
+    <Form form={form} layout='vertical' size='middle' initialValues={state?.editing || { quantity: 1 }}> 
       <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
             name='title'
             label='Título'
+            hasFeedback
             required
             rules={[
               { required: true, message: requiredFieldsTextMsg('Título') }
@@ -53,6 +54,7 @@ export const FormAddNewTrip = ({ form, dispatch = () => {} }) => {
           <Form.Item
             name='arrival'
             label='Data de Chegada'
+            hasFeedback
             required
             rules={[
               { required: true, message: requiredFieldsTextMsg('Data de Chegada') }
@@ -67,6 +69,7 @@ export const FormAddNewTrip = ({ form, dispatch = () => {} }) => {
           <Form.Item
             name='departure'
             label='Data de Saída'
+            hasFeedback
             required
             rules={[
               { required: true, message: requiredFieldsTextMsg('Data de Saída') }

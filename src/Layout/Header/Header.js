@@ -40,7 +40,7 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
     }
   }, []);
 
-  useEffect(() => getLoggedUserData())
+  useEffect(() => getLoggedUserData(), [])
   
   return (
     <Layout.Header>

@@ -1,0 +1,40 @@
+export const locale = {
+    "lang": {
+      "locale": "pt_BR",
+      "placeholder": "Selecione uma data",
+      "rangePlaceholder": ["Data Início", "Data Final"],
+      "today": "Hoje",
+      "now": "Agora",
+      "backToToday": "Voltar para hoje",
+      "ok": "OK",
+      "clear": "Limpar",
+      "month": "Mês",
+      "year": "Ano",
+      "timeSelect": "Selecione um horário",
+      "dateSelect": "Selecione uma data",
+      "monthSelect": "Escolha um mês",
+      "yearSelect": "Escolha um ano",
+      "decadeSelect": "Escolha uma década",
+      "yearFormat": "YYYY",
+      "dateFormat": "D/M/YYYY",
+      "dayFormat": "DD",
+      "dateTimeFormat": "D/M/YYYY HH:mm:ss",
+      "monthFormat": "MMMM",
+      "monthBeforeYear": true,
+      "previousMonth": "Mês Anterior (Subir)",
+      "nextMonth": "Próximo Mês (Descer)",
+      "previousYear": "Ano Passado (Control + Esquerda)",
+      "nextYear": "Próximo Ano (Control + Direita)",
+      "previousDecade": "Década Anterior",
+      "nextDecade": "Próxima Década",
+      "previousCentury": "Século Anterior",
+      "nextCentury": "Próximo Século"
+    },
+    "timePickerLocale": {
+      "placeholder": "Selecione um horário"
+    },
+    "dateFormat": "DD-MM-YYYY",
+    "dateTimeFormat": "DD-MM-YYYY HH:mm:ss",
+    "weekFormat": "wo-YYYY",
+    "monthFormat": "MM-YYYY"
+  }

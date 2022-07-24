@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Row, Col, Collapse, Divider, notification } from "antd";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
+import { Row, Col, Collapse, Divider, notification, Calendar, Form } from "antd";
 import { 
     GlobalOutlined, 
     CheckCircleOutlined, 
-    ClockCircleOutlined 
+    ClockCircleOutlined,
+    PlusCircleTwoTone
 } from '@ant-design/icons';
 import { styleIconSizeThirtyAndGhost, styleIconSizeTwentyAndColor } from '../utils/styles';
 import { TableNextTrips } from './TableNextTrips'
@@ -11,14 +12,19 @@ import { TablePreviousTrips } from "./TablePreviousTrips";
 import { requestGenericTextMsg } from "../utils/messages";
 import { ModalAddNewTrip } from './ModalAddNewTrip';
 import { userMock } from "../Layout/Header/MyPerfil/userMock";
+import { travelsReducer, initialState } from './reducer';
+import { actions } from "./reducer/actions";
+import { locale } from "../utils/calendar/localeObject";
+import { Button, Input } from "../components";
 
-export const Travels = ({state, dispatch = () => {}}) => {
+export const Travels = () => {
+  const [state, dispatch] = useReducer(travelsReducer, initialState);
   const [loading, setLoading] = useState(false);
   
-  const getLoggedUserData = useCallback(async () => {
+  const getLoggedUserData = useCallback(() => {
     try {
       setLoading(true);
-      // const resp = await 
+      // const resp =  
       dispatch({type: actions.setLoggedUserData, payload: userMock});
     } catch (error) {
       notification.error({
@@ -28,13 +34,13 @@ export const Travels = ({state, dispatch = () => {}}) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => getLoggedUserData(), [getLoggedUserData]);
+  useEffect(() => getLoggedUserData(), []);
 
   return (
     <>
-      <ModalAddNewTrip action={action} state={state} dispatch={dispatch} />
+      <ModalAddNewTrip state={state} dispatch={dispatch} />
       <Row>
         <Col span={24}>
           <Collapse>
@@ -49,8 +55,7 @@ export const Travels = ({state, dispatch = () => {}}) => {
               extra={<ClockCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
               <TableNextTrips
-                setAction={setAction}
-                travels={user.nextTravels} 
+                state={state} 
                 dispatch={dispatch} 
                 loading={loading} 
               />
@@ -72,9 +77,8 @@ export const Travels = ({state, dispatch = () => {}}) => {
               key="1"
               extra={<CheckCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
-              <TablePreviousTrips 
-                setAction={setAction}
-                travels={user.previousTravels} 
+              <TablePreviousTrips
+                state={state} 
                 dispatch={dispatch} 
                 loading={loading} 
               />
@@ -83,10 +87,9 @@ export const Travels = ({state, dispatch = () => {}}) => {
         </Col>
       </Row>
       <Divider><GlobalOutlined style={styleIconSizeThirtyAndGhost}/></Divider>
-      <Row gutter={12}>
-        <Col span={12}>
-        </Col>
-        <Col span={12}>
+      <Row>
+        <Col span={24}>
+          <Calendar locale={locale} />
         </Col>
       </Row>
     </>

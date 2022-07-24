@@ -3,7 +3,7 @@ import 'antd/dist/antd.min.css';
 import { Layout } from 'antd';
 import { Header, Sider, Footer } from './Layout';
 import { Home } from './Home'
-// import { Travels } from './Travels/Travels';
+import { Travels } from './Travels/Travels';
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
@@ -22,7 +22,7 @@ function App() {
         
         <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>
-            {/* <Travels state={stateControlShowModal} dispatch={dispatch} /> */}
+            <Travels />
           </div>
         </ Layout.Content>
 

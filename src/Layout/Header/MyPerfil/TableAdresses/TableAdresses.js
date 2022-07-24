@@ -25,7 +25,7 @@ export const TableAdresses = ({ state, dispatch = () => {} }) => {
       </Row>
       <Row style={{ marginTop: 12 }}>
         <Col span={24}>
-          <Table columns={columns(() => handleEdit)} size="small"  dataSource={state.user.adresses}/>
+          <Table columns={columns(handleEdit)} size="small"  dataSource={state.user.adresses}/>
         </Col>
       </Row>
     </>

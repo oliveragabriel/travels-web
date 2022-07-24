@@ -1,17 +1,24 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewTrip } from './Form';
 import { RocketOutlined, CloseCircleTwoTone } from '@ant-design/icons';
-import { actions } from '../reducer/actions';
+import { actions } from './reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../utils/styles";
 
-export const ModalAddNewTrip = ({ travel, action, state, dispatch = () => {} }) => {
+export const ModalAddNewTrip = ({ state, dispatch = () => {} }) => {
   const [form] = Form.useForm();
+
+  const handleCancel = useCallback(() => {
+    dispatch({type: actions.setInitialStateObject})
+    form.resetFields();
+  }, [dispatch, form])
+
   const title = useMemo(() => {
-    if(action === 'register') { return 'Adicionar Nova Viagem'}
-    if(action === 'edit') { return 'Editar Viagem'}
+    if(state.action === 'register') { return 'Adicionar Nova Viagem'}
+    if(state.action === 'edit') { return 'Editar Viagem'}
     return 'Viagem'
-  }, [action]);
+  }, [state]);
+
   return (
     <Modal
       width={800}  
@@ -28,13 +35,10 @@ export const ModalAddNewTrip = ({ travel, action, state, dispatch = () => {} }) 
       visible={state.showModalAddNewTrip}
       centered
       footer={null}
-      onCancel={() => {
-        dispatch({type: actions.controlShowModalAddNewTrip, payload: false});
-        form.resetFields();
-      }}
+      onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormAddNewTrip travel={travel} form={form} dispatch={dispatch} /> 
+      <FormAddNewTrip state={state} form={form} dispatch={dispatch} /> 
     </Modal>
   )
 }

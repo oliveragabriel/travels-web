@@ -1,11 +1,15 @@
 import { Row, Col } from 'antd';
-import { useEffect } from 'react';
 import { Table, Button } from '../../components';
 import { columns } from './columns';
-import { actions } from '../../reducer/actions';
+import { actions } from '../reducer/actions';
+import { useCallback } from 'react';
 
-export const TableNextTrips = ({setAction = () => {}, travels, dispatch = () => {} }) => {
-  useEffect(() => {},[travels]);
+export const TableNextTrips = ({ state, dispatch = () => {} }) => {
+
+  const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
+
+  const handleEdit = useCallback((record) => dispatch({type: actions.toogleEditTrip, payload: record}), [dispatch])
+  
   return (
     <>
       <Row>
@@ -13,10 +17,7 @@ export const TableNextTrips = ({setAction = () => {}, travels, dispatch = () => 
           <Button 
             type='primary'
             title='Adicionar Nova Viagem'
-            onClick={() => {
-              dispatch({type: actions.controlShowModalAddNewTrip, payload: true});
-              setAction('register');
-            }}
+            onClick={() => handleAdd()}
           >
             Adicionar Nova Viagem
           </Button>
@@ -24,7 +25,7 @@ export const TableNextTrips = ({setAction = () => {}, travels, dispatch = () => 
       </Row>
       <Row style={{ marginTop: 12 }}>
         <Col span={24}>
-          <Table columns={columns(setAction, dispatch)} size="small"  dataSource={travels}/>
+          <Table columns={columns(handleEdit)} size="small"  dataSource={state.user.travels.nextTravels}/>
         </Col>
       </Row>
     </>

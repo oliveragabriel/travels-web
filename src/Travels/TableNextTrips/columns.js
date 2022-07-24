@@ -1,8 +1,7 @@
 import { Row, Col, Button, Tooltip } from "antd";
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
-import { actions } from "../../reducer/actions";
 
-export const columns = (setAction = () => {}, dispatch = () => {}) => [
+export const columns = ({ handleEdit = () => {} }) => [
   {
     title: 'Título',
     dataIndex: 'title',
@@ -31,25 +30,13 @@ export const columns = (setAction = () => {}, dispatch = () => {}) => [
     title: 'Data de Chegada',
     dataIndex: 'arrival',
     key: 'arrival',
-    width: '20%',
-    render: text => <Tooltip title={text}>
-      <span>
-          {text.substr(0, 15)}
-          {text.length >= 15 ? '...' : ''}
-      </span>
-    </Tooltip>
+    width: '20%'
   },
   {
     title: 'Data de Saída',
     dataIndex: 'departure',
     key: 'departure',
-    width: '20%',
-    render: text => <Tooltip title={text}>
-      <span>
-          {text.substr(0, 15)}
-          {text.length >= 15 ? '...' : ''}
-      </span>
-    </Tooltip>
+    width: '20%'
   },
   {
     title: 'Ações',
@@ -64,10 +51,7 @@ export const columns = (setAction = () => {}, dispatch = () => {}) => [
             type="text"
             title="Editar"
             icon={<EditTwoTone />} 
-            onClick={() => {
-              dispatch({type: actions.controlShowModalAddNewTrip, payload: true});
-              setAction('edit');
-            }}
+            onClick={() => handleEdit(record)}
         />
       </Col>
       <Col>

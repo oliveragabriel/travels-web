@@ -30,7 +30,6 @@ export const initialState = {
 };
 
 export function headerReducer(state, action) {
-  console.log(state)
   switch (action.type) {
     case actions.controlShowModalLogin:
       return { 
