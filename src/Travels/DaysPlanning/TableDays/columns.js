@@ -1,11 +1,11 @@
 import { Row, Col, Button } from "antd";
 import { ProfileOutlined, HomeOutlined, CarOutlined } from '@ant-design/icons';
 
-export const columns = () => [
+export const columns = (handleAccommodation = () => {}, handleTransport = () => {}) => [
   {
     title: 'Data',
-    dataIndex: 'date',
-    key: 'date',
+    dataIndex: 'day',
+    key: 'day',
     width: '70%',
   },
   {
@@ -20,24 +20,24 @@ export const columns = () => [
         <Button 
             type="text"
             title="Atividades"
-            icon={<ProfileOutlined />} 
-            onClick={() => {}}
+            icon={<ProfileOutlined style={{ color: '#FF8C00' }}/>} 
+            onClick={() => console.log(record)}
         />
       </Col>
       <Col>
         <Button 
           type='text'
           title='Hospedagem'
-          icon={<HomeOutlined />} 
-          onClick={() => {}}
+          icon={<HomeOutlined style={{ color: '#1890FF' }}/>} 
+          onClick={() => handleAccommodation(record)}
         />      
       </Col>
       <Col>
         <Button
             type="text"
             title="Transportes"
-            icon={<CarOutlined />} 
-            onClick={() => {}}
+            icon={<CarOutlined style={{ color: '#1890FF' }}/>} 
+            onClick={() => handleTransport(record)}
         />
       </Col>
     </Row>

@@ -15,6 +15,7 @@ import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
 import { locale } from "../utils/calendar/localeObject";
 import { ModalDaysPlanning } from "./DaysPlanning/ModalDaysPlanning";
+import { ModalAddNewAcommodation, ModalAddNewTransport } from "./DaysPlanning/TableDays";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
@@ -43,6 +44,8 @@ export const Travels = () => {
     <Context.Provider value={{state, dispatch}}>
       <ModalAddNewTrip />
       <ModalDaysPlanning />
+      <ModalAddNewAcommodation />
+      <ModalAddNewTransport />
       <Row gutter={12}>
         <Col span={12}>
           <Collapse>

@@ -5,6 +5,8 @@ export const initialState = {
   showModal: {
     addNewTrip: false,
     daysPlanning: false,
+    addNewAcommodation: false,
+    addNewTransport: false,
   },
   editing: {},
   travels: {
@@ -14,7 +16,6 @@ export const initialState = {
 };
 
 export function travelsReducer(state, action) {
-  console.log(state)
   switch (action.type) {
     case actions.setLoggedUserData:
       return { 
@@ -42,6 +43,22 @@ export function travelsReducer(state, action) {
         showModal: {
           ...state.showModal,
           daysPlanning: action.payload,  
+        }
+      }
+    case actions.controlShowModalAddNewAcommodation:
+      return {
+        ...state,
+        showModal: {
+          ...state.showModal,
+          addNewAcommodation: action.payload,  
+        }
+      }
+    case actions.controlShowModalAddNewTransport:
+      return {
+        ...state,
+        showModal: {
+          ...state.showModal,
+          addNewTransport: action.payload,  
         }
       }
     case actions.toogleAddNewTrip:

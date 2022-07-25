@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
-import { HomeOutlined, InfoCircleOutlined, FlagOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, Button } from '../../../../components'
+import { HomeOutlined, InfoCircleOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { Input, CountrySelector, Button } from '../../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
 import { actions } from '../../reducer/actions';
 import { openNotification } from '../../../../utils/functions/notification';
@@ -37,7 +37,7 @@ export const FormAddNewAdress = ({ form }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Endereço') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite seu Endereço'
               addonAfter={<HomeOutlined />}
@@ -61,7 +61,7 @@ export const FormAddNewAdress = ({ form }) => {
           <Form.Item
             name='number'
             label='Número'
-            >
+          >
             <Input 
               placeholder='Digite um Número'
               addonAfter={<FieldNumberOutlined />}
@@ -95,7 +95,7 @@ export const FormAddNewAdress = ({ form }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Cidade') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite sua Cidade'
               addonAfter={<HomeOutlined />}
@@ -129,10 +129,12 @@ export const FormAddNewAdress = ({ form }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('País') }
             ]}
-            >
-            <Input 
-              placeholder='Digite seu País'
-              addonAfter={<FlagOutlined />}
+          >
+            <CountrySelector 
+              placeholder='Escolha um país'
+              allowClear={true}
+              showSearch={true}
+              optionFilterProp={'label'}
             />
           </Form.Item>
         </Col>
