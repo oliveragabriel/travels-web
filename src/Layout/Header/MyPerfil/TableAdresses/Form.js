@@ -24,7 +24,7 @@ export const FormAddNewAdress = ({ state, form, dispatch = () => {} }) => {
   },[form, dispatch]);
 
   return (
-    <Form form={form} layout='vertical' size='middle' initialValues={state?.editingAdress || null}> 
+    <Form form={form} layout='vertical' size='middle' initialValues={state?.editing.adress || null}> 
       <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item

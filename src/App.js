@@ -14,11 +14,11 @@ function App() {
       <Layout>
         <Header collapsed={collapsed} setCollapsed={setCollapsed} />
         
-        <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>  
+        {/* <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>  
           <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>
             <Home />
           </div>
-        </Layout.Content>
+        </Layout.Content> */}
         
         <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>

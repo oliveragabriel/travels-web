@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Table, Button } from '../../../../components';
 import { columns } from './columns';
 import { actions } from '../../reducer/actions';

@@ -41,8 +41,8 @@ export const Travels = () => {
   return (
     <>
       <ModalAddNewTrip state={state} dispatch={dispatch} />
-      <Row>
-        <Col span={24}>
+      <Row gutter={12}>
+        <Col span={12}>
           <Collapse>
             <Collapse.Panel 
               header={
@@ -62,10 +62,7 @@ export const Travels = () => {
             </Collapse.Panel>
           </Collapse>
         </Col>
-      </Row>
-      <Divider><GlobalOutlined style={styleIconSizeThirtyAndGhost}/></Divider>
-      <Row gutter={12}>
-        <Col span={24}>
+        <Col span={12}>
           <Collapse>
             <Collapse.Panel 
               header={

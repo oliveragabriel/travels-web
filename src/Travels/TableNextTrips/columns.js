@@ -1,7 +1,7 @@
 import { Row, Col, Button, Tooltip } from "antd";
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
-export const columns = ({ handleEdit = () => {} }) => [
+export const columns = (handleEdit = () => {}) => [
   {
     title: 'Título',
     dataIndex: 'title',
@@ -27,15 +27,9 @@ export const columns = ({ handleEdit = () => {} }) => [
     </Tooltip>
   },
   {
-    title: 'Data de Chegada',
+    title: 'Data de Partida',
     dataIndex: 'arrival',
     key: 'arrival',
-    width: '20%'
-  },
-  {
-    title: 'Data de Saída',
-    dataIndex: 'departure',
-    key: 'departure',
     width: '20%'
   },
   {

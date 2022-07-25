@@ -10,7 +10,7 @@ export const TablePreviousTrips = ({ state, dispatch = () => {} }) => {
 
   return (
     <>
-      <Row style={{ marginTop: 12 }}>
+      <Row style={{ marginTop: 44 }}>
         <Col span={24}>
           <Table columns={columns(handleEdit)} size="small"  dataSource={state.user.travels.previousTravels}/>
         </Col>

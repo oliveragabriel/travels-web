@@ -80,7 +80,7 @@ export const Home = () => {
       </Row>
       <Divider><GlobalOutlined style={styleIconSizeThirtyAndGhost}/></Divider>
       <Row gutter={12}>
-        <Col sm={24} md={12}>
+        <Col span={24}>
           <Row justify='space-between' align='middle' style={{ padding: 12 }}>
             <ProfileOutlined style={styleIconSizeThirtyAndColor}/>
             <h3>Trajetos</h3>
@@ -98,31 +98,6 @@ export const Home = () => {
             bordered
             renderItem={item => <List.Item>
               <List.Item.Meta
-                title={<p>{item.title}</p>}
-                description={<p>{item.description}</p>}
-              />
-            </List.Item>}
-          />
-        </Col>
-        <Col sm={24} md={12}>
-          <Row justify='space-between' align='middle' style={{ padding: 12 }}>
-            <TrophyOutlined style={styleIconSizeThirtyAndColor}/>
-            <h3>Conquistas</h3>
-            <Button
-              icon={<PlusCircleTwoTone style={styleIconSizeThirty} />}
-              type='text'
-              title='Mais Conquistas'
-              style={{ minWidth: 0 }}
-            />
-          </Row>
-          <List
-            size="small"
-            itemLayout="horizontal"
-            // dataSource={data}              
-            bordered
-            renderItem={item => <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar />}
                 title={<p>{item.title}</p>}
                 description={<p>{item.description}</p>}
               />

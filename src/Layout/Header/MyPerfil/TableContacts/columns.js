@@ -1,7 +1,7 @@
 import { Row, Col, Button, Tooltip } from "antd";
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
-export const columns = ({ handleEdit = () => {} }) => [
+export const columns = (handleEdit = () => {}) => [
   {
     title: 'E-mail',
     dataIndex: 'email',
