@@ -1,11 +1,13 @@
 import { Row, Col } from 'antd';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { Table, Button } from '../../../../components';
 import { columns } from './columns';
 import { actions } from '../../reducer/actions';
+import { Context } from '../../Header';
 
-export const TableContacts = ({ state, dispatch = () => {} }) => {
-  
+export const TableContacts = () => {
+  const {state, dispatch} = useContext(Context);
+
   const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewContact}), [dispatch])
 
   const handleEdit = useCallback((record) => dispatch({type: actions.toogleEditContact, payload: record}), [dispatch])

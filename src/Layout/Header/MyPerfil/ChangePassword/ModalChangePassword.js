@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormChangePassword } from './Form';
 import { UnlockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { Context } from "../../Header";
 
-export const ModalChangePassword = ({ state, dispatch = () => {} }) => {
+export const ModalChangePassword = () => {
   const [form] = Form.useForm();
+  const {state, dispatch} = useContext(Context);
 
   return (
     <Modal  
@@ -29,7 +31,7 @@ export const ModalChangePassword = ({ state, dispatch = () => {} }) => {
       }}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormChangePassword form={form} dispatch={dispatch} /> 
+      <FormChangePassword form={form} /> 
     </Modal>
   )
 };

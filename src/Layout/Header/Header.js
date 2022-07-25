@@ -25,6 +25,8 @@ import { styleIconSizeTwenty } from '../../utils/styles';
 import { userMock } from './MyPerfil/userMock';
 import { openNotification } from '../../utils/functions/notification';
 
+export const Context = React.createContext({state: {}, dispatch: () => {}});
+
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   const [state, dispatch] = useReducer(headerReducer, initialState);
 
@@ -43,48 +45,50 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   useEffect(() => getLoggedUserData(), [])
   
   return (
-    <Layout.Header>
-      <Row justify='space-between'>
-        <Col>
-          <ButtonCircle
-            text={collapsed ? 'Expandir Menu' : 'Ocultar Menu'}
-            icon={collapsed ? <MenuUnfoldOutlined style={styleIconSizeTwenty}/> : <MenuFoldOutlined style={styleIconSizeTwenty}/>}
-            func={() => setCollapsed(!collapsed)}
-          />
-        </Col>
-        <Col>
-          <Row gutter={[12,0]} justify='end' align='bottom' >
-            <Col>
-              <ButtonCircle
-                text='Acessar Conta'
-                icon={<UserSwitchOutlined style={styleIconSizeTwenty}/>}
-                func={() => dispatch({type: actions.controlShowModalLogin, payload: true})}
-              />
-              <ModalLogin state={state} dispatch={dispatch} />
-              <ModalForgetPassword state={state} dispatch={dispatch} />
-              <ModalAddNewUser state={state} dispatch={dispatch} />
-            </Col>
-            <Col>
-              <ButtonCircle
-                text='Meu Perfil'
-                icon={<UserOutlined style={styleIconSizeTwenty}/>}
-                func={() => dispatch({type: actions.controlShowModalMyPerfil, payload: true})}
-              />
-              <ModalMyPerfil state={state} dispatch={dispatch} />
-              <ModalChangePassword state={state} dispatch={dispatch} />
-              <ModalAddNewAdress state={state} dispatch={dispatch} />
-              <ModalAddNewContact state={state} dispatch={dispatch} />
-            </Col>
-            <Col>
-              <ButtonCircle 
-                text='Sair'
-                icon={<RightCircleTwoTone style={styleIconSizeTwenty}/>}
-                func={() => {}}
-              />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Layout.Header>
+    <Context.Provider value={{state, dispatch}}>
+      <Layout.Header>
+        <Row justify='space-between'>
+          <Col>
+            <ButtonCircle
+              text={collapsed ? 'Expandir Menu' : 'Ocultar Menu'}
+              icon={collapsed ? <MenuUnfoldOutlined style={styleIconSizeTwenty}/> : <MenuFoldOutlined style={styleIconSizeTwenty}/>}
+              func={() => setCollapsed(!collapsed)}
+            />
+          </Col>
+          <Col>
+            <Row gutter={[12,0]} justify='end' align='bottom' >
+              <Col>
+                <ButtonCircle
+                  text='Acessar Conta'
+                  icon={<UserSwitchOutlined style={styleIconSizeTwenty}/>}
+                  func={() => dispatch({type: actions.controlShowModalLogin, payload: true})}
+                />
+                <ModalLogin />
+                <ModalForgetPassword />
+                <ModalAddNewUser />
+              </Col>
+              <Col>
+                <ButtonCircle
+                  text='Meu Perfil'
+                  icon={<UserOutlined style={styleIconSizeTwenty}/>}
+                  func={() => dispatch({type: actions.controlShowModalMyPerfil, payload: true})}
+                />
+                <ModalMyPerfil />
+                <ModalChangePassword />
+                <ModalAddNewAdress />
+                <ModalAddNewContact />
+              </Col>
+              <Col>
+                <ButtonCircle 
+                  text='Sair'
+                  icon={<RightCircleTwoTone style={styleIconSizeTwenty}/>}
+                  func={() => {}}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Layout.Header>
+    </Context.Provider>
   )
 }

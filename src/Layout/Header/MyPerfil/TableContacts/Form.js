@@ -1,13 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { Input, Button } from '../../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
 import { actions } from '../../reducer/actions';
 import { openNotification } from '../../../../utils/functions/notification';
+import { Context } from '../../Header';
 
-export const FormAddNewContact = ({ state, form, dispatch = () => {} }) => {
+export const FormAddNewContact = ({ form }) => {
   const [loading, setLoading] = useState(false);
+  const {state, dispatch} = useContext(Context);
   
   const handleSubmit = useCallback(async () => {
     try {

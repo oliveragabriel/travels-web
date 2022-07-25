@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormForgetPassword } from './Form';
 import { LockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { Context } from "../../Header";
 
-export const ModalForgetPassword = ({ state, dispatch = () => {} }) => {
+export const ModalForgetPassword = () => {
   const [form] = Form.useForm();
+  const {state, dispatch} = useContext(Context);
 
   return (
     <Modal

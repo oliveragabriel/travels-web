@@ -1,10 +1,12 @@
 import { Row, Col } from 'antd';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useContext } from 'react';
 import { Table, Button } from '../../../../components';
 import { columns } from './columns';
 import { actions } from '../../reducer/actions';
+import { Context } from '../../Header';
 
-export const TableAdresses = ({ state, dispatch = () => {} }) => {
+export const TableAdresses = () => {
+  const {state, dispatch} = useContext(Context);
 
   const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewAdress}), [dispatch])
 

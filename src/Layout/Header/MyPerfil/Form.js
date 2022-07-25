@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form, Collapse, Avatar } from 'antd';
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Input, DatePicker, CountrySelector, Button } from '../../../components'
@@ -7,9 +7,11 @@ import { TableContacts, TableAdresses } from './index';
 import { actions } from '../reducer/actions';
 import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
 import { openNotification } from '../../../utils/functions/notification';
+import { Context } from '../Header';
 
-export const FormMyPerfil = ({ form, state, dispatch = () => {} }) => {
+export const FormMyPerfil = ({ form }) => {
   const [loading, setLoading] = useState(false);
+  const {state, dispatch} = useContext(Context);
   
   const handleSubmit = useCallback(async () => {
     try {

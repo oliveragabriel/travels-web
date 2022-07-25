@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewUser } from './Form';
 import { UserAddOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { Context } from "../../Header";
 
-export const ModalAddNewUser = ({ state, dispatch = () => {} }) => {
+export const ModalAddNewUser = () => {
   const [form] = Form.useForm();
+  const {state, dispatch} = useContext(Context);
 
   return (
     <Modal

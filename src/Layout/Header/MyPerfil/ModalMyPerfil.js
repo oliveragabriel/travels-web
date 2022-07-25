@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormMyPerfil } from './Form';
 import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../utils/styles";
+import { Context } from "../Header";
 
-export const ModalMyPerfil = ({ state, dispatch = () => {} }) => {
+export const ModalMyPerfil = () => {
   const [form] = Form.useForm();
+  const {state, dispatch} = useContext(Context);
 
   return (
     <Modal
@@ -30,7 +32,7 @@ export const ModalMyPerfil = ({ state, dispatch = () => {} }) => {
       }}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormMyPerfil form={form} state={state} dispatch={dispatch} /> 
+      <FormMyPerfil form={form} /> 
     </Modal>
   )
 }

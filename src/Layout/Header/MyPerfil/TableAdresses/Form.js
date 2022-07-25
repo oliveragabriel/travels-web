@@ -1,13 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { HomeOutlined, InfoCircleOutlined, FlagOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { Input, Button } from '../../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
 import { actions } from '../../reducer/actions';
 import { openNotification } from '../../../../utils/functions/notification';
+import { Context } from '../../Header';
 
-export const FormAddNewAdress = ({ state, form, dispatch = () => {} }) => {
+export const FormAddNewAdress = ({ form }) => {
   const [loading, setLoading] = useState(false);
+  const {state, dispatch} = useContext(Context);
   
   const handleSubmit = useCallback(async () => {
     try {

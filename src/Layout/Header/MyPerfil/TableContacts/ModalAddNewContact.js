@@ -1,12 +1,14 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewContact } from './Form';
 import { PhoneOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { Context } from "../../Header";
 
-export const ModalAddNewContact = ({ state, dispatch = () => {} }) => {
+export const ModalAddNewContact = () => {
   const [form] = Form.useForm();
+  const {state, dispatch} = useContext(Context);
 
   const handleCancel = useCallback(() => {
     dispatch({type: actions.setInitialStateObject})
@@ -38,7 +40,7 @@ export const ModalAddNewContact = ({ state, dispatch = () => {} }) => {
       onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormAddNewContact state={state} form={form} dispatch={dispatch} /> 
+      <FormAddNewContact form={form} /> 
     </Modal>
   )
 };

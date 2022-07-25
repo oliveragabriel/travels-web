@@ -1,13 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/messages';
 import { Input, InputPassword, Button} from '../../../../components';
 import { actions } from '../../reducer/actions';
 import { openNotification } from '../../../../utils/functions/notification';
+import { Context } from '../../Header';
 
-export const FormChangePassword = ({ form, dispatch = () => {} }) => {
+export const FormChangePassword = ({ form }) => {
   const [loading, setLoading] = useState(false);
+  const {dispatch} = useContext(Context);
   
   const handleSubmit = useCallback(async () => {
     try {
