@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from "react";
+import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewAdress } from './Form';
 import { HomeOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -20,6 +20,11 @@ export const ModalAddNewAdress = () => {
     if(state.action === 'edit') { return 'Editar Endereço'}
     return 'Endereço'
   }, [state]);
+
+  useEffect(() => {
+    form.resetFields();
+    setTimeout(() => form.setFieldsValue({...state.editing.adress}), 0);
+  }, [state.editing.adress, form])
   
   return (
     <Modal

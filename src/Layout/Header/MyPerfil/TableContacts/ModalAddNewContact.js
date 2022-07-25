@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from "react";
+import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewContact } from './Form';
 import { PhoneOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -20,6 +20,11 @@ export const ModalAddNewContact = () => {
     if(state.action === 'edit') { return 'Editar Contato'}
     return 'Contato'
   }, [state]);
+
+  useEffect(() => {
+    form.resetFields();
+    setTimeout(() => form.setFieldsValue({...state.editing.contact}), 0);
+  }, [state.editing.contact, form]);
 
   return (
     <Modal
