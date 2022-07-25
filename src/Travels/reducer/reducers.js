@@ -6,27 +6,25 @@ export const initialState = {
     addNewTrip: false,
   },
   editing: {},
-  user: {
-    username: '',
-    travels: {
-      nextTravels: [],
-      previousTravels: [],
-    }
+  travels: {
+    nextTravels: [],
+    previousTravels: [],
   }
 };
 
 export function travelsReducer(state, action) {
+  console.log(state)
   switch (action.type) {
     case actions.setLoggedUserData:
       return { 
         ...state,
-        user: action.payload
+        travels: action.payload
       };
     case actions.setInitialStateObject:
       return {
         ...initialState,
-        user: { 
-          ...state.user, 
+        travels: { 
+          ...state.travels, 
         }
       }
     case actions.controlShowModalAddNewTrip:
@@ -42,7 +40,8 @@ export function travelsReducer(state, action) {
         action: 'register',
         showModal: {
           addNewTrip: true,
-        }
+        },
+        editing: {}
       }
     case actions.toogleEditTrip:
       return {
@@ -50,7 +49,8 @@ export function travelsReducer(state, action) {
         action: 'edit',
         showModal: {
           addNewTrip: true,
-        }
+        },
+        editing: action.payload
       }
     default:
       return state;

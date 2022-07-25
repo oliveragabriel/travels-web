@@ -22,7 +22,7 @@ import {
 import { headerReducer, initialState } from './reducer';
 import { actions } from './reducer/actions';
 import { styleIconSizeTwenty } from '../../utils/styles';
-import { userMock } from './MyPerfil/userMock';
+import { userMock } from './userMock';
 import { openNotification } from '../../utils/functions/notification';
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});

@@ -1,10 +1,12 @@
 import { Row, Col } from 'antd';
+import { useCallback, useContext } from 'react';
 import { Table, Button } from '../../components';
 import { columns } from './columns';
 import { actions } from '../reducer/actions';
-import { useCallback } from 'react';
+import { Context } from '../Travels';
 
-export const TableNextTrips = ({ state, dispatch = () => {} }) => {
+export const TableNextTrips = () => {
+  const {state, dispatch} = useContext(Context);
 
   const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
 
@@ -25,7 +27,7 @@ export const TableNextTrips = ({ state, dispatch = () => {} }) => {
       </Row>
       <Row style={{ marginTop: 12 }}>
         <Col span={24}>
-          <Table columns={columns(handleEdit)} size="small"  dataSource={state.user.travels.nextTravels}/>
+          <Table columns={columns(handleEdit)} size="small"  dataSource={state.travels.nextTravels}/>
         </Col>
       </Row>
     </>

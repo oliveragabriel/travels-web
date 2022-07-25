@@ -1,21 +1,21 @@
 import React, { useCallback, useEffect, useReducer, useState } from "react";
-import { Row, Col, Collapse, Divider, notification, Calendar, Form } from "antd";
+import { Row, Col, Collapse, Divider, notification, Calendar } from "antd";
 import { 
     GlobalOutlined, 
     CheckCircleOutlined, 
-    ClockCircleOutlined,
-    PlusCircleTwoTone
+    ClockCircleOutlined
 } from '@ant-design/icons';
 import { styleIconSizeThirtyAndGhost, styleIconSizeTwentyAndColor } from '../utils/styles';
 import { TableNextTrips } from './TableNextTrips'
 import { TablePreviousTrips } from "./TablePreviousTrips";
 import { requestGenericTextMsg } from "../utils/messages";
 import { ModalAddNewTrip } from './ModalAddNewTrip';
-import { userMock } from "../Layout/Header/MyPerfil/userMock";
+import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
 import { locale } from "../utils/calendar/localeObject";
-import { Button, Input } from "../components";
+
+export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Travels = () => {
   const [state, dispatch] = useReducer(travelsReducer, initialState);
@@ -25,7 +25,7 @@ export const Travels = () => {
     try {
       setLoading(true);
       // const resp =  
-      dispatch({type: actions.setLoggedUserData, payload: userMock});
+      dispatch({type: actions.setLoggedUserData, payload: travelsMock});
     } catch (error) {
       notification.error({
         message: 'Erro',
@@ -39,8 +39,8 @@ export const Travels = () => {
   useEffect(() => getLoggedUserData(), []);
 
   return (
-    <>
-      <ModalAddNewTrip state={state} dispatch={dispatch} />
+    <Context.Provider value={{state, dispatch}}>
+      <ModalAddNewTrip />
       <Row gutter={12}>
         <Col span={12}>
           <Collapse>
@@ -55,8 +55,6 @@ export const Travels = () => {
               extra={<ClockCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
               <TableNextTrips
-                state={state} 
-                dispatch={dispatch} 
                 loading={loading} 
               />
             </Collapse.Panel>
@@ -75,8 +73,6 @@ export const Travels = () => {
               extra={<CheckCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
               <TablePreviousTrips
-                state={state} 
-                dispatch={dispatch} 
                 loading={loading} 
               />
             </Collapse.Panel>
@@ -89,6 +85,6 @@ export const Travels = () => {
           <Calendar locale={locale} />
         </Col>
       </Row>
-    </>
+    </ Context.Provider>
   )
 };
