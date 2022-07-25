@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormMyPerfil } from './Form';
 import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -9,6 +9,11 @@ import { Context } from "../Header";
 export const ModalMyPerfil = () => {
   const [form] = Form.useForm();
   const {state, dispatch} = useContext(Context);
+
+  const handleCancel = useCallback(() => {
+    dispatch({type: actions.controlShowModalMyPerfil, payload: false});
+    form.resetFields();
+  }, [dispatch, form])
 
   return (
     <Modal
@@ -26,10 +31,7 @@ export const ModalMyPerfil = () => {
       visible={state.showModal.myPerfil}
       centered
       footer={null}
-      onCancel={() => {
-        dispatch({type: actions.controlShowModalMyPerfil, payload: false});
-        form.resetFields();
-      }}
+      onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
       <FormMyPerfil form={form} /> 

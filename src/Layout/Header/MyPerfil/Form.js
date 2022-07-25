@@ -19,7 +19,7 @@ export const FormMyPerfil = ({ form }) => {
       const values = await form.validateFields();
       console.log(values);
       openNotification('success','Sucesso', requestGenericTextMsg.success);
-      dispatch({type: actions.controlShowModalPerfil, payload: false})
+      dispatch({type: actions.controlShowModalMyPerfil, payload: false})
     } catch (error) {
       openNotification('error','Erro', requestGenericTextMsg.error);
     } finally {

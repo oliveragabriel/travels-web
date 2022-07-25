@@ -36,9 +36,7 @@ export function headerReducer(state, action) {
         ...state,
         showModal: { 
           ...state.showModal,
-          login: action.payload, 
-          forgetPassword: false,
-          addNewUser: false
+          login: action.payload,
         }
       };
     case actions.controlShowModalForgetPassword:
@@ -46,8 +44,7 @@ export function headerReducer(state, action) {
         ...state,
         showModal: { 
           ...state.showModal,
-          forgetPassword: action.payload,
-          addNewUser: false
+          forgetPassword: action.payload
         }
       };
     case actions.controlShowModalAddNewUser:
@@ -55,7 +52,6 @@ export function headerReducer(state, action) {
         ...state,
         showModal: { 
           ...state.showModal,
-          forgetPassword: false,
           addNewUser: action.payload
         }
       };
@@ -72,8 +68,6 @@ export function headerReducer(state, action) {
         ...state,
         showModal: {
           ...state.showModal,
-          addNewContact: false,
-          addNewAdress: false,
           changePassword: action.payload
         } 
       };
@@ -82,8 +76,6 @@ export function headerReducer(state, action) {
         ...state,
         showModal: {
           ...state.showModal,
-          changePassword: false,
-          addNewContact: false,
           addNewAdress: action.payload
         }
       };     
@@ -92,8 +84,6 @@ export function headerReducer(state, action) {
         ...state,
         showModal: {
           ...state.showModal,
-          changePassword: false,  
-          addNewAdress: false,
           addNewContact: action.payload 
         }
       };
@@ -102,38 +92,12 @@ export function headerReducer(state, action) {
         ...state,
         user: action.payload 
       };
-    case actions.setActionForTitle:
-      return { 
-        ...state,
-        action: action.payload 
-      };
-    case actions.setEditingAdress:
-      return {
-        ...state,
-        editing: { 
-          ...state.editing,
-          adress: action.payload
-        }
-      }
-    case actions.setEditingContact:
-      return {
-        ...state,
-        editing: { 
-          ...state.editing,
-          contact: action.payload
-        }
-      }
     case actions.setInitialStateObject:
       return {
         ...initialState,
-        showModal: { 
-          login: false,
-          forgetPassword: false,
-          addNewUser: false,
+        showModal: {
+          ...initialState.showModal,
           myPerfil: true,
-          changePassword: false,
-          addNewAdress: false,
-          addNewContact: false,
          },
         user: { ...state.user },
       };
@@ -141,14 +105,10 @@ export function headerReducer(state, action) {
       return {
         ...state,
         action: 'edit',
-        showModal: { 
-          login: false,
-          forgetPassword: false,
-          addNewUser: false,
+        showModal: {
+          ...state.showModal,
           myPerfil: true,
-          changePassword: false,
           addNewAdress: true,
-          addNewContact: false,
         },
         editing: { 
           contact: {},
@@ -159,13 +119,9 @@ export function headerReducer(state, action) {
       return {
         ...state,
         action: 'edit',
-        showModal: { 
-          login: false,
-          forgetPassword: false,
-          addNewUser: false,
+        showModal: {
+          ...state.showModal,
           myPerfil: true,
-          changePassword: false,
-          addNewAdress: false,
           addNewContact: true,
         },
         editing: { 
@@ -177,13 +133,9 @@ export function headerReducer(state, action) {
       return { 
         ...state,
         action: 'register',
-        showModal: { 
-          login: false,
-          forgetPassword: false,
-          addNewUser: false,
+        showModal: {
+          ...state.showModal,
           myPerfil: true,
-          changePassword: false,
-          addNewAdress: false,
           addNewContact: true,
         },
       };
@@ -191,14 +143,10 @@ export function headerReducer(state, action) {
       return { 
         ...state,
         action: 'register',
-        showModal: { 
-          login: false,
-          forgetPassword: false,
-          addNewUser: false,
+        showModal: {
+          ...state.showModal,
           myPerfil: true,
-          changePassword: false,
           addNewAdress: true,
-          addNewContact: false,
         },
       };
     default:

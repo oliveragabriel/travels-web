@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { FormLogin } from './Form';
 import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
@@ -9,6 +9,11 @@ import { Context } from "../Header";
 export const ModalLogin = () => {
   const [form] = Form.useForm();
   const {state, dispatch} = useContext(Context);
+
+  const handleCancel = useCallback(() => {
+    dispatch({type: actions.controlShowModalLogin, payload: false});
+    form.resetFields();
+  }, [dispatch, form])
 
   return (
     <Modal
@@ -25,13 +30,10 @@ export const ModalLogin = () => {
       visible={state.showModal.login}
       centered
       footer={null}
-      onCancel={() => {
-        dispatch({type: actions.controlShowModalLogin, payload: false});
-        form.resetFields();
-      }}
+      onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormLogin form={form} dispatch={dispatch} /> 
+      <FormLogin form={form} /> 
     </Modal>
   )
 };
