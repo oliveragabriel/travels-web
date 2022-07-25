@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext, useMemo } from 'react';
 import { Row, Col, notification, Select, Tooltip, Form } from 'antd';
 import { FormOutlined, QuestionCircleTwoTone } from '@ant-design/icons';
 import { Input, Button, DatePicker, InputNumber } from '../components'
@@ -30,6 +30,33 @@ export const FormAddNewTrip = ({ form }) => {
       setLoading(false);
     }
   },[form, dispatch]);
+
+  const controlButtonConfirm = useMemo(() => {
+    if (state.action === 'edit') {
+      return (
+        <Button 
+          type='primary'
+          title='Alterar'
+          htmlType='submit'
+          onClick={handleSubmit}
+          loading={loading}
+        >
+          Alterar
+        </Button>
+      )
+    }
+    return (
+      <Button 
+        type='primary'
+        title='Cadastrar'
+        htmlType='submit'
+        onClick={handleSubmit}
+        loading={loading}
+      >
+        Cadastrar
+      </Button>
+    )
+  }, [state.action, handleSubmit, loading])
 
   return (
     <Form form={form} layout='vertical' size='middle'> 
@@ -134,17 +161,9 @@ export const FormAddNewTrip = ({ form }) => {
         </Col>
       </Row>
       <Row gutter={8} style={{ marginTop: 6 }}>
-        <Col>
+      <Col>
           <Form.Item>
-            <Button 
-              type='primary'
-              title='Cadastrar'
-              htmlType='submit'
-              onClick={handleSubmit}
-              loading={loading}
-            >
-              Cadastrar
-            </Button>
+            {controlButtonConfirm}
           </Form.Item>
         </Col>
       </Row>

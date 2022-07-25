@@ -11,6 +11,8 @@ export const TableNextTrips = () => {
   const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
 
   const handleEdit = useCallback((record) => dispatch({type: actions.toogleEditTrip, payload: record}), [dispatch])
+
+  const handlePlanning = useCallback((record) => dispatch({type: actions.controlShowModalDaysPlanning, payload: true}), [dispatch])
   
   return (
     <>
@@ -27,7 +29,7 @@ export const TableNextTrips = () => {
       </Row>
       <Row style={{ marginTop: 12 }}>
         <Col span={24}>
-          <Table columns={columns(handleEdit)} size="small"  dataSource={state.travels.nextTravels}/>
+          <Table columns={columns(handleEdit, handlePlanning)} size="small"  dataSource={state.travels.nextTravels}/>
         </Col>
       </Row>
     </>

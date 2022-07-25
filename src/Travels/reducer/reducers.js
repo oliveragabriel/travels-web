@@ -4,6 +4,7 @@ export const initialState = {
   action: '',
   showModal: {
     addNewTrip: false,
+    daysPlanning: false,
   },
   editing: {},
   travels: {
@@ -31,7 +32,16 @@ export function travelsReducer(state, action) {
       return {
         ...state,
         showModal: {
+          ...state.showModal,
           addNewTrip: action.payload,  
+        }
+      }
+    case actions.controlShowModalDaysPlanning:
+      return {
+        ...state,
+        showModal: {
+          ...state.showModal,
+          daysPlanning: action.payload,  
         }
       }
     case actions.toogleAddNewTrip:
@@ -39,6 +49,7 @@ export function travelsReducer(state, action) {
         ...state,
         action: 'register',
         showModal: {
+          ...state.showModal,
           addNewTrip: true,
         },
         editing: {}
@@ -48,6 +59,7 @@ export function travelsReducer(state, action) {
         ...state,
         action: 'edit',
         showModal: {
+          ...state.showModal,
           addNewTrip: true,
         },
         editing: action.payload

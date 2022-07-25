@@ -1,12 +1,13 @@
 import { Row, Col, Button, Tooltip } from "antd";
-import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { CalendarTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
-export const columns = (handleEdit = () => {}) => [
+export const columns = (handleEdit = () => {}, handlePlanning = () => {}) => [
   {
     title: 'Título',
     dataIndex: 'title',
     key: 'title',
     width: '25%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
         {text.substr(0, 18)}
@@ -19,6 +20,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'description',
     key: 'description',
     width: '25%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
     <span>
       {text.substr(0, 18)}
@@ -40,6 +42,14 @@ export const columns = (handleEdit = () => {}) => [
     align: 'center',
     fixed: 'right',
     render: (record) => <Row gutter={8} justify='center'>
+      <Col>
+        <Button 
+          type='text'
+          title='Planejamento'
+          icon={<CalendarTwoTone />} 
+          onClick={() => handlePlanning()}
+        />      
+      </Col>
       <Col>
         <Button
             type="text"

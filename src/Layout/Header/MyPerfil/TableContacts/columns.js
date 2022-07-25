@@ -7,6 +7,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'email',
     key: 'email',
     width: '35%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
           {text.substr(0, 30)}

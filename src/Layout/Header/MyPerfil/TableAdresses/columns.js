@@ -7,6 +7,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'adress',
     key: 'adress',
     width: '25%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
         {text.substr(0, 20)}
@@ -19,6 +20,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'complement',
     key: 'complement',
     width: '20%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
           {text.substr(0, 20)}
@@ -31,6 +33,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'district',
     key: 'district',
     width: '20%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
           {text.substr(0, 20)}
@@ -43,6 +46,7 @@ export const columns = (handleEdit = () => {}) => [
     dataIndex: 'city',
     key: 'city',
     width: '25%',
+    sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
           {text.substr(0, 20)}

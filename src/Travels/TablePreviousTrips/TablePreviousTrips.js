@@ -10,11 +10,13 @@ export const TablePreviousTrips = () => {
 
   const handleEdit = useCallback((record) => dispatch({type: actions.toogleEditTrip, payload: record}), [dispatch])
 
+  const handlePlanning = useCallback((record) => dispatch({type: actions.controlShowModalDaysPlanning, payload: true}), [dispatch])
+
   return (
     <>
       <Row style={{ marginTop: 44 }}>
         <Col span={24}>
-          <Table columns={columns(handleEdit)} size="small"  dataSource={state.travels.previousTravels}/>
+          <Table columns={columns(handleEdit, handlePlanning)} size="small"  dataSource={state.travels.previousTravels}/>
         </Col>
       </Row>
     </>
