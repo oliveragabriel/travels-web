@@ -40,6 +40,7 @@ export const columns = (handleDelete = () => {}) => [
     dataIndex: 'value',
     key: 'value',
     width: '15%',
+    sorter: (a, b) => Number(b.ddd) - Number(a.ddd)
   },
   {
     title: 'Ações',

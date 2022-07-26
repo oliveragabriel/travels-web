@@ -19,13 +19,15 @@ export const columns = (handleEdit = () => {}) => [
     title: <span title="Código de Área (DDD)">Cód.</span>,
     dataIndex: 'ddd',
     key: 'ddd',
-    width: '10%'
+    width: '10%',
+    sorter: (a, b) => Number(b.ddd) - Number(a.ddd)
   }, 
   {
     title: 'Telefone',
     dataIndex: 'phone',
     key: 'phone',
-    width: '35%'
+    width: '35%',
+    sorter: (a, b) => Number(b.ddd) - Number(a.ddd)
   },
   {
     title: 'Ações',

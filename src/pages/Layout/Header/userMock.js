@@ -8,6 +8,11 @@ export const userMock = {
         email: 'g.olivera@gmail.com',
         ddd: '048',
         phone: '99951728'
+      },
+      {
+        email: 'calosedof@gmail.com',
+        ddd: '049',
+        phone: '91456901'
       }
     ],
     adresses: [
