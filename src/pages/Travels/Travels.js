@@ -14,8 +14,8 @@ import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
 import { locale } from "../../utils/calendar/localeObject";
-import { ModalDaysPlanning } from "./DaysPlanning/ModalDaysPlanning";
-import { ModalAddNewAcommodation, ModalAddNewTransport } from "./DaysPlanning/TableDays";
+import { ModalDaysPlanning } from "./Planning/ModalDaysPlanning";
+import { ModalAddNewAcommodation, ModalAddNewTransport } from "./Planning/TableDays";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
