@@ -14,7 +14,7 @@ export const TablePreviousTrips = () => {
 
   return (
     <>
-      <Row style={{ marginTop: 44 }}>
+      <Row>
         <Col span={24}>
           <Table columns={columns(handleEdit, handlePlanning)} size="small"  dataSource={state.travels.previousTravels}/>
         </Col>

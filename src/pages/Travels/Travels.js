@@ -3,7 +3,8 @@ import { Row, Col, Collapse, Divider, notification, Calendar } from "antd";
 import { 
     GlobalOutlined, 
     CheckCircleOutlined, 
-    ClockCircleOutlined
+    ClockCircleOutlined,
+    PlusCircleTwoTone
 } from '@ant-design/icons';
 import { styleIconSizeThirtyAndGhost, styleIconSizeTwentyAndColor } from '../../utils/styles';
 import { TableNextTrips } from './TableNextTrips'
@@ -13,15 +14,17 @@ import { ModalAddNewTrip } from './ModalAddNewTrip';
 import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
-import { locale } from "../../utils/calendar/localeObject";
 import { ModalDaysPlanning } from "./Planning/ModalDaysPlanning";
 import { ModalAddNewAcommodation, ModalAddNewTransport } from "./Planning/TableDays";
+import { Button } from "../../components";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Travels = () => {
   const [state, dispatch] = useReducer(travelsReducer, initialState);
   const [loading, setLoading] = useState(false);
+
+  const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
   
   const getLoggedUserData = useCallback(() => {
     try {
@@ -46,8 +49,23 @@ export const Travels = () => {
       <ModalDaysPlanning />
       <ModalAddNewAcommodation />
       <ModalAddNewTransport />
-      <Row gutter={12}>
-        <Col span={12}>
+      <Row gutter={12} style={{ marginBottom: 12 }}>
+        <Col span={24}>
+          <Divider>
+          <Button 
+            type='primary'
+            icon={<PlusCircleTwoTone />}
+            title='Adicionar Nova Viagem'
+            onClick={() => handleAdd()}
+            style={{ height: 40 }}
+          >
+            Adicionar Nova Viagem
+          </Button>
+          </Divider>
+        </Col>
+      </Row>
+      <Row gutter={12} style={{ marginBottom: 24 }}>
+        <Col sm={24} md={12}>
           <Collapse>
             <Collapse.Panel 
               header={
@@ -56,7 +74,7 @@ export const Travels = () => {
                     Próximas Viagens
                   </Col>
                 </Row>} 
-              key="1"
+              key="nextTravels"
               extra={<ClockCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
               <TableNextTrips
@@ -65,7 +83,7 @@ export const Travels = () => {
             </Collapse.Panel>
           </Collapse>
         </Col>
-        <Col span={12}>
+        <Col sm={24} md={12}>
           <Collapse>
             <Collapse.Panel 
               header={
@@ -74,7 +92,7 @@ export const Travels = () => {
                     Viagens Anteriores
                   </Col>
                 </Row>} 
-              key="1"
+              key="previousTravels"
               extra={<CheckCircleOutlined style={styleIconSizeTwentyAndColor}/>}
             >
               <TablePreviousTrips
@@ -87,7 +105,7 @@ export const Travels = () => {
       <Divider><GlobalOutlined style={styleIconSizeThirtyAndGhost}/></Divider>
       <Row>
         <Col span={24}>
-          <Calendar locale={locale} />
+          <Calendar />
         </Col>
       </Row>
     </ Context.Provider>
