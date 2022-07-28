@@ -20,8 +20,8 @@ function App() {
         <Sider collapsed={collapsed} />
         <Layout>
           <Header collapsed={collapsed} setCollapsed={setCollapsed} />
-          <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>
+          <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke', position: 'relative', minHeight: '88.5vh' }}>
+            <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF'}}>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
@@ -29,7 +29,7 @@ function App() {
                 </Routes>
             </div>
           </ Layout.Content>
-          <Footer collapsed={collapsed} />
+          <Footer collapsed={collapsed} style={{ position: 'absolute', bottom: 0, width: '100%' }}/>
         </ Layout>
       </ Layout>
     </ConfigProvider>
