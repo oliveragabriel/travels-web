@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Layout, Menu, Row, Col, Avatar } from "antd";
 import { EllipsisOutlined } from '@ant-design/icons';
 import { functionalities } from './utils';
@@ -9,6 +10,8 @@ const styleMenuBackgroundColor = {
 };
 
 export const Sider = ({ collapsed }) => {
+  const navigate = useNavigate();
+
   return (
     <Layout.Sider trigger={null} collapsible collapsed={collapsed} style={styleMenuBackgroundColor}>
         <Row justify='center' align='bottom'>
@@ -19,7 +22,7 @@ export const Sider = ({ collapsed }) => {
         </Row>
         <Row>
           <Col span={24}>
-              <Menu items={functionalities} style={styleMenuBackgroundColor}/>
+              <Menu items={functionalities(navigate)} style={styleMenuBackgroundColor}/>
           </Col>
         </Row>
     </Layout.Sider>

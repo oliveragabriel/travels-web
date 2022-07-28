@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.min.css';
 import { ConfigProvider, Layout } from 'antd';
 import { Header, Sider, Footer } from '././pages/Layout';
+import { Routes, Route } from "react-router-dom";
 import { Home } from '././pages/Home'
 import { Travels } from './pages/Travels/';
 import ptBR from 'antd/es/locale/pt_BR';
@@ -19,19 +20,15 @@ function App() {
         <Sider collapsed={collapsed} />
         <Layout>
           <Header collapsed={collapsed} setCollapsed={setCollapsed} />
-          
-          <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>  
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>
-              <Home />
-            </div>
-          </Layout.Content>
-          
           <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke' }}>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 380, backgroundColor: '#FFFFFF' }}>
-              <Travels />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/travels" element={<Travels />} />
+                </Routes>
             </div>
           </ Layout.Content>
-
           <Footer collapsed={collapsed} />
         </ Layout>
       </ Layout>
