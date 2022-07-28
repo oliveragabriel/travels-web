@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import { Layout, Row, Col } from "antd"
+import { useNavigate } from "react-router-dom";
 import { ButtonCircle } from "../../../components"
 import { 
   UserSwitchOutlined, 
@@ -29,6 +30,11 @@ export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   const [state, dispatch] = useReducer(headerReducer, initialState);
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    navigate('/home')
+  }
 
   const getLoggedUserData = useCallback(() => {
     try {
@@ -82,7 +88,7 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
                 <ButtonCircle 
                   text='Sair'
                   icon={<RightCircleTwoTone style={styleIconSizeTwenty}/>}
-                  func={() => {}}
+                  func={() => handleExit()}
                 />
               </Col>
             </Row>

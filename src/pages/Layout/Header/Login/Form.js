@@ -7,10 +7,12 @@ import { actions } from '../reducer/actions';
 import { styleIconSizeTwentyAndColor } from '../../../../utils/styles';
 import { openNotification } from '../../../../utils/functions/notification';
 import { Context } from '../Header';
+import { useNavigate } from "react-router-dom";
 
 export const FormLogin = ({ form }) => {
   const [loading, setLoading] = useState(false);
   const {dispatch} = useContext(Context);
+  const navigate = useNavigate();
   
   const handleSubmit = useCallback(async () => {
     try {
@@ -18,6 +20,8 @@ export const FormLogin = ({ form }) => {
       const values = await form.validateFields();
       console.log(values);
       dispatch({type: actions.controlShowModalLogin, payload: false});
+      navigate('/travels')
+      form.resetFields()
     } catch (error) {
       openNotification('error','Erro', requestGenericTextMsg.error);
     } finally {
