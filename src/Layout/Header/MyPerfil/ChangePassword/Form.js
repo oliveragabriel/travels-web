@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../../utils/messages';
-import { Input, InputPassword, Button} from '../../../../../components';
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/messages';
+import { Input, InputPassword, Button} from '../../../../components';
 import { actions } from '../../reducer/actions';
-import { openNotification } from '../../../../../utils/functions/notification';
+import { openNotification } from '../../../../utils/functions/notification';
 import { Context } from '../../Header';
 
 export const FormChangePassword = ({ form }) => {

@@ -1,6 +1,6 @@
 import { Row, Col } from 'antd';
 import { useCallback, useContext } from 'react';
-import { Table, Button } from '../../../../../components';
+import { Table, Button } from '../../../../components';
 import { columns } from './columns';
 import { actions } from '../../reducer/actions';
 import { Context } from '../../Header';

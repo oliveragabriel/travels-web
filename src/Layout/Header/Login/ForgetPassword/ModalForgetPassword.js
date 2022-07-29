@@ -1,40 +1,39 @@
 import React, { useCallback, useContext } from "react";
 import { Row, Col, Modal, Form } from 'antd';
-import { FormMyPerfil } from './Form';
-import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
-import { actions } from '../reducer/actions';
+import { FormForgetPassword } from './Form';
+import { LockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { actions } from '../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
-import { Context } from "../Header";
+import { Context } from "../../Header";
 
-export const ModalMyPerfil = () => {
+export const ModalForgetPassword = () => {
   const [form] = Form.useForm();
   const {state, dispatch} = useContext(Context);
 
   const handleCancel = useCallback(() => {
-    dispatch({type: actions.controlShowModalMyPerfil, payload: false});
+    dispatch({type: actions.controlShowModalForgetPassword, payload: false});
     form.resetFields();
   }, [dispatch, form])
 
   return (
     <Modal
-      width={800}  
       title={
         <Row gutter={[24,0]} align='middle'>
           <Col>
-            <UserSwitchOutlined style={styleIconSizeThirtyAndColor}/>
+            <LockOutlined style={styleIconSizeThirtyAndColor}/>
           </Col>
           <Col>
-            Meu Perfil
+            Recuperar Minha Senha
           </Col>
         </Row>
       }
-      visible={state.showModal.myPerfil}
+      visible={state.showModal.forgetPassword}
       centered
       footer={null}
       onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
-      <FormMyPerfil form={form} /> 
+      <FormForgetPassword form={form} /> 
     </Modal>
   )
 }

@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form, Collapse, Avatar } from 'antd';
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons';
-import { Input, DatePicker, CountrySelector, Button } from '../../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
+import { Input, DatePicker, CountrySelector, Button } from '../../../components'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages';
 import { TableContacts, TableAdresses } from './index';
 import { actions } from '../reducer/actions';
-import { styleIconSizeTwentyAndColor } from '../../../../utils/styles';
-import { openNotification } from '../../../../utils/functions/notification';
+import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
+import { openNotification } from '../../../utils/functions/notification';
 import { Context } from '../Header';
 
 export const FormMyPerfil = ({ form }) => {

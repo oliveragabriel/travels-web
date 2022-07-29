@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import { Layout, Row, Col } from "antd"
 import { useNavigate } from "react-router-dom";
-import { ButtonCircle } from "../../../components"
+import { ButtonCircle } from "../../components"
 import { 
   UserSwitchOutlined, 
   UserOutlined, 
@@ -22,9 +22,9 @@ import {
 } from './MyPerfil';
 import { headerReducer, initialState } from './reducer';
 import { actions } from './reducer/actions';
-import { styleIconSizeTwenty } from '../../../utils/styles';
+import { styleIconSizeTwenty } from '../../utils/styles';
 import { userMock } from './userMock';
-import { openNotification } from '../../../utils/functions/notification';
+import { openNotification } from '../../utils/functions/notification';
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 

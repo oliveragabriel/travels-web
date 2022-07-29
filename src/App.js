@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.min.css';
 import { ConfigProvider, Layout } from 'antd';
-import { Header, Sider, Footer } from '././pages/Layout';
+import { Header, Sider, Footer } from './Layout';
 import { Routes, Route } from "react-router-dom";
 import { Home } from '././pages/Home'
 import { Travels } from './pages/Travels/';

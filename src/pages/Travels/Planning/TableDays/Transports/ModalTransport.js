@@ -1,24 +1,19 @@
-import React, { useCallback, useContext, useEffect, useMemo } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { Row, Col, Modal, Form } from 'antd';
 import { CarOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../../utils/styles";
 import { Context } from "../../../Travels";
+import { TableTransports } from "./TableTransports";
 
-export const ModalAddNewTransport = () => {
+export const ModalTransport = () => {
   const [form] = Form.useForm();
   const {state, dispatch} = useContext(Context);
 
   const handleCancel = useCallback(() => {
-    dispatch({type: actions.controlShowModalAddNewTransport, payload: false})
+    dispatch({type: actions.controlShowModalTransport, payload: false})
     form.resetFields();
   }, [dispatch, form])
-
-  const title = useMemo(() => {
-    if(state.action === 'register') { return 'Adicionar Transporte'}
-    if(state.action === 'edit') { return 'Editar Transporte'}
-    return 'Transporte'
-  }, [state]);
 
   useEffect(() => {
     form.resetFields();
@@ -34,16 +29,17 @@ export const ModalAddNewTransport = () => {
           <CarOutlined style={styleIconSizeThirtyAndColor}/>
           </Col>
           <Col>
-            {title}
+            Transportes
           </Col>
         </Row>
       }
-      visible={state.showModal.addNewTransport}
+      visible={state.showModal.viewTransport}
       centered
       footer={null}
       onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
+      <TableTransports />
     </Modal>
   )
 }

@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined, LockOutlined, UserAddOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/messages';
-import { Input, InputPassword, Button, ButtonText} from '../../../../components';
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages';
+import { Input, InputPassword, Button, ButtonText} from '../../../components';
 import { actions } from '../reducer/actions';
-import { styleIconSizeTwentyAndColor } from '../../../../utils/styles';
-import { openNotification } from '../../../../utils/functions/notification';
+import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
+import { openNotification } from '../../../utils/functions/notification';
 import { Context } from '../Header';
 import { useNavigate } from "react-router-dom";
 

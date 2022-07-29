@@ -8,7 +8,7 @@ import {
   EnvironmentOutlined, 
   ProfileOutlined 
 } from '@ant-design/icons';
-import { styleIconSizeTwentyAndColor } from '../../../../utils/styles';
+import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
 
 
 export const functionalities = (navigate = () => {}) => {

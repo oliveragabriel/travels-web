@@ -8,7 +8,7 @@ import { Context } from '../../../Travels';
 export const TableTransports = () => {
   const {state, dispatch} = useContext(Context);
 
-  const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
+  const handleAdd = useCallback(() => dispatch({type: actions.controlShowModalAddNewTransport, payload: true}), [dispatch])
   
   return (
     <>

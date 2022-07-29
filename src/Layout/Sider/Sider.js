@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Menu, Row, Col, Avatar } from "antd";
 import { EllipsisOutlined } from '@ant-design/icons';
 import { functionalities } from './utils';
-import { styleIconSizeThirtyAndColor } from '../../../utils/styles';
+import { styleIconSizeThirtyAndColor } from '../../utils/styles';
 
 const styleMenuBackgroundColor = {
   backgroundColor: '#F0F8FF',

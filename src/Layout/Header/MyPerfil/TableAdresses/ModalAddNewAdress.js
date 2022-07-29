@@ -3,7 +3,7 @@ import { Row, Col, Modal, Form } from 'antd';
 import { FormAddNewAdress } from './Form';
 import { HomeOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../../utils/styles";
+import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
 import { Context } from "../../Header";
 
 export const ModalAddNewAdress = () => {

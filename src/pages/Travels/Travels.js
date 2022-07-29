@@ -15,7 +15,7 @@ import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
 import { ModalDaysPlanning } from "./Planning/ModalDaysPlanning";
-import { ModalAddNewAcommodation, ModalAddNewTransport } from "./Planning/TableDays";
+import { ModalAddNewAcommodation, ModalAddNewTransport, ModalTransport } from "./Planning/TableDays";
 import { Button } from "../../components";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
@@ -48,6 +48,7 @@ export const Travels = () => {
       <ModalAddNewTrip />
       <ModalDaysPlanning />
       <ModalAddNewAcommodation />
+      <ModalTransport />
       <ModalAddNewTransport />
       <Row gutter={12} style={{ marginBottom: 12 }}>
         <Col span={24}>

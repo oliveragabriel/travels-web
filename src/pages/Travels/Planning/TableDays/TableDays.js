@@ -10,7 +10,7 @@ export const TableDays = () => {
 
   const handleAccommodation = useCallback(() => dispatch({type: actions.controlShowModalAddNewAcommodation, payload: true}), [dispatch])
 
-  const handleTransport = useCallback(() => dispatch({type: actions.controlShowModalAddNewTransport, payload: true}), [dispatch])
+  const handleTransport = useCallback(() => dispatch({type: actions.controlShowModalTransport, payload: true}), [dispatch])
 
   return (
     <>
