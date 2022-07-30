@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form, Select } from 'antd';
-import { EditOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons';
 import { Input, Button, InputNumber } from '../../../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../../utils/messages';
 import { actions } from '../../../reducer/actions';
@@ -8,7 +8,7 @@ import { openNotification } from '../../../../../utils/functions/notification';
 import { Context } from '../../../Travels';
 import { options } from './options';
 
-export const FormAddNewAcommodation = ({ form }) => {
+export const FormAddNewTransport = ({ form }) => {
   const [loading, setLoading] = useState(false);
   const {state, dispatch} = useContext(Context);
   
@@ -29,28 +29,15 @@ export const FormAddNewAcommodation = ({ form }) => {
   return (
     <Form form={form} layout='vertical' size='middle' initialValues={state?.travels.nextTravels[0].days[0].acommodation || null}> 
       <Row gutter={8} align='bottom'>
-        <Col span={24}>
-          <Form.Item
-            name='name'
-            label='Nome do Local'
-            hasFeedback
-            required
-            rules={[
-              { required: true, message: requiredFieldsTextMsg('Nome do Local') }
-            ]}
-            >
-            <Input 
-              placeholder='Digite um Nome'
-              addonAfter={<EditOutlined />}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='type'
             label='Tipo'
+            hasFeedback
+            required
+            rules={[
+              { required: true, message: requiredFieldsTextMsg('Tipo') }
+            ]}
             >
             <Select 
               placeholder='Escolha uma opção'
@@ -72,14 +59,35 @@ export const FormAddNewAcommodation = ({ form }) => {
         </Col>
       </Row>
       <Row gutter={8} align='bottom'>
-        <Col span={24}>
+        <Col span={12}>
           <Form.Item
-            name='adress'
-            label='Endereço'
+            name='pickupAdress'
+            label='Local de Embarque'
+            hasFeedback
+            required
+            rules={[
+              { required: true, message: requiredFieldsTextMsg('Local de Embarque') }
+            ]}
             >
             <Input 
-              placeholder='Digite o endereço da Hospedagem'
-              addonAfter={<EnvironmentOutlined />}
+              placeholder='Digite o Local de Embarque'
+              addonAfter={<VerticalAlignTopOutlined />}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            name='destinyAdress'
+            label='Local de Destino'
+            hasFeedback
+            required
+            rules={[
+              { required: true, message: requiredFieldsTextMsg('Local de Destino') }
+            ]}
+            >
+            <Input 
+              placeholder='Digite o Local de Destino'
+              addonAfter={<VerticalAlignBottomOutlined />}
             />
           </Form.Item>
         </Col>

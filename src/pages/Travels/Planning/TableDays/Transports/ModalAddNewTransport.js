@@ -4,6 +4,7 @@ import { CarOutlined, CloseCircleTwoTone } from '@ant-design/icons';
 import { actions } from '../../../reducer/actions';
 import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../../utils/styles";
 import { Context } from "../../../Travels";
+import { FormAddNewTransport } from "./FormTransport";
 
 export const ModalAddNewTransport = () => {
   const [form] = Form.useForm();
@@ -44,6 +45,7 @@ export const ModalAddNewTransport = () => {
       onCancel={() => handleCancel()}
       closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
     >
+      <FormAddNewTransport form={form} />
     </Modal>
   )
 }
