@@ -20,14 +20,12 @@ export const Home = () => {
       <Row gutter={12}>
         <Col sm={24} md={12}>
           <Row justify='space-between' align='middle' style={{ padding: 12 }}>
-            <RocketOutlined style={styleIconSizeThirtyAndColor}/>
-            <h3>Destinos</h3>
-            <Button
-              icon={<PlusCircleTwoTone style={styleIconSizeThirty} />}
-              type='text'
-              title='Mais Destinos'
-              style={{ minWidth: 0 }}
-            />
+            <Col>
+              <RocketOutlined style={styleIconSizeThirtyAndColor}/>
+            </Col>
+            <Col span={14}>
+              <h3>Destinos</h3>
+            </Col>
           </Row>
           <Carousel autoplay>
             <div>

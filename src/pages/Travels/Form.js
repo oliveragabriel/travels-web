@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext, useMemo } from 'react';
-import { Row, Col, notification, Select, Tooltip, Form } from 'antd';
+import { Row, Col, notification, Tooltip, Form } from 'antd';
 import { FormOutlined, QuestionCircleTwoTone } from '@ant-design/icons';
-import { Input, Button, DatePicker, InputNumber } from '../../components'
+import { Input, InputNumber, DatePicker, Select, Button } from '../../components'
 import { options } from './options';
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../utils/messages';
 import { actions } from './reducer/actions';

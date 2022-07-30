@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 import { ConfigProvider as AntdConfigProvider, Layout } from 'antd'
 import 'antd/dist/antd.min.css'
-import { Header, Sider, Footer } from './Layout'
+import { Header, Sider, Footer } from './layout'
 import { ContentCard as Card } from './components'
 import { Home, Travels } from '././pages'
 import ptBR from 'antd/es/locale/pt_BR'

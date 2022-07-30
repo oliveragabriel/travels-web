@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form, Select } from 'antd';
+import { Row, Col, Form } from 'antd';
 import { EditOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, Button, InputNumber } from '../../../../../components'
+import { Input, InputNumber, Select, CurrencySelector, Button } from '../../../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../../utils/messages';
 import { actions } from '../../../reducer/actions';
 import { openNotification } from '../../../../../utils/functions/notification';
@@ -28,32 +28,7 @@ export const FormAddNewAcommodation = ({ form }) => {
 
   const selectBefore = (
     <Form.Item name='currency' noStyle>
-      <Select 
-        defaultValue={
-          {label: "BRL - R$",
-          value: "BRL"}
-        } 
-        options={[
-          {label: "BRL - R$",
-          value: "BRL"},
-          {label: "USD - $",
-          value: "USD"},
-          {label: "EUR - €",
-          value: "EUR"},
-          {label: "MXN - $",
-          value: "MXN"},
-          {label: "GBP - £",
-          value: "GBP"},
-          {label: "ARS - $",
-          value: "ARS"},
-          {label: "CNY - ¥",
-          value: "CNY"},
-          {label: "CLP - $",
-          value: "CLP"},
-          {label: "PEN - S/",
-          value: "PEN"},
-        ]}
-      />
+      <CurrencySelector />
     </Form.Item>
   );
 
