@@ -27,32 +27,34 @@ export const FormAddNewAcommodation = ({ form }) => {
   },[form, dispatch]);
 
   const selectBefore = (
-    <Select 
-      defaultValue={
-        {label: "BRL - R$",
-        value: "BRL"}
-      } 
-      options={[
-        {label: "BRL - R$",
-        value: "BRL"},
-        {label: "USD - $",
-        value: "USD"},
-        {label: "EUR - €",
-        value: "EUR"},
-        {label: "MXN - $",
-        value: "MXN"},
-        {label: "GBP - £",
-        value: "GBP"},
-        {label: "ARS - $",
-        value: "ARS"},
-        {label: "CNY - ¥",
-        value: "CNY"},
-        {label: "CLP - $",
-        value: "CLP"},
-        {label: "PEN - S/",
-        value: "PEN"},
-      ]}
-    />
+    <Form.Item name='currency' noStyle>
+      <Select 
+        defaultValue={
+          {label: "BRL - R$",
+          value: "BRL"}
+        } 
+        options={[
+          {label: "BRL - R$",
+          value: "BRL"},
+          {label: "USD - $",
+          value: "USD"},
+          {label: "EUR - €",
+          value: "EUR"},
+          {label: "MXN - $",
+          value: "MXN"},
+          {label: "GBP - £",
+          value: "GBP"},
+          {label: "ARS - $",
+          value: "ARS"},
+          {label: "CNY - ¥",
+          value: "CNY"},
+          {label: "CLP - $",
+          value: "CLP"},
+          {label: "PEN - S/",
+          value: "PEN"},
+        ]}
+      />
+    </Form.Item>
   );
 
   return (
