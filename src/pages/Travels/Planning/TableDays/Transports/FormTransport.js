@@ -26,6 +26,35 @@ export const FormAddNewTransport = ({ form }) => {
     }
   },[form, dispatch]);
 
+  const selectBefore = (
+    <Select 
+      defaultValue={
+        {label: "BRL - R$",
+        value: "BRL"}
+      } 
+      options={[
+        {label: "BRL - R$",
+        value: "BRL"},
+        {label: "USD - $",
+        value: "USD"},
+        {label: "EUR - €",
+        value: "EUR"},
+        {label: "MXN - $",
+        value: "MXN"},
+        {label: "GBP - £",
+        value: "GBP"},
+        {label: "ARS - $",
+        value: "ARS"},
+        {label: "CNY - ¥",
+        value: "CNY"},
+        {label: "CLP - $",
+        value: "CLP"},
+        {label: "PEN - S/",
+        value: "PEN"},
+      ]}
+    />
+  );
+
   return (
     <Form form={form} layout='vertical' size='middle' initialValues={state?.travels.nextTravels[0].days[0].acommodation || null}> 
       <Row gutter={8} align='bottom'>
@@ -54,6 +83,7 @@ export const FormAddNewTransport = ({ form }) => {
             <InputNumber 
               placeholder='0,00'
               min={0.01}
+              addonBefore={selectBefore}
             />
           </Form.Item>
         </Col>
