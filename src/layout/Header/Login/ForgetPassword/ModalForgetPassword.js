@@ -1,10 +1,11 @@
 import React, { useCallback, useContext } from "react";
-import { Row, Col, Modal, Form } from 'antd';
+import { Form } from 'antd';
 import { FormForgetPassword } from './Form';
-import { LockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { LockOutlined } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
 import { Context } from "../../Header";
+import { Modal } from "../../../../components";
 
 export const ModalForgetPassword = () => {
   const [form] = Form.useForm();
@@ -17,23 +18,11 @@ export const ModalForgetPassword = () => {
 
   return (
     <Modal
-      title={
-        <Row gutter={[24,0]} align='middle'>
-          <Col>
-            <LockOutlined style={styleIconSizeThirtyAndColor}/>
-          </Col>
-          <Col>
-            Recuperar Minha Senha
-          </Col>
-        </Row>
-      }
+      title='Recuperar Minha Senha'
       visible={state.showModal.forgetPassword}
-      centered
-      footer={null}
-      onCancel={() => handleCancel()}
-      closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
-    >
-      <FormForgetPassword form={form} /> 
-    </Modal>
+      icon={<LockOutlined style={styleIconSizeThirtyAndColor}/>}
+      handleCancel={() => handleCancel()}
+      content={<FormForgetPassword form={form} />}
+    />
   )
 }
