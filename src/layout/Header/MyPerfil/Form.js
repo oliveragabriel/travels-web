@@ -1,19 +1,27 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form, Collapse, Avatar } from 'antd';
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons';
-import { Input, DatePicker, CountrySelector, Button } from '../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages';
-import { TableContacts, TableAdresses } from './index';
+import { Input, DatePicker, CountrySelector, Table, Button } from '../../../components'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { actions } from '../reducer/actions';
 import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
 import { openNotification } from '../../../utils/functions/notification';
 import { Context } from '../Header';
 import { ModalChangePassword } from '../../../components/ModalChangePassword';
+import { columnsAddresses, columnsContacts } from '.'
 
 export const FormMyPerfil = ({ form }) => {
   const [loading, setLoading] = useState(false);
   const [showModalChangePassword, setShowModalChangePassword] = useState(false)
   const {state, dispatch} = useContext(Context);
+
+  const handleAddAdress = useCallback(() => dispatch({type: actions.toogleAddNewAdress}), [dispatch])
+
+  const handleEditAdress = useCallback((record) => dispatch({type: actions.toogleEditAdress, payload: record}), [dispatch])
+
+  const handleAddContact = useCallback(() => dispatch({type: actions.toogleAddNewContact}), [dispatch])
+
+  const handleEditContact = useCallback((record) => dispatch({type: actions.toogleEditContact, payload: record}), [dispatch])
   
   const handleSubmit = useCallback(async () => {
     try {
@@ -100,10 +108,38 @@ export const FormMyPerfil = ({ form }) => {
         <Col span={24}>
         <Collapse>
           <Collapse.Panel header={<Row><Col>Contatos</Col></Row>} extra={<PhoneOutlined style={styleIconSizeTwentyAndColor}/>} key="1">
-            <TableContacts loading={loading} state={state} dispatch={dispatch} />
+            <Row>
+              <Col span={24}>
+                <Button 
+                  type='primary'
+                  title='Adicionar Contato'
+                  label='Adicionar Contato'
+                  handleSubmit={() => handleAddContact()}
+                />
+              </Col>
+            </Row>
+            <Row style={{ marginTop: 12 }}>
+              <Col span={24}>
+                <Table rowKey='id' columns={columnsContacts(handleEditContact)} size="small"  dataSource={state.user.contacts}/>
+              </Col>
+            </Row>
           </Collapse.Panel>
           <Collapse.Panel header={<Row><Col>Endereços</Col></Row>} extra={<HomeOutlined style={styleIconSizeTwentyAndColor}/>} key="2">
-            <TableAdresses loading={loading} state={state} dispatch={dispatch} />
+            <Row>
+              <Col span={24}>
+                <Button 
+                  type='primary'
+                  title='Adicionar Endereço'
+                  label='Adicionar Endereço'
+                  handleSubmit={() => handleAddAdress()}
+                />
+              </Col>
+            </Row>
+            <Row style={{ marginTop: 12 }}>
+              <Col span={24}>
+                <Table rowKey='id' columns={columnsAddresses(handleEditAdress)} size="small"  dataSource={state.user.adresses}/>
+              </Col>
+            </Row>
           </Collapse.Panel>
         </Collapse>
         </Col>
