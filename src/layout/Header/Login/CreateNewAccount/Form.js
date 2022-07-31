@@ -5,7 +5,7 @@ import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/
 import { Input, InputPassword, Button } from '../../../../components';
 import { openNotification } from '../../../../utils/functions/notification';
 
-export const FormAddNewUser = ({ form }) => {
+export const FormCreateNewAccount = ({ form }) => {
   const [loading, setLoading] = useState(false);
   
   const handleSubmit = useCallback(async () => {

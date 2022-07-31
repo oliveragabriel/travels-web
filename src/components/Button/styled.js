@@ -5,4 +5,4 @@ const StyledButton = styled(Button)`
     min-width: 150px;
 `;
 
-export { StyledButton as Button };
+export { StyledButton as Button }

@@ -10,7 +10,7 @@ import {
   MenuFoldOutlined 
 } from '@ant-design/icons';
 import { 
-  ModalAddNewUser, 
+  ModalCreateNewAccount, 
   ModalForgetPassword, 
   ModalLogin 
 } from './Login';
@@ -71,7 +71,7 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
                 />
                 <ModalLogin />
                 <ModalForgetPassword />
-                <ModalAddNewUser />
+                <ModalCreateNewAccount />
               </Col>
               <Col>
                 <ButtonCircle
