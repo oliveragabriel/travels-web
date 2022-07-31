@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import { Layout, Row, Col } from "antd"
 import { useNavigate } from "react-router-dom";
-import { ButtonCircle } from "../../components"
+import { ModalLogin, ButtonCircle } from "../../components"
 import { 
   UserSwitchOutlined, 
   UserOutlined, 
@@ -9,11 +9,6 @@ import {
   MenuUnfoldOutlined, 
   MenuFoldOutlined 
 } from '@ant-design/icons';
-import { 
-  ModalCreateNewAccount, 
-  ModalForgetPassword, 
-  ModalLogin 
-} from './Login';
 import { 
   ModalAddNewContact, 
   ModalAddNewAdress, 
@@ -29,8 +24,9 @@ import { openNotification } from '../../utils/functions/notification';
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
-  const [state, dispatch] = useReducer(headerReducer, initialState);
-  const navigate = useNavigate();
+  const [state, dispatch] = useReducer(headerReducer, initialState)
+  const navigate = useNavigate()
+  const [showModalLogin, setShowModalLogin] = useState(false)
 
   const handleExit = () => {
     navigate('/home')
@@ -48,7 +44,9 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
     }
   }, []);
 
-  useEffect(() => getLoggedUserData(), [])
+  useEffect(() => getLoggedUserData(), 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [])
   
   return (
     <Context.Provider value={{state, dispatch}}>
@@ -67,11 +65,9 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
                 <ButtonCircle
                   text='Acessar Conta'
                   icon={<UserSwitchOutlined style={styleIconSizeTwenty}/>}
-                  func={() => dispatch({type: actions.controlShowModalLogin, payload: true})}
+                  func={() => setShowModalLogin(true)}
                 />
-                <ModalLogin />
-                <ModalForgetPassword />
-                <ModalCreateNewAccount />
+                <ModalLogin visible={showModalLogin} closeFn={setShowModalLogin} />
               </Col>
               <Col>
                 <ButtonCircle

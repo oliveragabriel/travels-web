@@ -2,7 +2,6 @@ import React from 'react';
 import { StyledModal } from './styled';
 import { CloseCircleTwoTone } from '@ant-design/icons';
 import { Row, Col } from 'antd';
-import { styleIconSizeTwenty } from "../../utils/styles";
 
 export const Modal = ({ width, title, visible, icon, handleCancel = () => {}, content }) => {
 
@@ -10,7 +9,7 @@ export const Modal = ({ width, title, visible, icon, handleCancel = () => {}, co
     width={width ?? undefined}  
     title={
       <Row gutter={[24,0]} align='middle'>
-        <Col>
+        <Col style={{ fontSize: 30,  color: '#FF8C00' }}>
           {icon}
         </Col>
         <Col>
@@ -22,7 +21,7 @@ export const Modal = ({ width, title, visible, icon, handleCancel = () => {}, co
     centered
     footer={null}
     onCancel={() => handleCancel()}
-    closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
+    closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={{ fontSize: 20 }} />}
   >
     {content}
   </StyledModal>)

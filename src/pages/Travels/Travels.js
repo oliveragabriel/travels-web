@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useReducer, useState } from "react";
-import { Row, Col, Collapse, Divider, notification, Calendar } from "antd";
+import { Row, Col, Collapse, Divider, notification, Calendar, Button } from "antd";
 import { 
     GlobalOutlined, 
     CheckCircleOutlined, 
@@ -16,7 +16,6 @@ import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
 import { ModalDaysPlanning } from "./Planning/ModalDaysPlanning";
 import { ModalAddNewAcommodation, ModalAddNewTransport, ModalTransport } from "./Planning/TableDays";
-import { Button } from "../../components";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
@@ -41,7 +40,9 @@ export const Travels = () => {
     }
   }, [dispatch]);
 
-  useEffect(() => getLoggedUserData(), []);
+  useEffect(() => getLoggedUserData(),
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [])
 
   return (
     <Context.Provider value={{state, dispatch}}>
