@@ -97,14 +97,11 @@ export const FormCreateNewAccount = ({ form }) => {
           <Col span={24}>
             <Form.Item>
               <Button 
-                type='primary'
                 title='Criar'
-                htmlType='submit'
-                onClick={handleSubmit}
+                label='Criar'
+                handleSubmit={handleSubmit}
                 loading={loading}
-              >
-                Criar
-              </Button>
+              />
             </Form.Item>
           </Col>
         </Row>

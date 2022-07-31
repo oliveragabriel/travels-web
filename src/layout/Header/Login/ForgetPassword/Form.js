@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { Row, Col, Form, Input, Button } from 'antd';
+import { Row, Col, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/messages';
 import { openNotification } from '../../../../utils/functions/notification';
+import { Button, Input } from '../../../../components';
 
 export const FormForgetPassword = ({ form }) => {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ export const FormForgetPassword = ({ form }) => {
               { required: true, message: requiredFieldsTextMsg('E-mail') }
             ]}
           >
-            <Input 
+            <Input
               placeholder='Digite seu E-mail'
               addonAfter={<MailOutlined />}
             />
@@ -43,15 +44,12 @@ export const FormForgetPassword = ({ form }) => {
       <Row style={{ marginTop: 6 }}>
         <Col span={24}>
           <Form.Item>
-            <Button 
-              type='primary'
+            <Button
               title='Enviar'
-              htmlType='submit'
-              onClick={handleSubmit}
+              label='Enviar'
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Enviar
-            </Button>
+            />
           </Form.Item>
         </Col>
       </Row>

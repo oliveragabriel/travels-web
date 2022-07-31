@@ -69,15 +69,12 @@ export const FormLogin = ({ form }) => {
       <Row justify='center' style={{ marginTop: 6 }}>
         <Col span={24}>
           <Form.Item>
-            <Button 
-              type='primary'
+            <Button
               title='Entrar'
-              htmlType='submit'
-              onClick={handleSubmit}
+              label='Entrar'
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Entrar
-            </Button>
+            />
           </Form.Item>
         </Col>
       </Row>
