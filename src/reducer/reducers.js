@@ -1,17 +1,23 @@
-import { loggedUserActions } from './actions'
+import { createSlice } from "@reduxjs/toolkit";
 
-export const loggedUserInitialState = { 
+export const loggedUserInitialState = {
     username: '',
     token: ''
 }
 
-export function loggedUserReducer(state, action) {
-  switch (action.type) {
-    case loggedUserActions.userLogIn:
-      return action.payload
-    case loggedUserActions.userLogOut:
-      return action.payload
-    default:
-      return state
-  }
-}
+export const loggedUserSlice = createSlice({
+    name: 'loggedUser',
+    initialState: loggedUserInitialState,
+    reducers: {
+        userLogIn: (state, action) => {
+            state = action.payload
+        },
+        userLogOut: (state) => {
+            state = loggedUserInitialState
+        }
+    },
+})
+
+export const { userLogIn, userLogOut } = loggedUserSlice.actions
+
+export default loggedUserSlice.reducer

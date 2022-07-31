@@ -18,7 +18,6 @@ export const ModalChangePassword = () => {
 
   return (
     <Modal
-      width={800}
       title='Alterar Senha'
       visible={state.showModal.changePassword}
       icon={<UnlockOutlined style={styleIconSizeThirtyAndColor}/>}
