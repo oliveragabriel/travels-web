@@ -12,7 +12,6 @@ import {
 import { 
   ModalAddNewContact, 
   ModalAddNewAdress, 
-  ModalChangePassword, 
   ModalMyPerfil 
 } from './MyPerfil';
 import { headerReducer, initialState } from './reducer';
@@ -76,7 +75,6 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
                   func={() => dispatch({type: actions.controlShowModalMyPerfil, payload: true})}
                 />
                 <ModalMyPerfil />
-                <ModalChangePassword />
                 <ModalAddNewAdress />
                 <ModalAddNewContact />
               </Col>

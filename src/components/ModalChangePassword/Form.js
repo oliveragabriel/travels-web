@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../../utils/messages';
-import { Input, InputPassword, Button} from '../../../../components';
-import { actions } from '../../reducer/actions';
-import { openNotification } from '../../../../utils/functions/notification';
-import { Context } from '../../Header';
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages';
+import { Input, InputPassword, Button} from '..';
+import { actions } from '../../layout/Header/reducer/actions';
+import { openNotification } from '../../utils/functions/notification';
+import { Context } from '../../layout/Header/Header';
 
 export const FormChangePassword = ({ form }) => {
   const [loading, setLoading] = useState(false);
@@ -43,8 +43,6 @@ export const FormChangePassword = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
             name='confirmPassword'
@@ -60,19 +58,15 @@ export const FormChangePassword = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row>
         <Col span={24}>
           <Form.Item>
             <Button 
               type='primary'
-              title='Confirmar'
-              htmlType='submit'
-              onClick={handleSubmit}
+              title='Confirmar'             
+              label='Confirmar'
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Confirmar
-            </Button>
+            />
           </Form.Item>
         </Col>
       </Row>

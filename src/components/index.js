@@ -1,6 +1,7 @@
 export * from './common'
 export * from './CountrySelector'
 export * from './CurrencySelector'
+export * from './ModalChangePassword'
 export * from './ModalCreateNewAccount'
 export * from './ModalForgetPassword'
 export * from './ModalLogin'

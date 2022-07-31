@@ -61,8 +61,6 @@ export const FormLogin = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row justify='center'>
         <Col span={24}>
           <Form.Item
             name='password'
@@ -78,11 +76,10 @@ export const FormLogin = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row justify='center' style={{ marginTop: 6 }}>
         <Col span={24}>
           <Form.Item>
             <Button
+              type='primary'
               title='Entrar'
               label='Entrar'
               handleSubmit={handleSubmit}

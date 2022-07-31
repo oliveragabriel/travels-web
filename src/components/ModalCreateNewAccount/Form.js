@@ -40,8 +40,6 @@ export const FormCreateNewAccount = ({ form }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row>
           <Col span={24}>
             <Form.Item
               name='email'
@@ -58,8 +56,6 @@ export const FormCreateNewAccount = ({ form }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row>
           <Col span={24}>
             <Form.Item
               name='password'
@@ -75,8 +71,6 @@ export const FormCreateNewAccount = ({ form }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row>
           <Col span={24}>
             <Form.Item
               name='confirmPassword'
@@ -92,11 +86,10 @@ export const FormCreateNewAccount = ({ form }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row style={{ marginTop: 6 }}>
           <Col span={24}>
             <Form.Item>
               <Button 
+                type='primary'
                 title='Criar'
                 label='Criar'
                 handleSubmit={handleSubmit}

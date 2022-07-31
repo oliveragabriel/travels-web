@@ -8,9 +8,11 @@ import { actions } from '../reducer/actions';
 import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
 import { openNotification } from '../../../utils/functions/notification';
 import { Context } from '../Header';
+import { ModalChangePassword } from '../../../components/ModalChangePassword';
 
 export const FormMyPerfil = ({ form }) => {
   const [loading, setLoading] = useState(false);
+  const [showModalChangePassword, setShowModalChangePassword] = useState(false)
   const {state, dispatch} = useContext(Context);
   
   const handleSubmit = useCallback(async () => {
@@ -109,15 +111,13 @@ export const FormMyPerfil = ({ form }) => {
       <Row gutter={8} style={{ marginTop: 12 }}>
         <Col>
           <Form.Item>
-            <Button 
+            <Button
               type='primary'
               title='Alterar Perfil'
-              htmlType='submit'
-              onClick={handleSubmit}
+              label='Alterar Perfil'
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Alterar Perfil
-            </Button>
+            />
           </Form.Item>
         </Col>
         <Col>
@@ -125,10 +125,10 @@ export const FormMyPerfil = ({ form }) => {
             <Button 
               type='ghost'
               title='Configurar Senha'
-              onClick={() => dispatch({type: actions.controlShowModalChangePassword, payload: true})}
-            >
-              Configurar Senha
-            </Button>
+              label='Configurar Senha'
+              handleSubmit={() => setShowModalChangePassword(true)}
+            />
+            <ModalChangePassword visible={showModalChangePassword} closeFn={setShowModalChangePassword} />
           </Form.Item>
         </Col>
       </Row>

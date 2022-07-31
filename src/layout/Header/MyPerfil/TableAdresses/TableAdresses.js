@@ -1,7 +1,7 @@
 import { Row, Col } from 'antd';
 import { useCallback, useContext } from 'react';
 import { Table, Button } from '../../../../components';
-import { columns } from './columns';
+import { columns } from '../columnsAddresses';
 import { actions } from '../../reducer/actions';
 import { Context } from '../../Header';
 
@@ -27,7 +27,7 @@ export const TableAdresses = () => {
       </Row>
       <Row style={{ marginTop: 12 }}>
         <Col span={24}>
-          <Table columns={columns(handleEdit)} size="small"  dataSource={state.user.adresses}/>
+          <Table rowKey='id' columns={columns(handleEdit)} size="small"  dataSource={state.user.adresses}/>
         </Col>
       </Row>
     </>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledButton } from './styled';
 
-export const Button = ({ icon, title, label, handleSubmit = () => {}, loading, style }) => {
+export const Button = ({ type, icon, title, label, handleSubmit = () => {}, loading, style }) => {
   return <StyledButton
-    type='primary'
+    type={type}
     icon={icon}
     title={title}
     htmlType='submit'

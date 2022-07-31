@@ -40,11 +40,10 @@ export const FormForgetPassword = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row style={{ marginTop: 6 }}>
         <Col span={24}>
           <Form.Item>
             <Button
+              type='primary'
               title='Enviar'
               label='Enviar'
               handleSubmit={handleSubmit}
