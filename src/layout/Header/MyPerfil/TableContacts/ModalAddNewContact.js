@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo } from "react";
-import { Row, Col, Modal, Form } from 'antd';
+import { Form } from 'antd';
 import { FormAddNewContact } from './Form';
-import { PhoneOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { PhoneOutlined } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
 import { Context } from "../../Header";
+import { Modal } from "../../../../components";
 
 export const ModalAddNewContact = () => {
   const [form] = Form.useForm();
@@ -28,24 +29,12 @@ export const ModalAddNewContact = () => {
 
   return (
     <Modal
-      width={800}  
-      title={
-        <Row gutter={[24,0]} align='middle'>
-          <Col>
-            <PhoneOutlined style={styleIconSizeThirtyAndColor}/>
-          </Col>
-          <Col>
-            {title}
-          </Col>
-        </Row>
-      }
+      width={800}
+      title={title}
       visible={state.showModal.addNewContact}
-      centered
-      footer={null}
-      onCancel={() => handleCancel()}
-      closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
-    >
-      <FormAddNewContact form={form} /> 
-    </Modal>
+      icon={<PhoneOutlined style={styleIconSizeThirtyAndColor}/>}
+      handleCancel={() => handleCancel()}
+      content={<FormAddNewContact form={form} />}
+    />
   )
 };

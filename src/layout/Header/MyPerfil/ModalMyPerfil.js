@@ -1,10 +1,11 @@
 import React, { useCallback, useContext } from "react";
-import { Row, Col, Modal, Form } from 'antd';
+import { Form } from 'antd';
 import { FormMyPerfil } from './Form';
-import { UserSwitchOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { actions } from '../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../utils/styles";
+import { styleIconSizeThirtyAndColor } from "../../../utils/styles";
 import { Context } from "../Header";
+import { Modal } from "../../../components";
 
 export const ModalMyPerfil = () => {
   const [form] = Form.useForm();
@@ -15,26 +16,14 @@ export const ModalMyPerfil = () => {
     form.resetFields();
   }, [dispatch, form])
 
-  return (
+  return (  
     <Modal
-      width={800}  
-      title={
-        <Row gutter={[24,0]} align='middle'>
-          <Col>
-            <UserSwitchOutlined style={styleIconSizeThirtyAndColor}/>
-          </Col>
-          <Col>
-            Meu Perfil
-          </Col>
-        </Row>
-      }
+      width={800}
+      title='Meu Perfil'
       visible={state.showModal.myPerfil}
-      centered
-      footer={null}
-      onCancel={() => handleCancel()}
-      closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
-    >
-      <FormMyPerfil form={form} /> 
-    </Modal>
+      icon={<UserOutlined style={styleIconSizeThirtyAndColor}/>}
+      handleCancel={() => handleCancel()}
+      content={<FormMyPerfil form={form} />}
+    />
   )
 }

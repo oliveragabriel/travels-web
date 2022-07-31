@@ -1,10 +1,11 @@
 import React, { useCallback, useContext } from "react";
-import { Row, Col, Modal, Form } from 'antd';
+import { Form } from 'antd';
 import { FormChangePassword } from './Form';
-import { UnlockOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { UnlockOutlined } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
 import { Context } from "../../Header";
+import { Modal } from "../../../../components";
 
 export const ModalChangePassword = () => {
   const [form] = Form.useForm();
@@ -16,24 +17,13 @@ export const ModalChangePassword = () => {
   }, [dispatch, form])
 
   return (
-    <Modal  
-      title={
-        <Row gutter={[24,0]} align='middle'>
-          <Col>
-            <UnlockOutlined style={styleIconSizeThirtyAndColor}/>
-          </Col>
-          <Col>
-            Alterar Senha
-          </Col>
-        </Row>
-      }
+    <Modal
+      width={800}
+      title='Alterar Senha'
       visible={state.showModal.changePassword}
-      centered
-      footer={null}
-      onCancel={() => handleCancel()}
-      closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
-    >
-      <FormChangePassword form={form} /> 
-    </Modal>
+      icon={<UnlockOutlined style={styleIconSizeThirtyAndColor}/>}
+      handleCancel={() => handleCancel()}
+      content={<FormChangePassword form={form} />}
+    />
   )
 };

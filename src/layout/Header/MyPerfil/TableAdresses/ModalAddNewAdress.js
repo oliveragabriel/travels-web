@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo } from "react";
-import { Row, Col, Modal, Form } from 'antd';
+import { Form } from 'antd';
 import { FormAddNewAdress } from './Form';
-import { HomeOutlined, CloseCircleTwoTone } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor, styleIconSizeTwenty } from "../../../../utils/styles";
+import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
 import { Context } from "../../Header";
+import { Modal } from "../../../../components";
 
 export const ModalAddNewAdress = () => {
   const [form] = Form.useForm();
@@ -28,24 +29,12 @@ export const ModalAddNewAdress = () => {
   
   return (
     <Modal
-      width={800}  
-      title={
-        <Row gutter={[24,0]} align='middle'>
-          <Col>
-            <HomeOutlined style={styleIconSizeThirtyAndColor}/>
-          </Col>
-          <Col>
-            {title}
-          </Col>
-        </Row>
-      }
+      width={800}
+      title={title}
       visible={state.showModal.addNewAdress}
-      centered
-      footer={null}
-      onCancel={() => handleCancel()}
-      closeIcon={<CloseCircleTwoTone twoToneColor='#ff4d4f' style={styleIconSizeTwenty} />}
-    >
-        <FormAddNewAdress form={form} /> 
-    </Modal>
+      icon={<HomeOutlined style={styleIconSizeThirtyAndColor}/>}
+      handleCancel={() => handleCancel()}
+      content={<FormAddNewAdress form={form} />}
+    />
   )
 };
