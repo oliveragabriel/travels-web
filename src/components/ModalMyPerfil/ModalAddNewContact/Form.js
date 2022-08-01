@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, Button } from '../../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
-import { actions } from '../../reducer/actions';
-import { openNotification } from '../../../../utils/functions/notification';
-import { Context } from '../../Header';
+import { Input, Button } from '../../index'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages';
+import { actions } from '../reducer/actions';
+import { openNotification } from '../../../utils/functions/notification';
+import { Context } from '..';
 
 export const FormAddNewContact = ({ form }) => {
   const [loading, setLoading] = useState(false);
@@ -44,8 +44,6 @@ export const FormAddNewContact = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='ddd'
@@ -68,19 +66,16 @@ export const FormAddNewContact = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} style={{ marginTop: 6 }}>
-        <Col>
+        <Col span={24}>
           <Form.Item>
             <Button 
               type='primary'
-              title='Cadastrar'
               htmlType='submit'
-              onClick={handleSubmit}
+              title='Cadastrar'
+              label='Cadastrar'
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Cadastrar
-            </Button>
+            />
           </Form.Item>
         </Col>
       </Row>

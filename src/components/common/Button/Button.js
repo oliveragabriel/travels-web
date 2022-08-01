@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyledButton } from './styled';
 
-export const Button = ({ type, icon, title, label, handleSubmit = () => {}, loading, style }) => {
+export const Button = ({ type, htmlType, icon, title, label, handleSubmit = () => {}, loading, style }) => {
   return <StyledButton
     type={type}
     icon={icon}
     title={title}
-    htmlType='submit'
+    htmlType={htmlType}
     onClick={handleSubmit}
     loading={loading}
     style={style}

@@ -1,28 +1,27 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form } from 'antd';
-import { MailOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages';
-import { Input, InputPassword, Button} from '..';
-import { actions } from '../../layout/Header/reducer/actions';
-import { openNotification } from '../../utils/functions/notification';
-import { Context } from '../../layout/Header/Header';
+import React, { useState, useCallback } from 'react'
+import { Row, Col, Form } from 'antd'
+import { MailOutlined } from '@ant-design/icons'
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages'
+import { Input, InputPassword, Button} from '..'
+import { openNotification } from '../../utils/functions/notification'
+import { useSelector } from 'react-redux'
 
 export const FormChangePassword = ({ form }) => {
-  const [loading, setLoading] = useState(false);
-  const {dispatch} = useContext(Context);
+  const reduxObj = useSelector((state) => state.user)
+  const [loading, setLoading] = useState(false)
   
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
-      const values = await form.validateFields();
-      console.log(values);
-      dispatch({type: actions.controlShowModalChangePassword, payload: false})
+      setLoading(true)
+      const values = await form.validateFields()
+      console.log(values)
+      console.log(reduxObj)
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, dispatch]);
+  },[form, reduxObj]);
 
   return (
     <Form form={form} layout='vertical' size='middle'> 
@@ -62,6 +61,7 @@ export const FormChangePassword = ({ form }) => {
           <Form.Item>
             <Button 
               type='primary'
+              htmlType='submit'
               title='Confirmar'             
               label='Confirmar'
               handleSubmit={handleSubmit}

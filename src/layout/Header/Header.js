@@ -1,54 +1,30 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 import { Layout, Row, Col } from "antd"
-import { useNavigate } from "react-router-dom";
-import { ModalLogin, ButtonCircle } from "../../components"
+import { useNavigate } from "react-router-dom"
+import { ModalLogin, ModalMyPerfil, ButtonCircle } from "../../components"
 import { 
   UserSwitchOutlined, 
   UserOutlined, 
   RightCircleTwoTone, 
   MenuUnfoldOutlined, 
   MenuFoldOutlined 
-} from '@ant-design/icons';
-import { 
-  ModalAddNewContact, 
-  ModalAddNewAdress, 
-  ModalMyPerfil 
-} from './MyPerfil';
-import { headerReducer, initialState } from './reducer';
-import { actions } from './reducer/actions';
-import { styleIconSizeTwenty } from '../../utils/styles';
-import { userMock } from './userMock';
-import { openNotification } from '../../utils/functions/notification';
-
-export const Context = React.createContext({state: {}, dispatch: () => {}});
+} from '@ant-design/icons'
+import { styleIconSizeTwenty } from '../../utils/styles'
+import { useDispatch } from 'react-redux'
+import { userLogOut } from '../../reducer/reducers'
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
-  const [state, dispatch] = useReducer(headerReducer, initialState)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [showModalLogin, setShowModalLogin] = useState(false)
+  const [showModalMyPerfil, setShowModalMyPerfil] = useState(false)
 
-  const handleExit = () => {
+  const handleExit = useCallback(() => {
+    dispatch(userLogOut())
     navigate('/home')
-  }
-
-  const getLoggedUserData = useCallback(() => {
-    try {
-      // const resp =  
-      dispatch({type: actions.setLoggedUserData, payload: userMock});
-    } catch (error) {
-      openNotification.error({
-        message: 'Erro',
-        description: 'Não foi possível carregar as informações do seu Usuário!'
-      });
-    }
-  }, []);
-
-  useEffect(() => getLoggedUserData(), 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [])
+  }, [dispatch, navigate])
   
   return (
-    <Context.Provider value={{state, dispatch}}>
       <Layout.Header>
         <Row justify='space-between'>
           <Col>
@@ -72,11 +48,9 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
                 <ButtonCircle
                   text='Meu Perfil'
                   icon={<UserOutlined style={styleIconSizeTwenty}/>}
-                  func={() => dispatch({type: actions.controlShowModalMyPerfil, payload: true})}
+                  func={() => setShowModalMyPerfil(true)}
                 />
-                <ModalMyPerfil />
-                <ModalAddNewAdress />
-                <ModalAddNewContact />
+                <ModalMyPerfil visible={showModalMyPerfil} closeFn={setShowModalMyPerfil} />
               </Col>
               <Col>
                 <ButtonCircle 
@@ -89,6 +63,5 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
           </Col>
         </Row>
       </Layout.Header>
-    </Context.Provider>
   )
 }

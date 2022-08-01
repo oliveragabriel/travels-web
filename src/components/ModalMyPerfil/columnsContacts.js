@@ -1,7 +1,7 @@
 import { Row, Col, Button, Tooltip } from "antd";
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
-export const columnsContacts = (handleEdit = () => {}) => [
+export const columnsContacts = (handleEditContact = () => {}) => [
   {
     title: 'E-mail',
     dataIndex: 'email',
@@ -42,7 +42,7 @@ export const columnsContacts = (handleEdit = () => {}) => [
             type="text"
             title="Editar"
             icon={<EditTwoTone />} 
-            onClick={() => handleEdit(record)}
+            onClick={() => handleEditContact(record)}
         />
       </Col>
       <Col>

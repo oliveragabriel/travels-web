@@ -1,19 +1,19 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form, Collapse, Avatar } from 'antd';
-import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons';
-import { Input, DatePicker, CountrySelector, Table, Button } from '../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
-import { actions } from '../reducer/actions';
-import { styleIconSizeTwentyAndColor } from '../../../utils/styles';
-import { openNotification } from '../../../utils/functions/notification';
-import { Context } from '../Header';
-import { ModalChangePassword } from '../../../components/ModalChangePassword';
+import React, { useState, useCallback, useContext } from 'react'
+import { Row, Col, Form, Collapse, Avatar } from 'antd'
+import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons'
+import { Input, DatePicker, CountrySelector, Table, Button, ModalChangePassword } from '../../components'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../utils/messages'
+import { actions } from './reducer/actions'
+import { styleIconSizeTwentyAndColor } from '../../utils/styles'
+import { Context } from '.'
 import { columnsAddresses, columnsContacts } from '.'
+import { ModalAddNewContact, ModalAddNewAdress } from '.'
+import { openNotification } from '../../utils/functions'
 
 export const FormMyPerfil = ({ form }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [showModalChangePassword, setShowModalChangePassword] = useState(false)
-  const {state, dispatch} = useContext(Context);
+  const {state, dispatch} = useContext(Context)
 
   const handleAddAdress = useCallback(() => dispatch({type: actions.toogleAddNewAdress}), [dispatch])
 
@@ -25,22 +25,21 @@ export const FormMyPerfil = ({ form }) => {
   
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
-      const values = await form.validateFields();
-      console.log(values);
-      openNotification('success','Sucesso', requestGenericTextMsg.success);
-      dispatch({type: actions.controlShowModalMyPerfil, payload: false})
+      setLoading(true)
+      const values = await form.validateFields()
+      console.log(values)
+      openNotification('success','Sucesso', requestGenericTextMsg.success)
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, dispatch]);
+  },[form])
 
   return (
-    <Form form={form} layout='vertical' size='middle' initialValues={state.user}> 
-      <Row justify='center'>
-        <Col>
+    <Form form={form} layout='vertical' size='middle' > 
+      <Row gutter={8} justify='center'>
+        <Col span={24}>
           <Form.Item
             name='photo'
           >
@@ -50,8 +49,6 @@ export const FormMyPerfil = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='username'
@@ -78,8 +75,6 @@ export const FormMyPerfil = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='nacionality'
@@ -112,15 +107,17 @@ export const FormMyPerfil = ({ form }) => {
               <Col span={24}>
                 <Button 
                   type='primary'
+                  htmlType='button'
                   title='Adicionar Contato'
                   label='Adicionar Contato'
                   handleSubmit={() => handleAddContact()}
                 />
+                <ModalAddNewContact />
               </Col>
             </Row>
             <Row style={{ marginTop: 12 }}>
               <Col span={24}>
-                <Table rowKey='id' columns={columnsContacts(handleEditContact)} size="small"  dataSource={state.user.contacts}/>
+                <Table rowKey='id' columns={columnsContacts(handleEditContact)} size="small" />
               </Col>
             </Row>
           </Collapse.Panel>
@@ -129,15 +126,17 @@ export const FormMyPerfil = ({ form }) => {
               <Col span={24}>
                 <Button 
                   type='primary'
+                  htmlType='button'
                   title='Adicionar Endereço'
                   label='Adicionar Endereço'
                   handleSubmit={() => handleAddAdress()}
                 />
+                <ModalAddNewAdress />
               </Col>
             </Row>
             <Row style={{ marginTop: 12 }}>
               <Col span={24}>
-                <Table rowKey='id' columns={columnsAddresses(handleEditAdress)} size="small"  dataSource={state.user.adresses}/>
+                <Table rowKey='id' columns={columnsAddresses(handleEditAdress)} size="small" />
               </Col>
             </Row>
           </Collapse.Panel>
@@ -149,6 +148,7 @@ export const FormMyPerfil = ({ form }) => {
           <Form.Item>
             <Button
               type='primary'
+              htmlType='submit'
               title='Alterar Perfil'
               label='Alterar Perfil'
               handleSubmit={handleSubmit}
@@ -160,6 +160,7 @@ export const FormMyPerfil = ({ form }) => {
           <Form.Item>
             <Button 
               type='ghost'
+              htmlType='button'
               title='Configurar Senha'
               label='Configurar Senha'
               handleSubmit={() => setShowModalChangePassword(true)}

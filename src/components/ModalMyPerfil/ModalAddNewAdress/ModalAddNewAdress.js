@@ -2,10 +2,9 @@ import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { Form } from 'antd';
 import { FormAddNewAdress } from './Form';
 import { HomeOutlined } from '@ant-design/icons';
-import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
-import { Context } from "../../Header";
-import { Modal } from "../../../../components";
+import { actions } from '../reducer/actions';
+import { Context } from "..";
+import { Modal } from "../../index";
 
 export const ModalAddNewAdress = () => {
   const [form] = Form.useForm();
@@ -32,7 +31,7 @@ export const ModalAddNewAdress = () => {
       width={800}
       title={title}
       visible={state.showModal.addNewAdress}
-      icon={<HomeOutlined style={styleIconSizeThirtyAndColor}/>}
+      icon={<HomeOutlined />}
       handleCancel={() => handleCancel()}
       content={<FormAddNewAdress form={form} />}
     />

@@ -44,6 +44,7 @@ export const FormForgetPassword = ({ form }) => {
           <Form.Item>
             <Button
               type='primary'
+              htmlType='submit'
               title='Enviar'
               label='Enviar'
               handleSubmit={handleSubmit}

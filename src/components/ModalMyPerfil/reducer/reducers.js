@@ -3,11 +3,6 @@ import { actions } from './actions/actions';
 export const initialState = {
   action: '',
   showModal: {
-    login: false,
-    forgetPassword: false,
-    addNewUser: false,
-    myPerfil: false,
-    changePassword: false,
     addNewAdress: false,
     addNewContact: false,
   },
@@ -31,62 +26,6 @@ export const initialState = {
 
 export function headerReducer(state, action) {
   switch (action.type) {
-    case actions.controlShowModalLogin:
-      return { 
-        ...state,
-        showModal: { 
-          ...state.showModal,
-          login: action.payload,
-        }
-      };
-    case actions.controlShowModalForgetPassword:
-      return { 
-        ...state,
-        showModal: { 
-          ...state.showModal,
-          forgetPassword: action.payload
-        }
-      };
-    case actions.controlShowModalAddNewUser:
-      return { 
-        ...state,
-        showModal: { 
-          ...state.showModal,
-          addNewUser: action.payload
-        }
-      };
-    case actions.controlShowModalMyPerfil:
-      return { 
-        ...state,
-        showModal: {
-          ...state.showModal,
-          myPerfil: action.payload
-        } 
-      };
-    case actions.controlShowModalChangePassword:
-      return { 
-        ...state,
-        showModal: {
-          ...state.showModal,
-          changePassword: action.payload
-        } 
-      };
-    case actions.controlShowModalAddNewAdress:
-      return { 
-        ...state,
-        showModal: {
-          ...state.showModal,
-          addNewAdress: action.payload
-        }
-      };     
-    case actions.controlShowModalAddNewContact:
-      return { 
-        ...state,
-        showModal: {
-          ...state.showModal,
-          addNewContact: action.payload 
-        }
-      };
     case actions.setLoggedUserData:
       return { 
         ...state,

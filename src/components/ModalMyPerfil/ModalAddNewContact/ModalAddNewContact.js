@@ -2,10 +2,9 @@ import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { Form } from 'antd';
 import { FormAddNewContact } from './Form';
 import { PhoneOutlined } from '@ant-design/icons';
-import { actions } from '../../reducer/actions';
-import { styleIconSizeThirtyAndColor } from "../../../../utils/styles";
-import { Context } from "../../Header";
-import { Modal } from "../../../../components";
+import { actions } from '../reducer/actions';
+import { Context } from "..";
+import { Modal } from "../../index";
 
 export const ModalAddNewContact = () => {
   const [form] = Form.useForm();
@@ -32,7 +31,7 @@ export const ModalAddNewContact = () => {
       width={800}
       title={title}
       visible={state.showModal.addNewContact}
-      icon={<PhoneOutlined style={styleIconSizeThirtyAndColor}/>}
+      icon={<PhoneOutlined />}
       handleCancel={() => handleCancel()}
       content={<FormAddNewContact form={form} />}
     />

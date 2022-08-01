@@ -18,7 +18,7 @@ export const ModalLogin = ({ visible, closeFn = () => {} }) => {
       visible={visible}
       icon={<UserSwitchOutlined />}
       handleCancel={() => handleCancel()}
-      content={<FormLogin form={form} />}
+      content={<FormLogin form={form} closeFn={closeFn} />}
     />
   )
 };

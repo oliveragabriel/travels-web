@@ -1,27 +1,23 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { userLogIn } from '../../reducer/reducers'
-import { Row, Col, Form } from 'antd';
-import { MailOutlined, LockOutlined, UserAddOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages';
-import { Input, InputPassword, Button, ButtonText, ModalForgetPassword, ModalCreateNewAccount} from '..';
-import { actions } from '../../layout/Header/reducer/actions';
-import { styleIconSizeTwentyAndColor } from '../../utils/styles';
-import { openNotification } from '../../utils/functions/notification';
-import { Context } from '../../layout/Header/Header';
-import { useNavigate } from "react-router-dom";
+import { Row, Col, Form } from 'antd'
+import { MailOutlined, LockOutlined, UserAddOutlined } from '@ant-design/icons'
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages'
+import { Input, InputPassword, Button, ButtonText, ModalForgetPassword, ModalCreateNewAccount} from '..'
+import { styleIconSizeTwentyAndColor } from '../../utils/styles'
+import { openNotification } from '../../utils/functions/notification'
+import { useNavigate } from "react-router-dom"
+import { userMock } from '../../layout/Header/userMock'
 
-export const FormLogin = ({ form }) => {
+export const FormLogin = ({ form, closeFn = () => {} }) => {
   const [loading, setLoading] = useState(false);
   const [showModalForgetPassword, setShowModalForgetPassword] = useState(false)
   const [showModalCreateNewAccount, setShowModalCreateNewAccount] = useState(false)
   const reduxDispatch = useDispatch()
-  const { dispatch } = useContext(Context);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleRedux = useCallback((user) => reduxDispatch({type: userLogIn, payload: user}), [reduxDispatch])
-
-  const handleContext = useCallback(() => dispatch({type: actions.controlShowModalLogin, payload: false}), [dispatch])
 
   const handleNavigate = useCallback(() => navigate('/travels'), [navigate])
   
@@ -29,10 +25,10 @@ export const FormLogin = ({ form }) => {
     try {
       setLoading(true)
       const values = await form.validateFields()
-      const resp = { username: 'Gabriel Olivera', token: 'ABLO@#$K999522178', isLogged: true }
+      const resp = { user: userMock, token: 'ABLO@#$K999522178', isLogged: true }
       console.log(values)
       handleRedux(resp)
-      handleContext()
+      closeFn()
       handleNavigate()
       form.resetFields()
     } catch (error) {
@@ -40,7 +36,7 @@ export const FormLogin = ({ form }) => {
     } finally {
       setLoading(false);
     }
-  },[form, handleRedux, handleContext, handleNavigate]);
+  },[form, handleRedux, closeFn, handleNavigate]);
 
   return (
     <Form form={form} layout='vertical'>
@@ -80,6 +76,7 @@ export const FormLogin = ({ form }) => {
           <Form.Item>
             <Button
               type='primary'
+              htmlType='submit'
               title='Entrar'
               label='Entrar'
               handleSubmit={handleSubmit}
