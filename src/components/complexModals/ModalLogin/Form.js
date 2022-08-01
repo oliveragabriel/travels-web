@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { userLogIn } from '../../redux/reducer/reducers'
+import { userLogIn } from '../../../redux/reducer/loggedUserSlice'
 import { Row, Col, Form } from 'antd'
 import { MailOutlined, LockOutlined, UserAddOutlined } from '@ant-design/icons'
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages'
-import { Input, InputPassword, Button, ButtonText, ModalForgetPassword, ModalCreateNewAccount} from '..'
-import { styleIconSizeTwentyAndColor } from '../../utils/styles'
-import { openNotification } from '../../utils/functions/notification'
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages'
+import { Input, InputPassword, Button, ButtonText, ModalForgetPassword, ModalCreateNewAccount} from '../..'
+import { styleIconSizeTwentyAndColor } from '../../../utils/styles'
+import { openNotification } from '../../../utils/functions/notification'
 import { useNavigate } from "react-router-dom"
 import { userMock } from './userMock'
 

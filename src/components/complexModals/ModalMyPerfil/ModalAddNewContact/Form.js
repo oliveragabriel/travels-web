@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, Button } from '../../index'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages';
+import { Input, Button } from '../../..'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
 import { actions } from '../reducer/actions';
-import { openNotification } from '../../../utils/functions/notification';
+import { openNotification } from '../../../../utils/functions/notification';
 import { Context } from '..';
 
 export const FormAddNewContact = ({ form }) => {

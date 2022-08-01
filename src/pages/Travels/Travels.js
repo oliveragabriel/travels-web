@@ -10,7 +10,7 @@ import { styleIconSizeThirtyAndGhost, styleIconSizeTwentyAndColor } from '../../
 import { TableNextTrips } from './TableNextTrips'
 import { TablePreviousTrips } from "./TablePreviousTrips";
 import { requestGenericTextMsg } from "../../utils/messages";
-import { ModalAddNewTrip } from './ModalAddNewTrip';
+import { ModalAddNewTravel } from '../../components';
 import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
@@ -20,10 +20,11 @@ import { ModalAddNewAcommodation, ModalAddNewTransport, ModalTransport } from ".
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Travels = () => {
-  const [state, dispatch] = useReducer(travelsReducer, initialState);
-  const [loading, setLoading] = useState(false);
+  const [state, dispatch] = useReducer(travelsReducer, initialState)
+  const [loading, setLoading] = useState(false)
+  const [showModalAddNewTravel, setShowModalAddNewTravel] = useState(false)
 
-  const handleAdd = useCallback(() => dispatch({type: actions.toogleAddNewTrip}), [dispatch])
+  const handleAdd = useCallback(() => setShowModalAddNewTravel(true), [])
   
   const getLoggedUserData = useCallback(() => {
     try {
@@ -46,7 +47,7 @@ export const Travels = () => {
 
   return (
     <Context.Provider value={{state, dispatch}}>
-      <ModalAddNewTrip />
+      <ModalAddNewTravel visible={showModalAddNewTravel} closeFn={setShowModalAddNewTravel} />
       <ModalDaysPlanning />
       <ModalAddNewAcommodation />
       <ModalTransport />

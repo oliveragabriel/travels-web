@@ -4,7 +4,7 @@ import { FormAddNewContact } from './Form';
 import { PhoneOutlined } from '@ant-design/icons';
 import { actions } from '../reducer/actions';
 import { Context } from "..";
-import { Modal } from "../../index";
+import { Modal } from "../../../index";
 
 export const ModalAddNewContact = () => {
   const [form] = Form.useForm();

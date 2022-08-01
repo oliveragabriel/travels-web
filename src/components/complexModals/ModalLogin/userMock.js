@@ -1,5 +1,6 @@
 export const userMock = {
     id: 1,
+    photo: null,
     username: 'Gabriel',
     birth: null,
     nacionality: 'Brazil',

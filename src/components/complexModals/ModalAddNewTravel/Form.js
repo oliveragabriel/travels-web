@@ -1,65 +1,36 @@
-import React, { useState, useCallback, useContext, useMemo } from 'react';
-import { Row, Col, notification, Tooltip, Form } from 'antd';
-import { FormOutlined, QuestionCircleTwoTone } from '@ant-design/icons';
-import { Input, InputNumber, DatePicker, Select, Button } from '../../components'
-import { options } from './options';
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../utils/messages';
-import { actions } from './reducer/actions';
-import { Context } from './Travels';
+import React, { useState, useCallback } from 'react'
+import { Row, Col, notification, Tooltip, Form } from 'antd'
+import { FormOutlined, QuestionCircleTwoTone } from '@ant-design/icons'
+import { Input, InputNumber, DatePicker, Select, Button } from '../..'
+import { options } from '../../../pages/Travels/options'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
+import { useSelector } from 'react-redux'
 
 export const FormAddNewTrip = ({ form }) => {
-  const [loading, setLoading] = useState(false);
-  const {state, dispatch} = useContext(Context);
+  const [loading, setLoading] = useState(false)
+  const travel = useSelector((state) => state.selectedTravel)
   
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       const values = await form.validateFields();
-      console.log(values);
+      console.log(values)
       notification.success({
         message: 'Sucesso',
         description: requestGenericTextMsg.success
-      });
-      dispatch({type: actions.controlShowModalAddNewTrip, payload: false})
+      })
     } catch (error) {
       notification.error({
         message: 'Erro',
         description: requestGenericTextMsg.error
       });
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, dispatch]);
-
-  const controlButtonConfirm = useMemo(() => {
-    if (state.action === 'edit') {
-      return (
-        <Button 
-          type='primary'
-          title='Alterar'
-          htmlType='submit'
-          onClick={handleSubmit}
-          loading={loading}
-        >
-          Alterar
-        </Button>
-      )
-    }
-    return (
-      <Button 
-        type='primary'
-        title='Cadastrar'
-        htmlType='submit'
-        onClick={handleSubmit}
-        loading={loading}
-      >
-        Cadastrar
-      </Button>
-    )
-  }, [state.action, handleSubmit, loading])
+  },[form]);
 
   return (
-    <Form form={form} layout='vertical' size='middle'> 
+    <Form form={form} layout='vertical' size='middle' initialValues={{ ...travel }}> 
       <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
@@ -77,8 +48,6 @@ export const FormAddNewTrip = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='arrival'
@@ -109,8 +78,6 @@ export const FormAddNewTrip = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='type'
@@ -143,8 +110,6 @@ export const FormAddNewTrip = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
             name='description'
@@ -159,11 +124,16 @@ export const FormAddNewTrip = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} style={{ marginTop: 6 }}>
       <Col>
           <Form.Item>
-            {controlButtonConfirm}
+            <Button 
+              type='primary'
+              htmlType='submit'
+              title='Alterar'
+              label='Alterar'
+              handleSubmit={handleSubmit}
+              loading={loading}
+            />
           </Form.Item>
         </Col>
       </Row>

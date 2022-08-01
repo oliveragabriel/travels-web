@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { Form } from 'antd';
 import { FormForgetPassword } from './Form';
 import { LockOutlined } from '@ant-design/icons';
-import { Modal } from "..";
+import { Modal } from "../..";
 
 export const ModalForgetPassword = ({ visible, closeFn = () => {} }) => {
   const [form] = Form.useForm();

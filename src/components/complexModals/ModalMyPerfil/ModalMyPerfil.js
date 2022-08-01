@@ -2,7 +2,7 @@ import React, { useCallback, useReducer } from "react"
 import { Form } from 'antd'
 import { FormMyPerfil } from './Form'
 import { UserOutlined } from '@ant-design/icons'
-import { Modal } from ".."
+import { Modal } from "../.."
 import { headerReducer, initialState } from './reducer'
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});

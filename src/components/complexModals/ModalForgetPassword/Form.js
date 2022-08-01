@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { Row, Col, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages';
-import { openNotification } from '../../utils/functions/notification';
-import { Button, Input } from '..';
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages';
+import { openNotification } from '../../../utils/functions/notification';
+import { Button, Input } from '../..';
 
 export const FormForgetPassword = ({ form }) => {
   const [loading, setLoading] = useState(false);

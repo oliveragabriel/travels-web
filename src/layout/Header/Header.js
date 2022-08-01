@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons'
 import { styleIconSizeTwenty } from '../../utils/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { userLogOut } from '../../redux/reducer/reducers'
+import { userLogOut } from '../../redux/reducer/loggedUserSlice'
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   const isLogged = useSelector((state) => state.loggedUser.isLogged)

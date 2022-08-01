@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Form } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
-import { Modal } from "..";
+import { Modal } from "../..";
 import { FormCreateNewAccount } from "./Form";
 
 export const ModalCreateNewAccount = ({ visible, closeFn = () => {} }) => {

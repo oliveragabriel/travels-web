@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Row, Col, Form } from 'antd';
 import { HomeOutlined, InfoCircleOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, CountrySelector, Button } from '../../index'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages';
+import { Input, CountrySelector, Button } from '../../..'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
 import { actions } from '../reducer/actions';
-import { openNotification } from '../../../utils/functions';
+import { openNotification } from '../../../../utils/functions';
 import { Context } from '..';
 
 export const FormAddNewAdress = ({ form }) => {

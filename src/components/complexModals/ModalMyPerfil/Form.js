@@ -1,14 +1,14 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import { Row, Col, Form, Collapse, Avatar } from 'antd'
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons'
-import { Input, DatePicker, CountrySelector, Table, Button, ModalChangePassword } from '../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../utils/messages'
+import { Input, DatePicker, CountrySelector, Table, Button, ModalChangePassword } from '../../../components'
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { actions } from './reducer/actions'
-import { styleIconSizeTwentyAndColor } from '../../utils/styles'
+import { styleIconSizeTwentyAndColor } from '../../../utils/styles'
 import { Context } from '.'
 import { columnsAddresses, columnsContacts } from '.'
 import { ModalAddNewContact, ModalAddNewAdress } from '.'
-import { openNotification } from '../../utils/functions'
+import { openNotification } from '../../../utils/functions'
 import { useSelector } from 'react-redux'
 
 export const FormMyPerfil = ({ form }) => {

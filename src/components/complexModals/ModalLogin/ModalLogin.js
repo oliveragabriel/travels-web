@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { Form } from 'antd';
-import { FormChangePassword } from './Form';
-import { UnlockOutlined } from '@ant-design/icons';
-import { Modal } from "..";
+import { FormLogin } from './Form';
+import { UserSwitchOutlined } from '@ant-design/icons';
+import { Modal } from "../..";
 
-export const ModalChangePassword = ({ visible, closeFn = () => {} }) => {
+export const ModalLogin = ({ visible, closeFn = () => {} }) => {
   const [form] = Form.useForm();
 
   const handleCancel = useCallback(() => {
@@ -14,11 +14,11 @@ export const ModalChangePassword = ({ visible, closeFn = () => {} }) => {
 
   return (
     <Modal
-      title='Alterar Senha'
+      title='Acessar Conta'
       visible={visible}
-      icon={<UnlockOutlined />}
+      icon={<UserSwitchOutlined />}
       handleCancel={() => handleCancel()}
-      content={<FormChangePassword form={form} />}
+      content={<FormLogin form={form} closeFn={closeFn} />}
     />
   )
 };

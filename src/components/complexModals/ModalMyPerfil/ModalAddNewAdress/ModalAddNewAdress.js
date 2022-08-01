@@ -4,7 +4,7 @@ import { FormAddNewAdress } from './Form';
 import { HomeOutlined } from '@ant-design/icons';
 import { actions } from '../reducer/actions';
 import { Context } from "..";
-import { Modal } from "../../index";
+import { Modal } from "../../..";
 
 export const ModalAddNewAdress = () => {
   const [form] = Form.useForm();

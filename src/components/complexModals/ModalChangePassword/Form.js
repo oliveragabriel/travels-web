@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import { Row, Col, Form } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
-import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages'
-import { Input, InputPassword, Button} from '..'
-import { openNotification } from '../../utils/functions/notification'
+import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages'
+import { Input, InputPassword, Button} from '../..'
+import { openNotification } from '../../../utils/functions/notification'
 import { useSelector } from 'react-redux'
 
 export const FormChangePassword = ({ form }) => {
