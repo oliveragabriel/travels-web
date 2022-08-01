@@ -1,6 +1,7 @@
 export * from './Button'
 export * from './ButtonCircle'
 export * from './ButtonText'
+export * from './Collapse'
 export * from './ContentCard'
 export * from './DatePicker'
 export * from './Input'

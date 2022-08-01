@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import { Layout, Row, Col } from "antd"
 import { useNavigate } from "react-router-dom"
-import { ModalLogin, ModalMyPerfil, ButtonCircle } from "../../components"
+import { ButtonCircle } from "../../components"
+import { ModalLogin, ModalMyPerfil } from "../../shared/Modals"
 import { 
   UserSwitchOutlined, 
   UserOutlined, 
@@ -11,7 +12,7 @@ import {
 } from '@ant-design/icons'
 import { styleIconSizeTwenty } from '../../utils/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { userLogOut } from '../../redux/reducer/loggedUserSlice'
+import { userLogOut } from '../../redux/reducers/loggedUserSlice'
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   const isLogged = useSelector((state) => state.loggedUser.isLogged)
