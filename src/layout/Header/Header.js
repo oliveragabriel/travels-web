@@ -10,10 +10,11 @@ import {
   MenuFoldOutlined 
 } from '@ant-design/icons'
 import { styleIconSizeTwenty } from '../../utils/styles'
-import { useDispatch } from 'react-redux'
-import { userLogOut } from '../../reducer/reducers'
+import { useDispatch, useSelector } from 'react-redux'
+import { userLogOut } from '../../redux/reducer/reducers'
 
 export const Header = ({ collapsed, setCollapsed = () => {} }) => {
+  const isLogged = useSelector((state) => state.loggedUser.isLogged)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [showModalLogin, setShowModalLogin] = useState(false)
@@ -36,29 +37,29 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
           </Col>
           <Col>
             <Row gutter={[12,0]} justify='end' align='bottom' >
-              <Col>
+              {isLogged === false ? <Col>
                 <ButtonCircle
                   text='Acessar Conta'
                   icon={<UserSwitchOutlined style={styleIconSizeTwenty}/>}
                   func={() => setShowModalLogin(true)}
                 />
                 <ModalLogin visible={showModalLogin} closeFn={setShowModalLogin} />
-              </Col>
-              <Col>
+              </Col>: null}
+              {isLogged === true ? <Col>
                 <ButtonCircle
                   text='Meu Perfil'
                   icon={<UserOutlined style={styleIconSizeTwenty}/>}
                   func={() => setShowModalMyPerfil(true)}
                 />
                 <ModalMyPerfil visible={showModalMyPerfil} closeFn={setShowModalMyPerfil} />
-              </Col>
-              <Col>
+              </Col>: null}
+              {isLogged === true ? <Col>
                 <ButtonCircle 
                   text='Sair'
                   icon={<RightCircleTwoTone style={styleIconSizeTwenty}/>}
                   func={() => handleExit()}
                 />
-              </Col>
+              </Col>: null}
             </Row>
           </Col>
         </Row>

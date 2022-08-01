@@ -56,7 +56,6 @@ export const columnsAddresses = (handleEditAdress = () => {}) => [
   },
   {
     title: 'Ações',
-    dataIndex: '',
     key: 'actions',
     width: '10%',
     align: 'center',

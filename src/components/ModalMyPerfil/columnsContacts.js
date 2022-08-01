@@ -6,7 +6,7 @@ export const columnsContacts = (handleEditContact = () => {}) => [
     title: 'E-mail',
     dataIndex: 'email',
     key: 'email',
-    width: '35%',
+    width: '40%',
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
@@ -26,12 +26,11 @@ export const columnsContacts = (handleEditContact = () => {}) => [
     title: 'Telefone',
     dataIndex: 'phone',
     key: 'phone',
-    width: '35%',
+    width: '30%',
     sorter: (a, b) => Number(b.ddd) - Number(a.ddd)
   },
   {
     title: 'Ações',
-    dataIndex: '',
     key: 'actions',
     width: '10%',
     align: 'center',

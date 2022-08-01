@@ -5,8 +5,10 @@ import { Menu, Avatar } from './styles'
 import { EllipsisOutlined } from '@ant-design/icons'
 import { functionalities } from './utils'
 import { styleIconSizeThirtyAndColor } from '../../utils/styles'
+import { useSelector } from 'react-redux'
 
 export const Sider = ({ collapsed }) => {
+  const isLogged = useSelector((state) => state.loggedUser.isLogged)
   const navigate = useNavigate()
 
   return (
@@ -19,7 +21,7 @@ export const Sider = ({ collapsed }) => {
         </Row>
         <Row>
           <Col span={24}>
-              <Menu items={functionalities(navigate)} />
+              <Menu items={functionalities(isLogged, navigate)} />
           </Col>
         </Row>
     </Layout.Sider>

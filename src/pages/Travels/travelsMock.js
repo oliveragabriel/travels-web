@@ -1,6 +1,7 @@
 export const travelsMock = {
       nextTravels: [
         {
+          id: 1,
           title: 'Egito 2023',
           description: 'Viagem em família ao Egito - 10 dias - Cairo, Alexandria e Luxor.',
           arrival: null,
@@ -23,6 +24,7 @@ export const travelsMock = {
       ],
       previousTravels: [
         {
+          id: 2,
           title: 'México 2022',
           description: 'Viagem em família ao México - 20 dias - Cancún, Playa del Carmen e Ciudad de México.',
           arrival: null,

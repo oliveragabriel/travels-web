@@ -3,6 +3,6 @@ import styled from 'styled-components';
 
 export const StyledModal = styled(Modal)`
     .ant-modal-header {
-        background-color: #FDF3DF;
+        background-color: #FFFFFF;
     }
 `;

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { userLogIn } from '../../reducer/reducers'
+import { userLogIn } from '../../redux/reducer/reducers'
 import { Row, Col, Form } from 'antd'
 import { MailOutlined, LockOutlined, UserAddOutlined } from '@ant-design/icons'
 import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../utils/messages'
@@ -8,7 +8,7 @@ import { Input, InputPassword, Button, ButtonText, ModalForgetPassword, ModalCre
 import { styleIconSizeTwentyAndColor } from '../../utils/styles'
 import { openNotification } from '../../utils/functions/notification'
 import { useNavigate } from "react-router-dom"
-import { userMock } from '../../layout/Header/userMock'
+import { userMock } from './userMock'
 
 export const FormLogin = ({ form, closeFn = () => {} }) => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ export const FormLogin = ({ form, closeFn = () => {} }) => {
   const reduxDispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleRedux = useCallback((user) => reduxDispatch({type: userLogIn, payload: user}), [reduxDispatch])
+  const handleRedux = useCallback((rdObj) => reduxDispatch(userLogIn(rdObj)), [reduxDispatch])
 
   const handleNavigate = useCallback(() => navigate('/travels'), [navigate])
   

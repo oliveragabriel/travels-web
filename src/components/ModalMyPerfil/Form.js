@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react'
+import React, { useState, useCallback, useContext, useEffect } from 'react'
 import { Row, Col, Form, Collapse, Avatar } from 'antd'
 import { UserOutlined, HomeOutlined, PhoneOutlined } from '@ant-design/icons'
 import { Input, DatePicker, CountrySelector, Table, Button, ModalChangePassword } from '../../components'
@@ -9,11 +9,13 @@ import { Context } from '.'
 import { columnsAddresses, columnsContacts } from '.'
 import { ModalAddNewContact, ModalAddNewAdress } from '.'
 import { openNotification } from '../../utils/functions'
+import { useSelector } from 'react-redux'
 
 export const FormMyPerfil = ({ form }) => {
   const [loading, setLoading] = useState(false)
   const [showModalChangePassword, setShowModalChangePassword] = useState(false)
   const {state, dispatch} = useContext(Context)
+  const user = useSelector((state) => state.loggedUser.user)
 
   const handleAddAdress = useCallback(() => dispatch({type: actions.toogleAddNewAdress}), [dispatch])
 
@@ -36,8 +38,16 @@ export const FormMyPerfil = ({ form }) => {
     }
   },[form])
 
+  const setLoggedUserInContext = useCallback(() => {
+    dispatch({type: actions.setLoggedUserData, payload: user})
+  }, [dispatch, user])
+
+  useEffect(() => setLoggedUserInContext(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  [])
+
   return (
-    <Form form={form} layout='vertical' size='middle' > 
+    <Form form={form} layout='vertical' size='middle' initialValues={{ ...user }} > 
       <Row gutter={8} justify='center'>
         <Col span={24}>
           <Form.Item
@@ -117,7 +127,7 @@ export const FormMyPerfil = ({ form }) => {
             </Row>
             <Row style={{ marginTop: 12 }}>
               <Col span={24}>
-                <Table rowKey='id' columns={columnsContacts(handleEditContact)} size="small" />
+                <Table rowKey='id' columns={columnsContacts(handleEditContact)} size="small" dataSource={state.user.contacts} />
               </Col>
             </Row>
           </Collapse.Panel>
@@ -136,7 +146,7 @@ export const FormMyPerfil = ({ form }) => {
             </Row>
             <Row style={{ marginTop: 12 }}>
               <Col span={24}>
-                <Table rowKey='id' columns={columnsAddresses(handleEditAdress)} size="small" />
+                <Table rowKey='id' columns={columnsAddresses(handleEditAdress)} size="small" dataSource={state.user.adresses} />
               </Col>
             </Row>
           </Collapse.Panel>

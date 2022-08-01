@@ -16,7 +16,7 @@ export const TablePreviousTrips = () => {
     <>
       <Row>
         <Col span={24}>
-          <Table columns={columns(handleEdit, handlePlanning)} size="small"  dataSource={state.travels.previousTravels}/>
+          <Table rowKey='id' columns={columns(handleEdit, handlePlanning)} size="small"  dataSource={state.travels.previousTravels}/>
         </Col>
       </Row>
     </>
