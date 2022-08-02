@@ -1,12 +1,18 @@
 import { Row, Col, Button } from "antd";
-import { ProfileOutlined, HomeOutlined, CarOutlined } from '@ant-design/icons';
+import { ProfileOutlined, HomeOutlined, CarOutlined, PercentageOutlined } from '@ant-design/icons';
 
-export const columns = (handleAccommodation = () => {}, handleTransport = () => {}) => [
+export const columnsDays = (handleAccommodation = () => {}, handleTransport = () => {}) => [
   {
     title: 'Data',
     dataIndex: 'day',
     key: 'day',
-    width: '70%',
+    width: '60%',
+  },
+  {
+    title: <PercentageOutlined />,
+    dataIndex: 'percentage',
+    key: 'day',
+    width: '10%',
   },
   {
     title: 'Ações',

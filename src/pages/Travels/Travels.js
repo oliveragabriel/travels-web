@@ -6,35 +6,43 @@ import {
     ClockCircleOutlined,
     PlusCircleTwoTone
 } from '@ant-design/icons';
-import { styleIconSizeThirtyAndGhost, styleIconSizeTwentyAndColor } from '../../utils/styles'
+import { styleIconSizeThirtyAndGhost } from '../../utils/styles'
 import { requestGenericTextMsg } from "../../utils/messages";
 import { ModalAddNewTravel } from '../../shared/Modals';
 import { travelsMock } from "./travelsMock";
 import { travelsReducer, initialState } from './reducer';
 import { actions } from "./reducer/actions";
-import { ModalDaysPlanning } from "./Planning/ModalDaysPlanning"
 import { CollapseWithTable } from "../../components";
 import { columnsTravels } from "./columnsTravels";
+import { setSelectedTravel } from "../../redux/reducers/selectedTravelSlice";
+import { useDispatch } from "react-redux";
+import { ModalTravelDayList } from "../../shared/Modals/ModalTravelDayList/ModalTravelDayList";
 
 export const Context = React.createContext({state: {}, dispatch: () => {}});
 
 export const Travels = () => {
+  const reduxDispatch = useDispatch()
   const [state, dispatch] = useReducer(travelsReducer, initialState)
   const [showModalAddNewTravel, setShowModalAddNewTravel] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [showModalTravelDayList, setShowModalTravelDayList] = useState(false)
+
+  const handleRedux = useCallback((rdObj) => reduxDispatch(setSelectedTravel(rdObj)), [reduxDispatch])
 
   const handleAdd = useCallback(() => setShowModalAddNewTravel(true), [])
 
   const handleEdit = useCallback((record) => {
+    handleRedux(record)
     setShowModalAddNewTravel(true)
     dispatch({type: actions.toogleEditTrip, payload: record})
-  }, [dispatch])
+  }, [handleRedux, dispatch])
 
-  const handlePlanning = useCallback((record) => dispatch({type: actions.controlShowModalDaysPlanning, payload: true}), [dispatch])
+  const handlePlanning = useCallback((record) => {
+    handleRedux(record)
+    setShowModalTravelDayList(true)
+  }, [handleRedux])
   
   const getLoggedUserData = useCallback(() => {
     try {
-      setLoading(true);
       // const resp =  
       dispatch({type: actions.setLoggedUserData, payload: travelsMock});
     } catch (error) {
@@ -42,8 +50,6 @@ export const Travels = () => {
         message: 'Erro',
         description: requestGenericTextMsg.error
       });
-    } finally {
-      setLoading(false);
     }
   }, [dispatch]);
 
@@ -54,7 +60,7 @@ export const Travels = () => {
   return (
     <Context.Provider value={{state, dispatch}}>
       <ModalAddNewTravel visible={showModalAddNewTravel} closeFn={setShowModalAddNewTravel} />
-      <ModalDaysPlanning />
+      <ModalTravelDayList visible={showModalTravelDayList} closeFn={setShowModalTravelDayList} />
       <Row gutter={12} style={{ marginBottom: 12 }}>
         <Col span={24}>
           <Divider>
@@ -73,26 +79,26 @@ export const Travels = () => {
           <CollapseWithTable
             title='Próximas Viagens'
             key="nextTravels"
-            extra={<ClockCircleOutlined style={styleIconSizeTwentyAndColor}/>}
-            rowKey='id' 
-            columns={columnsTravels}
-            fn1={handleEdit}
-            fn2={handlePlanning}
-            size="small"  
-            dataSource={state.travels.previousTravels}
-          />
-        </Col>
-        <Col sm={24} md={12}>
-          <CollapseWithTable
-            title='Viagens Anteriores'
-            key="previousTravels"
-            extra={<CheckCircleOutlined />}
+            icon={<ClockCircleOutlined />}
             rowKey='id' 
             columns={columnsTravels}
             fn1={handleEdit}
             fn2={handlePlanning}
             size="small"  
             dataSource={state.travels.nextTravels}
+          />
+        </Col>
+        <Col sm={24} md={12}>
+          <CollapseWithTable
+            title='Viagens Anteriores'
+            key="previousTravels"
+            icon={<CheckCircleOutlined />}
+            rowKey='id' 
+            columns={columnsTravels}
+            fn1={handleEdit}
+            fn2={handlePlanning}
+            size="small"  
+            dataSource={state.travels.previousTravels}
           />
         </Col>
         <Col span={24}>

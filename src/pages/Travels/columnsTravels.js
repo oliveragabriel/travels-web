@@ -62,7 +62,7 @@ export const columnsTravels = (title, fn1 = () => {}, fn2 = () => {}) => {
             type='text'
             title='Planejamento'
             icon={<CalendarTwoTone />} 
-            onClick={() => fn2()}
+            onClick={() => fn2(record)}
           />      
         </Col>
         <Col>

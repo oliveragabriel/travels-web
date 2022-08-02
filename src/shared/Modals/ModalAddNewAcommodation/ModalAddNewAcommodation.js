@@ -1,39 +1,42 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form } from 'antd';
-import { EditOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import { Input, InputNumber, Select, CurrencySelector, Button } from '../../../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../../utils/messages';
-import { actions } from '../../../reducer/actions';
-import { openNotification } from '../../../../../utils/functions/notification';
-import { Context } from '../../../Travels';
-import { options } from './options';
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { Row, Col, Form } from 'antd'
+import { HomeOutlined, EditOutlined, EnvironmentOutlined } from '@ant-design/icons'
+import { Modal, Input, InputNumber, CurrencySelector, Select, Button } from "../../../components"
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
+import { openNotification } from '../../../utils/functions/notification'
+import { options } from './options'
+import { useSelector } from "react-redux"
 
-export const FormAddNewAcommodation = ({ form }) => {
-  const [loading, setLoading] = useState(false);
-  const {state, dispatch} = useContext(Context);
-  
+export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
+  const [form] = Form.useForm()
+  const [loading, setLoading] = useState(false)
+  const acommodation = useSelector((state) => state?.selectedTravelDay?.acommodation)
+
   const handleSubmit = useCallback(async () => {
     try {
       setLoading(true);
       const values = await form.validateFields();
       console.log(values);
       openNotification('success','Sucesso', requestGenericTextMsg.success);
-      dispatch({type: actions.controlShowModalAddNewAcommodation, payload: false})
     } catch (error) {
       openNotification('error','Erro', requestGenericTextMsg.error);
     } finally {
       setLoading(false);
     }
-  },[form, dispatch]);
+  },[form])
 
-  const selectBefore = (
-    <Form.Item name='currency' noStyle>
-      <CurrencySelector />
-    </Form.Item>
-  );
+  const handleCancel = useCallback(() => {
+    closeFn(false)
+    form.resetFields()
+  }, [closeFn, form])
 
-  return (
-    <Form form={form} layout='vertical' size='middle' initialValues={state?.travels.nextTravels[0].days[0].acommodation || null}> 
+  useEffect(() => {
+    form.resetFields();
+    setTimeout(() => form.setFieldsValue({ ...acommodation }), 0);
+  }, [acommodation, form]);
+
+  const FormAddNewAcommodation = useMemo(() => (
+    <Form form={form} layout='vertical' size='middle' initialValues={{ ...acommodation }}> 
       <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
@@ -51,8 +54,6 @@ export const FormAddNewAcommodation = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={12}>
           <Form.Item
             name='type'
@@ -73,12 +74,14 @@ export const FormAddNewAcommodation = ({ form }) => {
             <InputNumber 
               placeholder='0,00'
               min={0.01}
-              addonBefore={selectBefore}
+              addonBefore={
+                <Form.Item name='currency' noStyle>
+                  <CurrencySelector />
+                </Form.Item>
+              }
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
             name='adress'
@@ -90,22 +93,30 @@ export const FormAddNewAcommodation = ({ form }) => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={8} style={{ marginTop: 6 }}>
         <Col>
           <Form.Item>
             <Button 
               type='primary'
               title='Confirmar'
+              label='Confirmar'
               htmlType='submit'
-              onClick={handleSubmit}
+              handleSubmit={handleSubmit}
               loading={loading}
-            >
-              Confirmar
-            </Button>
+            />
           </Form.Item>
         </Col>
       </Row>
     </Form>
-  );
+  ), [form, handleSubmit, loading, acommodation]);
+
+  return (
+    <Modal
+      width={800}
+      title='Hospedagem'
+      visible={visible}
+      icon={<HomeOutlined />}
+      handleCancel={() => handleCancel()}
+      content={FormAddNewAcommodation}
+    />
+  )
 }

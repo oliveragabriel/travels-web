@@ -3,18 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const selectedTravelSlice = createSlice({
     name: 'selectedTravel',
     initialState: {
-        travel: null
     },
     reducers: {
-        setSelected: (state, action) => {
+        setSelectedTravel: (state, action) => {
             return action.payload
         },
-        cleanSelected: (state) => {
+        cleanSelectedTravel: (state) => {
             return null
         }
     },
 })
 
-export const { setSelected, cleanSelected } = selectedTravelSlice.actions
+export const { setSelectedTravel, cleanSelectedTravel } = selectedTravelSlice.actions
 
 export default selectedTravelSlice.reducer

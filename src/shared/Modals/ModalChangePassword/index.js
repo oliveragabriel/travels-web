@@ -1,2 +1,1 @@
-export * from './Form';
-export * from './ModalChangePassword';
+export * from './ModalChangePassword'
