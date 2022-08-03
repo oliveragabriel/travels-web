@@ -20,7 +20,7 @@ function App() {
         <Sider collapsed={collapsed} />
         <Layout>
           <Header collapsed={collapsed} setCollapsed={setCollapsed} />
-          <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke', position: 'relative', minHeight: '88.5vh' }}>
+          <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke', position: 'relative', minHeight: '83vh' }}>
             <Card>
               <Routes>
                 <Route path="/" element={<Home />} />

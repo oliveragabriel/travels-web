@@ -13,20 +13,20 @@ export const Activities = () => {
             <Row>
                 <Col span={24}>
                     <Card 
-                        title={<Row><Col span={12}>{travel.title?.substr(0, 20)}{travel.title?.length >= 20 ? '...' : ''}</Col><Col span={12}>{day}</Col></Row>} 
+                        title={<Row justify="center"><Col>{day}</Col></Row>} 
                         icon={<RocketOutlined />}
                         content={
                             <Form layout="vertical" initialValues={{ ...travel }}>
                                 <Row justify="center" gutter={24}>
-                                    <Col span={8}>
+                                    <Col span={12}>
                                         <Form.Item 
-                                            label='Tipo'
-                                            name='type'
+                                            label='Título'
+                                            name='title'
                                         >
                                             <Input readOnly disabled />
                                         </Form.Item>
                                     </Col>
-                                    <Col span={8}>
+                                    <Col span={6}>
                                         <Form.Item 
                                             label='Data de Embarque'
                                             name='arrival'
@@ -34,7 +34,7 @@ export const Activities = () => {
                                             <Input readOnly disabled />
                                         </Form.Item>
                                     </Col>
-                                    <Col span={8}>
+                                    <Col span={6}>
                                         <Form.Item 
                                             label='Data de Retorno'
                                             name='departure'
@@ -47,7 +47,7 @@ export const Activities = () => {
                                             label='Descrição'
                                             name='description'
                                         >
-                                            <Input.TextArea rows={4} readOnly disabled />
+                                            <Input.TextArea rows={3} readOnly disabled />
                                         </Form.Item>
                                     </Col>
                                 </Row>

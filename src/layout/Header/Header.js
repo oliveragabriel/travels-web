@@ -27,7 +27,7 @@ export const Header = ({ collapsed, setCollapsed = () => {} }) => {
   }, [dispatch, navigate])
   
   return (
-      <Layout.Header>
+      <Layout.Header style={{ backgroundColor: '#F4CB77' }}>
         <Row justify='space-between'>
           <Col>
             <ButtonCircle

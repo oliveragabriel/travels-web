@@ -3,10 +3,10 @@ import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
 export const columnsActivities = (handleEditAdress = () => {}) => [
   {
-    title: 'Endereço',
+    title: 'Nome',
     dataIndex: 'adress',
     key: 'adress',
-    width: '25%',
+    width: '30%',
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
@@ -16,10 +16,10 @@ export const columnsActivities = (handleEditAdress = () => {}) => [
     </Tooltip>,
   },
   {
-    title: 'Complemento',
+    title: 'Tipo',
     dataIndex: 'complement',
     key: 'complement',
-    width: '20%',
+    width: '25%',
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
@@ -29,23 +29,10 @@ export const columnsActivities = (handleEditAdress = () => {}) => [
     </Tooltip>
   },
   {
-    title: 'Bairro',
+    title: 'Valor',
     dataIndex: 'district',
     key: 'district',
-    width: '20%',
-    sorter: (a, b) => a.date.localeCompare(b.date),
-    render: text => <Tooltip title={text}>
-      <span>
-          {text.substr(0, 20)}
-          {text.length >= 20 ? '...' : ''}
-      </span>
-    </Tooltip>
-  },
-  {
-    title: 'Cidade',
-    dataIndex: 'city',
-    key: 'city',
-    width: '25%',
+    width: '15%',
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
@@ -57,7 +44,7 @@ export const columnsActivities = (handleEditAdress = () => {}) => [
   {
     title: 'Ações',
     key: 'actions',
-    width: '10%',
+    width: '20%',
     align: 'center',
     fixed: 'right',
     render: (record) => <Row gutter={8} justify='center'>

@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from "react"
 import { CalendarOutlined } from '@ant-design/icons'
 import { columnsDays } from "./columnsDays"
-import { Modal, Table } from "../../../components"
+import { Modal, Table, Input } from "../../../components"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalAddNewAcommodation, ModalTransportsList } from "../"
 import { setSelectedDay } from "../../../redux/reducers/selectedTravelDaySlice"
 import { useNavigate } from "react-router-dom"
+import { Col, Form, Row } from "antd"
 
 export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
   const dispatch = useDispatch()
@@ -41,6 +42,18 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
       icon={<CalendarOutlined />}
       handleCancel={() => handleCancel()}
       content={<>
+        <Form initialValues={{ ...travel }}>
+          <Row>
+              <Col span={24}>
+                  <Form.Item 
+                      label='Título'
+                      name='title'
+                  >
+                      <Input readOnly disabled />
+                  </Form.Item>
+              </Col>
+          </Row>
+        </Form>
         <ModalTransportsList visible={showModalTransportsList} closeFn={setShowModalTransportsList} />
         <ModalAddNewAcommodation visible={showModalAddNewAcommodation} closeFn={setShowModalAddNewAcommodation} />
         <Table rowKey='id' columns={columnsDays(handleAccommodation, handleTransport, handleActivities)} size="small"  dataSource={travel?.days}/> 

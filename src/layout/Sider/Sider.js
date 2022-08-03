@@ -15,7 +15,7 @@ import {
 } from '@ant-design/icons'
 import { styleIconSizeThirtyAndColor, styleIconSizeTwentyAndColor } from '../../utils/styles'
 import { useSelector } from 'react-redux'
-import gobackpack from '../../assets/img/gobackpack.png'
+import imgBackpack from '../../assets/img/gobackpacksider.png'
 
 export const Sider = ({ collapsed }) => {
   const isLogged = useSelector((state) => state.loggedUser.isLogged)
@@ -45,7 +45,7 @@ export const Sider = ({ collapsed }) => {
         <Row justify='center' align='bottom'>
           <Col style={{ padding: 12 }}>
             {collapsed ? <EllipsisOutlined style={styleIconSizeThirtyAndColor} /> : 
-            <Avatar shape="square" alt='Go Backpack' src={<Image preview={false} src={gobackpack} />} />}
+            <Avatar shape="square" alt='Go Backpack' src={<Image preview={false} src={imgBackpack} />} />}
           </Col>
         </Row>
         <Row>
