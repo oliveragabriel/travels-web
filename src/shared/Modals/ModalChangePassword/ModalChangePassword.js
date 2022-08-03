@@ -10,6 +10,11 @@ export const ModalChangePassword = ({ visible, closeFn = () => {} }) => {
   const [form] = Form.useForm();
   const reduxObj = useSelector((state) => state.user)
   const [loading, setLoading] = useState(false)
+
+  const handleCancel = useCallback(() => {
+    closeFn(false);
+    form.resetFields();
+  }, [closeFn, form])
   
   const handleSubmit = useCallback(async () => {
     try {
@@ -17,17 +22,13 @@ export const ModalChangePassword = ({ visible, closeFn = () => {} }) => {
       const values = await form.validateFields()
       console.log(values)
       console.log(reduxObj)
+      handleCancel()
     } catch (error) {
       openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
       setLoading(false)
     }
-  },[form, reduxObj]);
-
-  const handleCancel = useCallback(() => {
-    closeFn(false);
-    form.resetFields();
-  }, [closeFn, form])
+  },[form, reduxObj, handleCancel]);
 
   const FormChangePassword = useMemo(() => (
       <Form form={form} layout='vertical' size='middle'> 

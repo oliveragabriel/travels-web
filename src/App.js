@@ -4,7 +4,7 @@ import { ConfigProvider as AntdConfigProvider, Layout } from 'antd'
 import 'antd/dist/antd.min.css'
 import { Header, Sider, Footer } from './layout'
 import { ContentCard as Card } from './components'
-import { Home, Travels } from '././pages'
+import { Home, Travels, Activities } from '././pages'
 import ptBR from 'antd/es/locale/pt_BR'
 import moment from 'moment'
 import 'moment/locale/pt-br'
@@ -23,9 +23,10 @@ function App() {
           <Layout.Content className="site-layout" style={{ padding: '25px 25px', backgroundColor: 'whitesmoke', position: 'relative', minHeight: '88.5vh' }}>
             <Card>
               <Routes>
-                <Route path={"/" || "/home"} element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/travels" element={<Travels />} />
+                <Route path="/activities" element={<Activities />} />
               </Routes>
             </Card>
           </ Layout.Content>

@@ -1,2 +1,1 @@
-export * from './Form';
-export * from './ModalLogin';
+export * from './ModalLogin'

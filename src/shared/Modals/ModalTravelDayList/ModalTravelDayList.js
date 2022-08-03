@@ -3,23 +3,31 @@ import { CalendarOutlined } from '@ant-design/icons'
 import { columnsDays } from "./columnsDays"
 import { Modal, Table } from "../../../components"
 import { useDispatch, useSelector } from "react-redux"
-import { ModalAddNewAcommodation } from "../"
+import { ModalAddNewAcommodation, ModalTransportsList } from "../"
 import { setSelectedDay } from "../../../redux/reducers/selectedTravelDaySlice"
+import { useNavigate } from "react-router-dom"
 
 export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
-  const reduxDispatch = useDispatch()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const travel = useSelector((state) => state.selectedTravel)
   const [showModalAddNewAcommodation, setShowModalAddNewAcommodation] = useState(false)
-  // const [showModalTransport, setShowModalTransport] = useState(false)
-
-  const handleRedux = useCallback((rdObj) => reduxDispatch(setSelectedDay(rdObj)), [reduxDispatch])
+  const [showModalTransportsList, setShowModalTransportsList] = useState(false)
   
   const handleAccommodation = useCallback((record) => {
-    handleRedux(record)
+    dispatch(setSelectedDay(record))
     setShowModalAddNewAcommodation(true)
-  }, [handleRedux])
+  }, [dispatch])
 
-  // const handleTransport = useCallback(() => setShowModalTransport(true), [])
+  const handleTransport = useCallback((record) => {
+    dispatch(setSelectedDay(record))
+    setShowModalTransportsList(true)
+  }, [dispatch])
+  
+  const handleActivities = useCallback((record) => {
+    dispatch(setSelectedDay(record))
+    navigate('/activities')
+  }, [dispatch]) 
 
   const handleCancel = useCallback(() => {
     closeFn(false)
@@ -33,9 +41,9 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
       icon={<CalendarOutlined />}
       handleCancel={() => handleCancel()}
       content={<>
-        {/* <ModalTransport visible={showModalTransport} closeFn={setShowModalTransport} /> */}
+        <ModalTransportsList visible={showModalTransportsList} closeFn={setShowModalTransportsList} />
         <ModalAddNewAcommodation visible={showModalAddNewAcommodation} closeFn={setShowModalAddNewAcommodation} />
-        <Table rowKey='id' columns={columnsDays(handleAccommodation)} size="small"  dataSource={travel?.days}/> 
+        <Table rowKey='id' columns={columnsDays(handleAccommodation, handleTransport, handleActivities)} size="small"  dataSource={travel?.days}/> 
       </>}
     />
   )

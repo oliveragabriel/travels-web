@@ -1,2 +1,1 @@
-export * from './Travels';
-export * from './Planning/TableDays'
+export * from './Travels'

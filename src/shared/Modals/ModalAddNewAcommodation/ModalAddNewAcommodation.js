@@ -12,6 +12,11 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
   const [loading, setLoading] = useState(false)
   const acommodation = useSelector((state) => state?.selectedTravelDay?.acommodation)
 
+  const handleCancel = useCallback(() => {
+    closeFn(false)
+    form.resetFields()
+  }, [closeFn, form])
+
   const handleSubmit = useCallback(async () => {
     try {
       setLoading(true);
@@ -25,10 +30,6 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
     }
   },[form])
 
-  const handleCancel = useCallback(() => {
-    closeFn(false)
-    form.resetFields()
-  }, [closeFn, form])
 
   useEffect(() => {
     form.resetFields();
@@ -36,7 +37,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
   }, [acommodation, form]);
 
   const FormAddNewAcommodation = useMemo(() => (
-    <Form form={form} layout='vertical' size='middle' initialValues={{ ...acommodation }}> 
+    <Form form={form} layout='vertical'> 
       <Row gutter={8} align='bottom'>
         <Col span={24}>
           <Form.Item
@@ -70,6 +71,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
           <Form.Item
             name='price'
             label='Valor'
+            tooltip='Escolha uma moeda e digite o valor à ser pago. Exemplo: Para Real Brasileiro, selecione a opção com a sigla (BRL) e o símbolo (R$).'
           >
             <InputNumber 
               placeholder='0,00'

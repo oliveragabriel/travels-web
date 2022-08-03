@@ -1,7 +1,7 @@
 import { Row, Col, Button } from "antd";
 import { ProfileOutlined, HomeOutlined, CarOutlined, PercentageOutlined } from '@ant-design/icons';
 
-export const columnsDays = (handleAccommodation = () => {}, handleTransport = () => {}) => [
+export const columnsDays = (handleAccommodation = () => {}, handleTransport = () => {}, handleActivities = () => {}) => [
   {
     title: 'Data',
     dataIndex: 'day',
@@ -27,7 +27,7 @@ export const columnsDays = (handleAccommodation = () => {}, handleTransport = ()
             type="text"
             title="Atividades"
             icon={<ProfileOutlined style={{ color: '#FF8C00' }}/>} 
-            onClick={() => console.log(record)}
+            onClick={() => handleActivities(record)}
         />
       </Col>
       <Col>

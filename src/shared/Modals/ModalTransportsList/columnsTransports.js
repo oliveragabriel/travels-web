@@ -1,7 +1,7 @@
 import { Row, Col, Button, Tooltip } from "antd";
 import { DeleteTwoTone } from '@ant-design/icons';
 
-export const columns = (handleDelete = () => {}) => [
+export const columnsTransports = (handleDelete = () => {}) => [
   {
     title: 'Tipo',
     dataIndex: 'type',
@@ -44,7 +44,6 @@ export const columns = (handleDelete = () => {}) => [
   },
   {
     title: 'Ações',
-    dataIndex: '',
     key: 'actions',
     width: '10%',
     align: 'center',

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from "react-router-dom"
-import { Layout, Row, Col } from "antd"
+import { Layout, Row, Col, Image } from "antd"
 import { Menu, Avatar } from './styles'  
 import { 
   InfoOutlined, 
@@ -15,6 +15,7 @@ import {
 } from '@ant-design/icons'
 import { styleIconSizeThirtyAndColor, styleIconSizeTwentyAndColor } from '../../utils/styles'
 import { useSelector } from 'react-redux'
+import gobackpack from '../../assets/img/gobackpack.png'
 
 export const Sider = ({ collapsed }) => {
   const isLogged = useSelector((state) => state.loggedUser.isLogged)
@@ -44,7 +45,7 @@ export const Sider = ({ collapsed }) => {
         <Row justify='center' align='bottom'>
           <Col style={{ padding: 12 }}>
             {collapsed ? <EllipsisOutlined style={styleIconSizeThirtyAndColor} /> : 
-            <Avatar alt='Plans And Vacaciones' />}
+            <Avatar shape="square" alt='Go Backpack' src={<Image preview={false} src={gobackpack} />} />}
           </Col>
         </Row>
         <Row>

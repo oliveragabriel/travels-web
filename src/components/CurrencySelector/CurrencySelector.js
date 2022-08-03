@@ -44,12 +44,7 @@ export const CurrencySelector = (props) => {
 
   return <Select 
     {...props} 
+    placeholder="Moeda"
     options={currencies}
-    defaultValue={
-      {
-        label: "BRL - R$",
-        value: "BRL"
-      }
-    } 
   />
 };
