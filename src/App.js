@@ -29,9 +29,9 @@ function App() {
                 <Route path="/activities" element={<Activities />} />
               </Routes>
             </Card>
-          </ Layout.Content>
+          </Layout.Content>
           <Footer collapsed={collapsed} style={{ position: 'absolute', bottom: 0, width: '100%' }} />
-        </ Layout>
+        </Layout>
       </ Layout>
     </AntdConfigProvider>
   )

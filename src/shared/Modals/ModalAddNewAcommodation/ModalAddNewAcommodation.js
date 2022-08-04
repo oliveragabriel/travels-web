@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Row, Col, Form } from 'antd'
-import { HomeOutlined, EditOutlined, EnvironmentOutlined } from '@ant-design/icons'
+import { HomeOutlined, EditOutlined } from '@ant-design/icons'
 import { Modal, Input, InputNumber, CurrencySelector, Select, Button, CollapseAdressInfo } from "../../../components"
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
@@ -103,7 +103,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
         </Col>
       </Row>
     </Form>
-  ), [form, handleSubmit, loading, acommodation]);
+  ), [form, handleSubmit, loading]);
 
   return (
     <Modal

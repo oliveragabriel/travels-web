@@ -28,7 +28,7 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
   const handleActivities = useCallback((record) => {
     dispatch(setSelectedDay(record))
     navigate('/activities')
-  }, [dispatch]) 
+  }, [dispatch, navigate]) 
 
   const handleCancel = useCallback(() => {
     closeFn(false)
