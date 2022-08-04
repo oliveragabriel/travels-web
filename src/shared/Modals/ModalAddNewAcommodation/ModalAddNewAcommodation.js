@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Row, Col, Form } from 'antd'
 import { HomeOutlined, EditOutlined, EnvironmentOutlined } from '@ant-design/icons'
-import { Modal, Input, InputNumber, CurrencySelector, Select, Button } from "../../../components"
+import { Modal, Input, InputNumber, CurrencySelector, Select, Button, CollapseAdressInfo } from "../../../components"
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { options } from './options'
@@ -85,16 +85,10 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
           </Form.Item>
         </Col>
         <Col span={24}>
-          <Form.Item
-            name='adress'
-            label='Endereço'
-            >
-            <Input 
-              placeholder='Digite o endereço da Hospedagem'
-              addonAfter={<EnvironmentOutlined />}
-            />
-          </Form.Item>
+          <CollapseAdressInfo />
         </Col>
+      </Row>
+      <Row style={{ marginTop: 12 }}> 
         <Col>
           <Form.Item>
             <Button 

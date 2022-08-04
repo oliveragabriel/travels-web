@@ -1,7 +1,7 @@
 import { Collapse } from "antd";
 import styled from 'styled-components';
 
-export const StyledCollapse = styled(Collapse)`
+export const StyledCollapseTable = styled(Collapse)`
     .ant-collapse-header {
         justify-content: space-between;
     }
@@ -17,6 +17,12 @@ export const StyledCollapse = styled(Collapse)`
     }
     .ant-collapse-extra {
         font-size: 20px;
+        color: #FF8C00;
+    }
+`;
+
+export const StyledCollapseAdress = styled(Collapse)`
+    .ant-collapse-extra {
         color: #FF8C00;
     }
 `;

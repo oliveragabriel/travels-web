@@ -1,7 +1,11 @@
-import React from "react";
-import { Row, Col, Collapse } from "antd";
-import { StyledCollapse } from "./styled";
-import { Table } from "../Table";
+import React from "react"
+import { Row, Col, Collapse } from "antd"
+import { StyledCollapseTable, StyledCollapseAdress } from "./styled"
+import { Table } from "../Table"
+import { FormItem } from "../FormItem"
+import { Input } from "../Input"
+import { CountrySelector } from "../../CountrySelector"
+import { HomeOutlined, InfoCircleOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons'
 
 export const CollapseWithTable = ({
   title, 
@@ -16,7 +20,7 @@ export const CollapseWithTable = ({
   dataSource 
 }) => {
     return (
-      <StyledCollapse>
+      <StyledCollapseTable>
         <Collapse.Panel 
           header={
             <Row>
@@ -34,6 +38,129 @@ export const CollapseWithTable = ({
             dataSource={dataSource}
           />
         </Collapse.Panel>
-      </StyledCollapse>
+      </StyledCollapseTable>
     );
   }
+
+
+  export const CollapseAdressInfo = ({
+    title, 
+    key, 
+    icon,
+  }) => {
+      return (
+        <StyledCollapseAdress>
+          <Collapse.Panel 
+            header={
+              <Row>
+                <Col>
+                  Endereço
+                </Col>
+              </Row>} 
+            key='adress'
+            extra={<HomeOutlined />}
+          >
+            <Row gutter={8} align='bottom'>
+              <Col span={12}>
+                <FormItem
+                  name='adress'
+                  label='Endereço'
+                  content={
+                    <Input 
+                      placeholder='Digite seu Endereço'
+                      addonAfter={<HomeOutlined />}
+                    />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='complement'
+                  label='Complemento'
+                  content={
+                    <Input
+                      placeholder='Digite um Complemento'
+                      addonAfter={<InfoCircleOutlined />}
+                    />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='number'
+                  label='Número'
+                  content={
+                    <Input 
+                      placeholder='Digite um Número'
+                      addonAfter={<FieldNumberOutlined />}
+                    />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='district'
+                  label='Bairro'
+                  content={
+                  <Input
+                    placeholder='Digite seu Bairro'
+                    addonAfter={<HomeOutlined />}
+                  />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='city'
+                  label='Cidade'
+                  content={
+                  <Input 
+                    placeholder='Digite sua Cidade'
+                    addonAfter={<HomeOutlined />}
+                  />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='state'
+                  label='Estado'
+                  content={
+                  <Input
+                    placeholder='Digite seu Estado'
+                    addonAfter={<HomeOutlined />}
+                  />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='country'
+                  label='País'
+                  content={
+                  <CountrySelector 
+                    placeholder='Escolha um país'
+                    allowClear={true}
+                    showSearch={true}
+                    optionFilterProp={'label'}
+                  />
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <FormItem
+                  name='zipcode'
+                  label='CEP'
+                  content={
+                  <Input
+                    placeholder='Digite seu CEP'
+                    addonAfter={<EnvironmentOutlined />}
+                  />
+                  }
+                />
+              </Col>
+            </Row>
+          </Collapse.Panel>
+        </StyledCollapseAdress>
+      );
+    }

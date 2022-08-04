@@ -1,87 +1,73 @@
 import { Row, Col, Divider, Steps, Form } from "antd"
-import { Card, Table, Input, Button } from '../../components'
+import { Card, Table, TextArea, Button, FormItem } from '../../components'
 import { columnsActivities } from "./columnsActivities"
 import { RocketOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
+import { StyledRow } from './styles'
+import { useState } from "react"
+import { ModalAddNewActivity } from "../../shared/Modals"
 
 export const Activities = () => {
-    const travel = useSelector((state) => state?.selectedTravel)
-    const day = useSelector((state) => state?.selectedTravelDay?.day)
+  const [showModalAddNewActivity, setShowModalAddNewActivity] = useState(false)
+  const travel = useSelector((state) => state?.selectedTravel)
+  const day = useSelector((state) => state?.selectedTravelDay?.day)
 
-    return (
-        <>
-            <Row>
-                <Col span={24}>
-                    <Card 
-                        title={<Row justify="center"><Col>{day}</Col></Row>} 
-                        icon={<RocketOutlined />}
-                        content={
-                            <Form layout="vertical" initialValues={{ ...travel }}>
-                                <Row justify="center" gutter={24}>
-                                    <Col span={12}>
-                                        <Form.Item 
-                                            label='Título'
-                                            name='title'
-                                        >
-                                            <Input readOnly disabled />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={6}>
-                                        <Form.Item 
-                                            label='Data de Embarque'
-                                            name='arrival'
-                                        >
-                                            <Input readOnly disabled />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={6}>
-                                        <Form.Item 
-                                            label='Data de Retorno'
-                                            name='departure'
-                                        >
-                                            <Input readOnly disabled />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={24}>
-                                        <Form.Item 
-                                            label='Descrição'
-                                            name='description'
-                                        >
-                                            <Input.TextArea rows={3} readOnly disabled />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        }
+  return (
+    <>
+      <Row>
+        <Col span={24}>
+          <Card 
+            title={<Row justify="center"><Col>Atividades do Dia: {day}</Col></Row>} 
+            icon={<RocketOutlined />}
+            content={
+              <Form layout="vertical" initialValues={{ ...travel }}>
+                <Row justify="center" gutter={24}>
+                  <Col span={12}>
+                    <FormItem
+                      label='Título da Viagem'
+                      name='title'
+                      content={<TextArea rows={2} readOnly disabled />}
                     />
-                </Col>
-            </Row>
-            <Row style={{ marginTop: 12 }}>
-                <Col span={24}>
-                    <Divider>
-                    <Button 
-                        type='primary'
-                        title='Adicionar Nova Atividade'
-                        label='Adicionar Nova Atividade'
-                        handleSubmit={() => {}}
-                        style={{ height: 40 }}
+                  </Col>
+                  <Col span={12}>
+                    <FormItem
+                      label='Descrição da Viagem'
+                      name='description'
+                      content={<TextArea rows={2} readOnly disabled />}
                     />
-                    {/* <ModalAddNewTransport visible={showModalAddNewTransport} closeFn={setShowModalAddNewTransport} /> */}
-                    </Divider>
-                </Col>
-            </Row>
-            <Row style={{ marginTop: 12 }}>
-                <Col span={8}>
-                    <Steps direction="vertical" current={1}>
-                        <Steps.Step title="Museu Soymaya" description="Museu" />
-                        <Steps.Step title="Casa de los Abuelos" description="Restaurante" />
-                        <Steps.Step title="Museu Nacional de Antropologia" description="Museu" />
-                    </Steps>
-                </Col>
-                <Col span={16}>
-                    <Table columns={columnsActivities()} size="small" />
-                </Col>
-            </Row>
-        </>
-    )
+                  </Col>
+                </Row>
+              </Form>
+            }
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col span={24}>
+          <Divider>
+          <Button 
+              type='primary'
+              title='Adicionar Nova Atividade'
+              label='Adicionar Nova Atividade'
+              handleSubmit={() => setShowModalAddNewActivity(true)}
+              style={{ height: 40 }}
+          />
+          <ModalAddNewActivity visible={showModalAddNewActivity} closeFn={setShowModalAddNewActivity} />
+          </Divider>
+        </Col>
+      </Row>
+      <StyledRow>
+        <Col span={8}>
+          <Steps direction="vertical" current={0}>
+            <Steps.Step title="Museu Soymaya" description="Museu" />
+            <Steps.Step title="Casa de los Abuelos" description="Restaurante" />
+            <Steps.Step title="Museu Nacional de Antropologia" description="Museu" />
+          </Steps>
+        </Col>
+        <Col span={16}>
+          <Table columns={columnsActivities()} size="small" />
+        </Col>
+      </StyledRow>
+    </>
+  )
 }

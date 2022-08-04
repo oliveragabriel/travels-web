@@ -1,4 +1,5 @@
 export * from './ModalAddNewAcommodation'
+export * from './ModalAddNewActivity'
 export * from './ModalAddNewTransport'
 export * from './ModalAddNewTravel'
 export * from './ModalChangePassword'

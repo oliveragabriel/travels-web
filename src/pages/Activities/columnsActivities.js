@@ -29,7 +29,7 @@ export const columnsActivities = (handleEditAdress = () => {}) => [
     </Tooltip>
   },
   {
-    title: 'Valor',
+    title: 'Situação',
     dataIndex: 'district',
     key: 'district',
     width: '15%',

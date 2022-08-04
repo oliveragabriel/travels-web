@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Row, Col, Form } from 'antd'
 import { RocketOutlined, FormOutlined } from '@ant-design/icons'
-import { Modal, DatePicker, Input, InputNumber, Select, Button } from "../../../components"
+import { Modal, DatePicker, Input, InputNumber, Select, TextArea, Button } from "../../../components"
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { useDispatch, useSelector } from "react-redux"
@@ -65,11 +65,11 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
         <Col span={12}>
           <Form.Item
             name='arrival'
-            label='Data de Chegada'
+            label='Data de Embarque'
             hasFeedback
             required
             rules={[
-              { required: true, message: requiredFieldsTextMsg('Data de Chegada') }
+              { required: true, message: requiredFieldsTextMsg('Data de Embarque') }
             ]}
           >
             <DatePicker 
@@ -80,11 +80,11 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
         <Col span={12}>
           <Form.Item
             name='departure'
-            label='Data de Saída'
+            label='Data de Retorno'
             hasFeedback
             required
             rules={[
-              { required: true, message: requiredFieldsTextMsg('Data de Saída') }
+              { required: true, message: requiredFieldsTextMsg('Data de Retorno') }
             ]}
           >
             <DatePicker
@@ -119,7 +119,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
             name='description'
             label='Descrição'
             >
-            <Input.TextArea 
+            <TextArea 
               rows={4}
               allowClear
               maxLength={200}
