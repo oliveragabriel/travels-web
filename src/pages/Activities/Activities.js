@@ -1,5 +1,5 @@
 import { Row, Col, Divider, Steps, Form } from "antd"
-import { Card, Table, TextArea, Button, FormItem } from '../../components'
+import { Card, Table, TextArea, Button, FormItem, FlagIcon } from '../../components'
 import { columnsActivities } from "./columnsActivities"
 import { RocketOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
@@ -17,21 +17,29 @@ export const Activities = () => {
       <Row>
         <Col span={24}>
           <Card 
-            title={<Row justify="center"><Col>Atividades do Dia: {day}</Col></Row>} 
+            title={
+              <Row justify="space-between">
+                <Col span={10}>
+                  <FlagIcon code={travel?.country} size='2x' />
+                </Col>
+                <Col span={14}>
+                  Atividades do Dia: {day}
+                </Col>
+              </Row>} 
             icon={<RocketOutlined />}
             content={
               <Form layout="vertical" initialValues={{ ...travel }}>
                 <Row justify="center" gutter={24}>
                   <Col span={12}>
                     <FormItem
-                      label='Título da Viagem'
+                      label='Título'
                       name='title'
                       content={<TextArea rows={2} readOnly disabled />}
                     />
                   </Col>
                   <Col span={12}>
                     <FormItem
-                      label='Descrição da Viagem'
+                      label='Descrição'
                       name='description'
                       content={<TextArea rows={2} readOnly disabled />}
                     />
@@ -42,7 +50,7 @@ export const Activities = () => {
           />
         </Col>
       </Row>
-      <Row>
+      <StyledRow>
         <Col span={24}>
           <Divider>
           <Button 
@@ -55,7 +63,7 @@ export const Activities = () => {
           <ModalAddNewActivity visible={showModalAddNewActivity} closeFn={setShowModalAddNewActivity} />
           </Divider>
         </Col>
-      </Row>
+      </StyledRow>
       <StyledRow>
         <Col span={8}>
           <Steps direction="vertical" current={0}>

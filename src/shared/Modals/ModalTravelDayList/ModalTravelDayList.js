@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { CalendarOutlined } from '@ant-design/icons'
 import { columnsDays } from "./columnsDays"
-import { Modal, Table, Input } from "../../../components"
+import { Modal, Table, Input, Card, FlagIcon, FormItem } from "../../../components"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalAddNewAcommodation, ModalTransportsList } from "../"
 import { setSelectedDay } from "../../../redux/reducers/selectedTravelDaySlice"
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { Col, Form, Row } from "antd"
 
 export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
+  const [form] = Form.useForm()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const travel = useSelector((state) => state.selectedTravel)
@@ -34,6 +35,11 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
     closeFn(false)
   }, [closeFn])
 
+  useEffect(() => {
+    form.resetFields();
+    setTimeout(() => form.setFieldsValue({ ...travel }), 0);
+  }, [travel, form]);
+
   return (
     <Modal
       width={800}
@@ -42,21 +48,35 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
       icon={<CalendarOutlined />}
       handleCancel={() => handleCancel()}
       content={<>
-        <Form initialValues={{ ...travel }}>
-          <Row>
-              <Col span={24}>
-                  <Form.Item 
-                      label='Título'
-                      name='title'
-                  >
+        <Card
+          content={
+          <Form form={form}>
+            <Row gutter={12} align='top'>
+                {travel?.country && <Col span={3}>
+                  <FlagIcon code={travel?.country} size='2x' />
+                </Col>}
+                <Col span={20}>
+                  <FormItem
+                    name='title'
+                    label='Título'
+                    content={
                       <Input readOnly disabled />
-                  </Form.Item>
-              </Col>
-          </Row>
-        </Form>
+                    }
+                  />
+                </Col>
+            </Row>
+          </Form>
+          }
+        />
         <ModalTransportsList visible={showModalTransportsList} closeFn={setShowModalTransportsList} />
         <ModalAddNewAcommodation visible={showModalAddNewAcommodation} closeFn={setShowModalAddNewAcommodation} />
-        <Table rowKey='id' columns={columnsDays(handleAccommodation, handleTransport, handleActivities)} size="small"  dataSource={travel?.days}/> 
+        <Table 
+          style={{ marginTop: 16 }}
+          rowKey='id' 
+          columns={columnsDays(handleAccommodation, handleTransport, handleActivities)} 
+          size="small"  
+          dataSource={travel?.days}
+        /> 
       </>}
     />
   )

@@ -6,17 +6,27 @@ export const columnsDays = (handleAccommodation = () => {}, handleTransport = ()
     title: 'Data',
     dataIndex: 'day',
     key: 'day',
-    width: '60%',
+    width: '40%',
   },
   {
-    title: <PercentageOutlined />,
+    title: 'Atividades Concluídas',
     dataIndex: 'percentage',
-    key: 'day',
-    width: '10%',
+    key: 'percentage',
+    align: 'center',
+    width: '30%',
+    render: (record) => <Row justify="center">
+      <Col>
+        {record >= 75 ? 
+        <div style={{ color: 'green', fontSize: 16, fontWeight: 700 }}>{record}</div> : 
+        <div style={{ color: 'gold', fontSize: 16, fontWeight: 700 }}>{record}</div>}
+      </Col>
+      <Col>
+        <PercentageOutlined style={{ color: 'silver' }}/>
+      </Col>
+    </Row>
   },
   {
     title: 'Ações',
-    dataIndex: '',
     key: 'actions',
     width: '30%',
     align: 'center',

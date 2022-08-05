@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Row, Col, Form } from 'antd'
 import { RocketOutlined, FormOutlined } from '@ant-design/icons'
-import { Modal, DatePicker, Input, InputNumber, Select, TextArea, Button } from "../../../components"
+import { Modal, DatePicker, Input, Select, TextArea, Button, CountrySelector } from "../../../components"
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { useDispatch, useSelector } from "react-redux"
@@ -105,13 +105,11 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
         </Col>
         <Col span={12}>
           <Form.Item
-            name='quantity'
-            label='Qtde. de Pessoas'
-            tooltip="Quantas pessoas irão viajar junto?"
+            name='country'
+            label='País de Destino'
+            tooltip="Caso a viagem seja para mais de um país ou ainda não tenha um definido, deixe o campo em branco."
           >
-            <InputNumber
-              min={1}
-            />
+            <CountrySelector />
           </Form.Item>
         </Col>
         <Col span={24}>
