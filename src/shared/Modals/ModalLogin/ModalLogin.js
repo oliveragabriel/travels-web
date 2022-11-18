@@ -1,26 +1,26 @@
-import React, { useState, useCallback, useMemo } from "react"
+import React, { useState, useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
-import { userLogIn } from '../../../redux/reducers/loggedUserSlice'
 import { Row, Col, Form } from 'antd'
 import { MailOutlined, LockOutlined, UserAddOutlined, UserSwitchOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+import { userLogIn } from '../../../redux/reducers/loggedUserSlice'
 import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages'
 import { Modal, Input, InputPassword, Button, ButtonText } from '../../../components'
 import { ModalForgetPassword, ModalCreateNewAccount } from '..'
 import { openNotification } from '../../../utils/functions/notification'
-import { useNavigate } from "react-router-dom"
 import { userMock } from './userMock'
 
-export const ModalLogin = ({ visible, closeFn = () => {} }) => {
+export function ModalLogin({ visible, closeFn = () => {} }) {
   const [form] = Form.useForm()
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [showModalForgetPassword, setShowModalForgetPassword] = useState(false)
   const [showModalCreateNewAccount, setShowModalCreateNewAccount] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const handleCancel = useCallback(() => {
-    closeFn(false);
-    form.resetFields();
+    closeFn(false)
+    form.resetFields()
   }, [closeFn, form])
 
   const handleSubmit = useCallback(async () => {
@@ -32,11 +32,11 @@ export const ModalLogin = ({ visible, closeFn = () => {} }) => {
       handleCancel()
       navigate('/travels')
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, navigate, dispatch, handleCancel]);
+  },[form, navigate, dispatch, handleCancel])
 
   const FormLogin = useMemo(() => (
     <Form form={form} layout='vertical'>
@@ -119,4 +119,4 @@ export const ModalLogin = ({ visible, closeFn = () => {} }) => {
       content={FormLogin}
     />
   )
-};
+}

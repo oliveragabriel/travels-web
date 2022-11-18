@@ -1,5 +1,5 @@
-import { Row, Col, Button, Tooltip } from "antd";
-import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { Row, Col, Button, Tooltip } from 'antd'
+import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons'
 
 export const columnsContacts = (handleEditContact = () => {}) => [
   {
@@ -10,8 +10,8 @@ export const columnsContacts = (handleEditContact = () => {}) => [
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
-          {text.substr(0, 30)}
-          {text.length >= 30 ? '...' : ''}
+        {text.substr(0, 30)}
+        {text.length >= 30 ? '...' : ''}
       </span>
     </Tooltip>,
   },
@@ -38,18 +38,18 @@ export const columnsContacts = (handleEditContact = () => {}) => [
     render: (record) => <Row gutter={4} justify='center'>
       <Col>
         <Button
-            type="text"
-            title="Editar"
-            icon={<EditTwoTone />} 
-            onClick={() => handleEditContact(record)}
+          type="text"
+          title="Editar"
+          icon={<EditTwoTone />} 
+          onClick={() => handleEditContact(record)}
         />
       </Col>
       <Col>
         <Button 
-            type="text"
-            title="Excluir"
-            icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
-            onClick={(record)}
+          type="text"
+          title="Excluir"
+          icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
+          onClick={(record)}
         />
       </Col>
     </Row>

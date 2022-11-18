@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from 'react'
 import { CalendarOutlined } from '@ant-design/icons'
-import { columnsDays } from "./columnsDays"
-import { Modal, Table, Input, Card, FlagIcon, FormItem } from "../../../components"
-import { useDispatch, useSelector } from "react-redux"
-import { ModalAddNewAcommodation, ModalTransportsList } from "../"
-import { setSelectedDay } from "../../../redux/reducers/selectedTravelDaySlice"
-import { useNavigate } from "react-router-dom"
-import { Col, Form, Row } from "antd"
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Col, Form, Row } from 'antd'
+import { columnsDays } from './columnsDays'
+import { Modal, Table, Input, Card, FlagIcon, FormItem } from '../../../components'
+import { ModalAddNewAcommodation, ModalTransportsList } from '..'
+import { setSelectedDay } from '../../../redux/reducers/selectedTravelDaySlice'
 
-export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
+export function ModalTravelDayList({ visible, closeFn = () => {} }) {
   const [form] = Form.useForm()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -36,9 +36,9 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
   }, [closeFn])
 
   useEffect(() => {
-    form.resetFields();
-    setTimeout(() => form.setFieldsValue({ ...travel }), 0);
-  }, [travel, form]);
+    form.resetFields()
+    setTimeout(() => form.setFieldsValue({ ...travel }), 0)
+  }, [travel, form])
 
   return (
     <Modal
@@ -50,8 +50,8 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
       content={<>
         <Card
           content={
-          <Form form={form}>
-            <Row gutter={12} align='top'>
+            <Form form={form}>
+              <Row gutter={12} align='top'>
                 {travel?.country && <Col span={3}>
                   <FlagIcon code={travel?.country} size='2x' />
                 </Col>}
@@ -64,8 +64,8 @@ export const ModalTravelDayList = ({ visible, closeFn = () => {} }) => {
                     }
                   />
                 </Col>
-            </Row>
-          </Form>
+              </Row>
+            </Form>
           }
         />
         <ModalTransportsList visible={showModalTransportsList} closeFn={setShowModalTransportsList} />

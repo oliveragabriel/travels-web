@@ -1,5 +1,5 @@
-import { Collapse } from "antd";
-import styled from 'styled-components';
+import { Collapse } from 'antd'
+import styled from 'styled-components'
 
 export const StyledCollapseTable = styled(Collapse)`
     .ant-collapse-header {
@@ -19,10 +19,10 @@ export const StyledCollapseTable = styled(Collapse)`
         font-size: 20px;
         color: #FF8C00;
     }
-`;
+`
 
 export const StyledCollapseAdress = styled(Collapse)`
     .ant-collapse-extra {
         color: #FF8C00;
     }
-`;
+`

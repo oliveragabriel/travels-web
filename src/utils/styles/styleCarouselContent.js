@@ -4,4 +4,4 @@ export const styleCarouselContent = {
   lineHeight: '325px',
   textAlign: 'center',
   background: '#364d79',
-};
+}

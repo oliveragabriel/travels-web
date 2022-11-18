@@ -1,2 +1,2 @@
-export * from './styleCarouselContent';
-export * from './styleIcon';
+export * from './styleCarouselContent'
+export * from './styleIcon'

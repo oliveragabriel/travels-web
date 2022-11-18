@@ -1,4 +1,4 @@
-import { actions } from './actions/actions';
+import { actions } from './actions/actions'
 
 export const initialState = {
   action: '',
@@ -14,83 +14,83 @@ export const initialState = {
     nextTravels: [],
     previousTravels: [],
   }
-};
+}
 
 export function travelsReducer(state, action) {
   switch (action.type) {
-    case actions.setLoggedUserData:
-      return { 
-        ...state,
-        travels: action.payload
-      };
-    case actions.setInitialStateObject:
-      return {
-        ...initialState,
-        travels: { 
-          ...state.travels, 
-        }
+  case actions.setLoggedUserData:
+    return { 
+      ...state,
+      travels: action.payload
+    }
+  case actions.setInitialStateObject:
+    return {
+      ...initialState,
+      travels: { 
+        ...state.travels, 
       }
-    case actions.controlShowModalAddNewTrip:
-      return {
-        ...state,
-        showModal: {
-          ...state.showModal,
-          addNewTrip: action.payload,  
-        }
+    }
+  case actions.controlShowModalAddNewTrip:
+    return {
+      ...state,
+      showModal: {
+        ...state.showModal,
+        addNewTrip: action.payload,  
       }
-    case actions.controlShowModalDaysPlanning:
-      return {
-        ...state,
-        showModal: {
-          ...state.showModal,
-          daysPlanning: action.payload,  
-        }
+    }
+  case actions.controlShowModalDaysPlanning:
+    return {
+      ...state,
+      showModal: {
+        ...state.showModal,
+        daysPlanning: action.payload,  
       }
-    case actions.controlShowModalAddNewAcommodation:
-      return {
-        ...state,
-        showModal: {
-          ...state.showModal,
-          addNewAcommodation: action.payload,  
-        }
+    }
+  case actions.controlShowModalAddNewAcommodation:
+    return {
+      ...state,
+      showModal: {
+        ...state.showModal,
+        addNewAcommodation: action.payload,  
       }
-    case actions.controlShowModalAddNewTransport:
-      return {
-        ...state,
-        showModal: {
-          ...state.showModal,
-          addNewTransport: action.payload,  
-        }
+    }
+  case actions.controlShowModalAddNewTransport:
+    return {
+      ...state,
+      showModal: {
+        ...state.showModal,
+        addNewTransport: action.payload,  
       }
-    case actions.controlShowModalTransport:
-      return {
-        ...state,
-        showModal: {
-          ...state.showModal,
-          viewTransport: action.payload,  
-        }
+    }
+  case actions.controlShowModalTransport:
+    return {
+      ...state,
+      showModal: {
+        ...state.showModal,
+        viewTransport: action.payload,  
       }
-    case actions.toogleAddNewTrip:
-      return {
-        ...state,
-        action: 'register',
-        showModal: {
-          ...state.showModal,
-          addNewTrip: true,
-        },
-        editing: {}
-      }
-    case actions.toogleEditTrip:
-      return {
-        ...state,
-        action: 'edit',
-        showModal: {
-          ...state.showModal,
-          addNewTrip: true,
-        },
-        editing: action.payload
-      }
-    default:
-      return state;
+    }
+  case actions.toogleAddNewTrip:
+    return {
+      ...state,
+      action: 'register',
+      showModal: {
+        ...state.showModal,
+        addNewTrip: true,
+      },
+      editing: {}
+    }
+  case actions.toogleEditTrip:
+    return {
+      ...state,
+      action: 'edit',
+      showModal: {
+        ...state.showModal,
+        addNewTrip: true,
+      },
+      editing: action.payload
+    }
+  default:
+    return state
   }
-};
+}

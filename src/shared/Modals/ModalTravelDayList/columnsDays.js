@@ -1,5 +1,5 @@
-import { Row, Col, Button } from "antd";
-import { ProfileOutlined, HomeOutlined, CarOutlined, PercentageOutlined } from '@ant-design/icons';
+import { Row, Col, Button } from 'antd'
+import { ProfileOutlined, HomeOutlined, CarOutlined, PercentageOutlined } from '@ant-design/icons'
 
 export const columnsDays = (handleAccommodation = () => {}, handleTransport = () => {}, handleActivities = () => {}) => [
   {
@@ -17,8 +17,8 @@ export const columnsDays = (handleAccommodation = () => {}, handleTransport = ()
     render: (record) => <Row justify="center">
       <Col>
         {record >= 75 ? 
-        <div style={{ color: 'green', fontSize: 16, fontWeight: 700 }}>{record}</div> : 
-        <div style={{ color: 'gold', fontSize: 16, fontWeight: 700 }}>{record}</div>}
+          <div style={{ color: 'green', fontSize: 16, fontWeight: 700 }}>{record}</div> : 
+          <div style={{ color: 'gold', fontSize: 16, fontWeight: 700 }}>{record}</div>}
       </Col>
       <Col>
         <PercentageOutlined style={{ color: 'silver' }}/>
@@ -34,10 +34,10 @@ export const columnsDays = (handleAccommodation = () => {}, handleTransport = ()
     render: (record) => <Row gutter={8} justify='center'>
       <Col>
         <Button 
-            type="text"
-            title="Atividades"
-            icon={<ProfileOutlined style={{ color: '#FF8C00' }}/>} 
-            onClick={() => handleActivities(record)}
+          type="text"
+          title="Atividades"
+          icon={<ProfileOutlined style={{ color: '#FF8C00' }}/>} 
+          onClick={() => handleActivities(record)}
         />
       </Col>
       <Col>
@@ -50,10 +50,10 @@ export const columnsDays = (handleAccommodation = () => {}, handleTransport = ()
       </Col>
       <Col>
         <Button
-            type="text"
-            title="Transportes"
-            icon={<CarOutlined style={{ color: '#1890FF' }}/>} 
-            onClick={() => handleTransport(record)}
+          type="text"
+          title="Transportes"
+          icon={<CarOutlined style={{ color: '#1890FF' }}/>} 
+          onClick={() => handleTransport(record)}
         />
       </Col>
     </Row>

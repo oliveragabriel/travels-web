@@ -1,5 +1,5 @@
-import { Card } from "antd";
-import styled from 'styled-components';
+import { Card } from 'antd'
+import styled from 'styled-components'
 
 export const StyledCard = styled(Card)`
     width: 100%;
@@ -11,4 +11,4 @@ export const StyledCard = styled(Card)`
         font-size: 30px;
         color: #FF8C00;
     }
-`;
+`

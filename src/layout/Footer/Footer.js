@@ -1,8 +1,8 @@
-import React from "react"
-import { Layout, Row, Col, Image } from "antd"
+import React from 'react'
+import { Layout, Row, Col, Image } from 'antd'
 import imgBackpack from '../../assets/img/gobackpackfooter.png'
 
-export const Footer = () => {
+export function Footer() {
   return (
     <Layout.Footer style={{ backgroundColor: '#F4CB77' }}>
       <Row justify="space-between" align="bottom">
@@ -19,4 +19,4 @@ export const Footer = () => {
       </Row>
     </Layout.Footer>
   )
-};
+}

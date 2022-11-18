@@ -1,17 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 export const selectedTravelDaySlice = createSlice({
-    name: 'selectedTravelDay',
-    initialState: {
-    },
-    reducers: {
-        setSelectedDay: (state, action) => {
-            return action.payload
-        },
-        cleanSelectedDay: (state) => {
-            return null
-        }
-    },
+  name: 'selectedTravelDay',
+  initialState: {
+  },
+  reducers: {
+    setSelectedDay: (state, action) => action.payload,
+    cleanSelectedDay: (state) => null
+  },
 })
 
 export const { setSelectedDay, cleanSelectedDay } = selectedTravelDaySlice.actions

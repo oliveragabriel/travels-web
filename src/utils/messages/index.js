@@ -1,2 +1,2 @@
-export * from './requiredFieldsTextMsg';
-export * from './requestGenericTextMsg';
+export * from './requiredFieldsTextMsg'
+export * from './requestGenericTextMsg'

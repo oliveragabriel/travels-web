@@ -1,5 +1,5 @@
-import { notification } from "antd";
+import { notification } from 'antd'
 
 export const openNotification = (type, message, description) => {
-  notification[type]({message, description})
+  notification[type]({ message, description })
 }

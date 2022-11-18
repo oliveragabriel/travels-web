@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import styled from 'styled-components';
+import { Button } from 'antd'
+import styled from 'styled-components'
 
 export const StyledButton = styled(Button)`
     font-size: 12px;
@@ -9,4 +9,4 @@ export const StyledButton = styled(Button)`
         font-size: 20px;
         color: #FF8C00;
     }
-`;
+`

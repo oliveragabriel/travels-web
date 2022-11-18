@@ -1,29 +1,29 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form } from 'antd';
-import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import React, { useState, useCallback, useContext } from 'react'
+import { Row, Col, Form } from 'antd'
+import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons'
 import { Input, Button } from '../../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
-import { actions } from '../reducer/actions';
-import { openNotification } from '../../../../utils/functions/notification';
-import { Context } from '..';
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages'
+import { actions } from '../reducer/actions'
+import { openNotification } from '../../../../utils/functions/notification'
+import { Context } from '..'
 
-export const FormAddNewContact = ({ form }) => {
-  const [loading, setLoading] = useState(false);
-  const {state, dispatch} = useContext(Context);
+export function FormAddNewContact({ form }) {
+  const [loading, setLoading] = useState(false)
+  const { state, dispatch } = useContext(Context)
   
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
-      const values = await form.validateFields();
-      console.log(values);
-      openNotification('success','Sucesso', requestGenericTextMsg.success);
-      dispatch({type: actions.controlShowModalAddEndereco, payload: false})
+      setLoading(true)
+      const values = await form.validateFields()
+      console.log(values)
+      openNotification('success','Sucesso', requestGenericTextMsg.success)
+      dispatch({ type: actions.controlShowModalAddEndereco, payload: false })
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, dispatch]);
+  },[form, dispatch])
 
   return (
     <Form form={form} layout='vertical' size='middle' initialValues={state?.editingContact || null}> 
@@ -37,7 +37,7 @@ export const FormAddNewContact = ({ form }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('E-mail') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite seu E-mail'
               addonAfter={<MailOutlined />}
@@ -48,7 +48,7 @@ export const FormAddNewContact = ({ form }) => {
           <Form.Item
             name='ddd'
             label='Código de Área'
-            >
+          >
             <Input 
               placeholder='Digite seu DDD'
               addonAfter={<EnvironmentOutlined />}
@@ -80,5 +80,5 @@ export const FormAddNewContact = ({ form }) => {
         </Col>
       </Row>
     </Form>
-  );
+  )
 }

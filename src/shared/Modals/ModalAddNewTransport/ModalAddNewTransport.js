@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Row, Col, Form } from 'antd'
 import { CarOutlined, VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 import { Modal, Input, InputNumber, Select, CurrencySelector, Button } from '../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { options } from './options'
-import { useSelector } from "react-redux"
 
-export const ModalAddNewTransport = ({ visible, closeFn = () => {} }) => {
-  const [form] = Form.useForm();
+export function ModalAddNewTransport({ visible, closeFn = () => {} }) {
+  const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const transport = useSelector((state) => state.selectedTransport)
 
@@ -29,16 +29,16 @@ export const ModalAddNewTransport = ({ visible, closeFn = () => {} }) => {
     } finally {
       setLoading(false)
     }
-  },[form, handleCancel]);
+  },[form, handleCancel])
 
   const title = useMemo(() => {
     if(transport === null) { return 'Adicionar Transporte'}
-    else { return 'Editar Transporte'}
-  }, [transport]);
+    return 'Editar Transporte'
+  }, [transport])
 
   useEffect(() => {
-    form.resetFields();
-    setTimeout(() => form.setFieldsValue({...transport}), 0);
+    form.resetFields()
+    setTimeout(() => form.setFieldsValue({ ...transport }), 0)
   }, [form, transport])
 
   const FormAddNewTransport = useMemo(() => (
@@ -53,7 +53,7 @@ export const ModalAddNewTransport = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Tipo') }
             ]}
-            >
+          >
             <Select 
               placeholder='Escolha uma opção'
               options={options}
@@ -89,7 +89,7 @@ export const ModalAddNewTransport = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Local de Embarque') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite o Local de Embarque'
               addonAfter={<VerticalAlignTopOutlined />}
@@ -105,7 +105,7 @@ export const ModalAddNewTransport = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Local de Destino') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite o Local de Destino'
               addonAfter={<VerticalAlignBottomOutlined />}

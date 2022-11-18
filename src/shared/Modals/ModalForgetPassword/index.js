@@ -1,1 +1,1 @@
-export * from './ModalForgetPassword';
+export * from './ModalForgetPassword'

@@ -8,4 +8,4 @@ export const actions = {
   setInitialStateObject: 'SET_INITIAL_STATE_OBJECT',
   toogleEditTrip: 'TOOGLE_EDIT_TRIP',
   toogleAddNewTrip: 'TOOGLE_ADD_NEW_TRIP',
-};
+}

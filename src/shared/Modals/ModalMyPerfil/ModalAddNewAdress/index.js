@@ -1,2 +1,2 @@
-export * from './ModalAddNewAdress';
-export * from './Form';
+export * from './ModalAddNewAdress'
+export * from './Form'

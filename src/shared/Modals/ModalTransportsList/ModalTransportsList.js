@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useMemo, useState } from 'react'
 import { Row, Col } from 'antd'
 import { CarOutlined } from '@ant-design/icons'
-import { Modal, Table, Button } from '../../../components';
+import { Modal, Table, Button } from '../../../components'
 import { columnsTransports } from './columnsTransports'
-import { ModalAddNewTransport } from "..";
+import { ModalAddNewTransport } from '..'
 
-export const ModalTransportsList = ({ visible, closeFn = () => {} }) => {
+export function ModalTransportsList({ visible, closeFn = () => {} }) {
   const [showModalAddNewTransport, setShowModalAddNewTransport] = useState(false)
 
   const handleAdd = useCallback(() => setShowModalAddNewTransport(true), [])
@@ -15,8 +15,8 @@ export const ModalTransportsList = ({ visible, closeFn = () => {} }) => {
   const handleCancel = useCallback(() => closeFn(false), [closeFn])
 
   const TableTransports = useMemo(() => (
-      <>
-       <Row>
+    <>
+      <Row>
         <Col span={24}>
           <Button 
             type='primary'
@@ -32,8 +32,8 @@ export const ModalTransportsList = ({ visible, closeFn = () => {} }) => {
           <Table columns={columnsTransports(handleDelete)} size="small" />
         </Col>
       </Row>
-      </>
-    ),[handleAdd, showModalAddNewTransport, setShowModalAddNewTransport, handleDelete])
+    </>
+  ),[handleAdd, showModalAddNewTransport, setShowModalAddNewTransport, handleDelete])
 
   return (
     <Modal

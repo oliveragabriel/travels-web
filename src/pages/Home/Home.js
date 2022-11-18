@@ -1,20 +1,20 @@
-import React from "react";
-import { Button, Carousel, Row, Col, List, Divider } from "antd";
+import React from 'react'
+import { Button, Carousel, Row, Col, List, Divider } from 'antd'
 import { 
   RocketOutlined, 
   EnvironmentOutlined, 
   ProfileOutlined, 
   PlusCircleTwoTone, 
   GlobalOutlined 
-} from '@ant-design/icons';
+} from '@ant-design/icons'
 import { 
   styleCarouselContent, 
   styleIconSizeThirty, 
   styleIconSizeThirtyAndColor, 
   styleIconSizeThirtyAndGhost 
-} from '../../utils/styles';
+} from '../../utils/styles'
 
-export const Home = () => {
+export function Home() {
   return (
     <>
       <Row gutter={12}>
@@ -56,23 +56,23 @@ export const Home = () => {
               style={{ minWidth: 0 }}
             />
           </Row>
-            <Carousel autoplay>
-              <div>
-                <h3 style={styleCarouselContent}>Machu Picchu</h3>
-              </div>
-              <div>
-                <h3 style={styleCarouselContent}>Chichén Itzá</h3>
-              </div>
-              <div>
-                <h3 style={styleCarouselContent}>La Bombonera</h3>
-              </div>
-              <div>
-                <h3 style={styleCarouselContent}>Teotihuacán</h3>
-              </div>
-              <div>
-                <h3 style={styleCarouselContent}>Xcaret Park</h3>
-              </div>
-            </Carousel>
+          <Carousel autoplay>
+            <div>
+              <h3 style={styleCarouselContent}>Machu Picchu</h3>
+            </div>
+            <div>
+              <h3 style={styleCarouselContent}>Chichén Itzá</h3>
+            </div>
+            <div>
+              <h3 style={styleCarouselContent}>La Bombonera</h3>
+            </div>
+            <div>
+              <h3 style={styleCarouselContent}>Teotihuacán</h3>
+            </div>
+            <div>
+              <h3 style={styleCarouselContent}>Xcaret Park</h3>
+            </div>
+          </Carousel>
         </Col>      
       </Row>
       <Divider><GlobalOutlined style={styleIconSizeThirtyAndGhost}/></Divider>
@@ -104,4 +104,4 @@ export const Home = () => {
       </Row>
     </>
   )
-};
+}

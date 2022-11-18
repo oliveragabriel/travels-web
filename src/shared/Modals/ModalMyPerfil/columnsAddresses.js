@@ -1,5 +1,5 @@
-import { Row, Col, Button, Tooltip } from "antd";
-import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { Row, Col, Button, Tooltip } from 'antd'
+import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons'
 
 export const columnsAddresses = (handleEditAdress = () => {}) => [
   {
@@ -23,8 +23,8 @@ export const columnsAddresses = (handleEditAdress = () => {}) => [
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
-          {text.substr(0, 20)}
-          {text.length >= 20 ? '...' : ''}
+        {text.substr(0, 20)}
+        {text.length >= 20 ? '...' : ''}
       </span>
     </Tooltip>
   },
@@ -36,8 +36,8 @@ export const columnsAddresses = (handleEditAdress = () => {}) => [
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
-          {text.substr(0, 20)}
-          {text.length >= 20 ? '...' : ''}
+        {text.substr(0, 20)}
+        {text.length >= 20 ? '...' : ''}
       </span>
     </Tooltip>
   },
@@ -49,8 +49,8 @@ export const columnsAddresses = (handleEditAdress = () => {}) => [
     sorter: (a, b) => a.date.localeCompare(b.date),
     render: text => <Tooltip title={text}>
       <span>
-          {text.substr(0, 20)}
-          {text.length >= 20 ? '...' : ''}
+        {text.substr(0, 20)}
+        {text.length >= 20 ? '...' : ''}
       </span>
     </Tooltip>
   },
@@ -63,18 +63,18 @@ export const columnsAddresses = (handleEditAdress = () => {}) => [
     render: (record) => <Row gutter={8} justify='center'>
       <Col>
         <Button
-            type="text"
-            title="Editar"
-            icon={<EditTwoTone />} 
-            onClick={() => handleEditAdress(record)}
+          type="text"
+          title="Editar"
+          icon={<EditTwoTone />} 
+          onClick={() => handleEditAdress(record)}
         />
       </Col>
       <Col>
         <Button 
-            type="text"
-            title="Excluir"
-            icon={<DeleteTwoTone twoToneColor='#ff4d4f' />}  
-            onClick={(record)}
+          type="text"
+          title="Excluir"
+          icon={<DeleteTwoTone twoToneColor='#ff4d4f' />}  
+          onClick={(record)}
         />
       </Col>
     </Row>

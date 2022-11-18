@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Row, Col, Form } from 'antd'
 import { HomeOutlined, EditOutlined } from '@ant-design/icons'
-import { Modal, Input, InputNumber, CurrencySelector, Select, Button, CollapseAdressInfo } from "../../../components"
+import { useSelector } from 'react-redux'
+import { Modal, Input, InputNumber, CurrencySelector, Select, Button, CollapseAdressInfo } from '../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { options } from './options'
-import { useSelector } from "react-redux"
 
-export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
+export function ModalAddNewAcommodation({ visible, closeFn = () => {} }) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const acommodation = useSelector((state) => state?.selectedTravelDay?.acommodation)
@@ -19,22 +19,22 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
 
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
-      const values = await form.validateFields();
-      console.log(values);
-      openNotification('success','Sucesso', requestGenericTextMsg.success);
+      setLoading(true)
+      const values = await form.validateFields()
+      console.log(values)
+      openNotification('success','Sucesso', requestGenericTextMsg.success)
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   },[form])
 
 
   useEffect(() => {
-    form.resetFields();
-    setTimeout(() => form.setFieldsValue({ ...acommodation }), 0);
-  }, [acommodation, form]);
+    form.resetFields()
+    setTimeout(() => form.setFieldsValue({ ...acommodation }), 0)
+  }, [acommodation, form])
 
   const FormAddNewAcommodation = useMemo(() => (
     <Form form={form} layout='vertical'> 
@@ -48,7 +48,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Nome do Local') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite um Nome'
               addonAfter={<EditOutlined />}
@@ -59,7 +59,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
           <Form.Item
             name='type'
             label='Tipo'
-            >
+          >
             <Select 
               placeholder='Escolha uma opção'
               options={options}
@@ -103,7 +103,7 @@ export const ModalAddNewAcommodation = ({ visible, closeFn = () => {} }) => {
         </Col>
       </Row>
     </Form>
-  ), [form, handleSubmit, loading]);
+  ), [form, handleSubmit, loading])
 
   return (
     <Modal

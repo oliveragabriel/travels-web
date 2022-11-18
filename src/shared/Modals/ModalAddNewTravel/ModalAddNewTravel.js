@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Row, Col, Form } from 'antd'
 import { RocketOutlined, FormOutlined } from '@ant-design/icons'
-import { Modal, DatePicker, Input, Select, TextArea, Button, CountrySelector } from "../../../components"
+import { useDispatch, useSelector } from 'react-redux'
+import { Modal, DatePicker, Input, Select, TextArea, Button, CountrySelector } from '../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
-import { useDispatch, useSelector } from "react-redux"
 import { options } from './options'
-import { cleanSelectedTravel } from "../../../redux/reducers/selectedTravelSlice"
+import { cleanSelectedTravel } from '../../../redux/reducers/selectedTravelSlice'
 
-export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
+export function ModalAddNewTravel({ visible, closeFn = () => {} }) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
@@ -22,7 +22,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
 
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       const values = await form.validateFields()
       console.log(values)
       openNotification('success','Sucesso', requestGenericTextMsg.success)
@@ -35,13 +35,13 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
 
   const title = useMemo(() => {
     if(travel === null) { return 'Adicionar Nova Viagem'}
-    else { return 'Editar Viagem'}
+    return 'Editar Viagem'
   }, [travel])
 
   useEffect(() => {
-    form.resetFields();
-    setTimeout(() => form.setFieldsValue({...travel}), 0);
-  }, [form, travel]);
+    form.resetFields()
+    setTimeout(() => form.setFieldsValue({ ...travel }), 0)
+  }, [form, travel])
 
   const FormAddNewTrip = useMemo(() => (
     <Form form={form} layout='vertical' size='middle'> 
@@ -55,7 +55,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Título') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite um Título'
               addonAfter={<FormOutlined />}
@@ -96,7 +96,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
           <Form.Item
             name='type'
             label='Tipo'
-            >
+          >
             <Select 
               options={options}
               placeholder='Escolha uma opção'
@@ -116,7 +116,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
           <Form.Item
             name='description'
             label='Descrição'
-            >
+          >
             <TextArea 
               rows={4}
               allowClear
@@ -126,7 +126,7 @@ export const ModalAddNewTravel = ({ visible, closeFn = () => {} }) => {
             />
           </Form.Item>
         </Col>
-      <Col>
+        <Col>
           <Form.Item>
             <Button 
               type='primary'

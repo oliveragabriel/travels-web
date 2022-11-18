@@ -1,11 +1,23 @@
-{
+// Use the command to download ESLINT in your project: $ yarn add eslint i-save-dev
+// Set the initial configs to ESLINT in your project: $ yarn create @eslint/config
+// It's necessary to already have ESLINT extension in your VS Code
+// It's necessary to already have Prettier extension in your VS Code
+// Add new plugin for Prettier: $ yarn add -D eslint-config-prettier prettier
+// Add new plugin for React Hooks rules: $ yarn add eslint-plugin-react-hooks --dev
+// After finish, run the command to fix all files of the project: $ ./node_modules/.bin/eslint --fix .
+
+{  
     "env": {
         "browser": true,
         "es2021": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        // Add extends from Airbnb
+        "airbnb",
+        // Add extends from Prettier to use with ESLINT
+        "prettier"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -15,21 +27,40 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        // Add plugin for React Hooks rules
+        "react-hooks"
+        // Add plugin to use Prettier with ESLINT
     ],
     "rules": {
+        // Setting if enforce a default export when only one thing is exported from a module
+        "import/prefer-default-export": "off",
+        // Control if JSX not allowed in files with extension
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/jsx-wrap-multilines": 0,
+        "react/jsx-no-expression-per-line": 0,
+        "react/jsx-closing-bracket-location": 0,
+        // Rules to apply on React Hooks
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        // Disable prop-type validation
+        "react/prop-types": 0,
+        // Suppress errors for missing 'import React' in files
+        "react/react-in-jsx-scope": "off",
+        // Apply 2 lines indent
         "indent": [
             "error",
-            "tab"
+            2
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": "off",
+        "object-curly-spacing": 2,
         "quotes": [
             "error",
             "single"
         ],
+        // Setting to do not use ; at the end of lines
         "semi": [
             "error",
             "never"

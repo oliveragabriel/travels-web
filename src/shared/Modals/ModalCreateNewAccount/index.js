@@ -1,1 +1,1 @@
-export * from './ModalCreateNewAccount';
+export * from './ModalCreateNewAccount'

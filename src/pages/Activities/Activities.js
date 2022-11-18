@@ -1,13 +1,13 @@
-import { Row, Col, Divider, Steps, Form } from "antd"
-import { Card, Table, TextArea, Button, FormItem, FlagIcon } from '../../components'
-import { columnsActivities } from "./columnsActivities"
+import { Row, Col, Divider, Steps, Form } from 'antd'
 import { RocketOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import { Card, Table, TextArea, Button, FormItem, FlagIcon } from '../../components'
+import { columnsActivities } from './columnsActivities'
 import { StyledRow } from './styles'
-import { useState } from "react"
-import { ModalAddNewActivity } from "../../shared/Modals"
+import { ModalAddNewActivity } from '../../shared/Modals'
 
-export const Activities = () => {
+export function Activities() {
   const [showModalAddNewActivity, setShowModalAddNewActivity] = useState(false)
   const travel = useSelector((state) => state?.selectedTravel)
   const day = useSelector((state) => state?.selectedTravelDay?.day)
@@ -53,14 +53,14 @@ export const Activities = () => {
       <StyledRow>
         <Col span={24}>
           <Divider>
-          <Button 
+            <Button 
               type='primary'
               title='Adicionar Nova Atividade'
               label='Adicionar Nova Atividade'
               handleSubmit={() => setShowModalAddNewActivity(true)}
               style={{ height: 40 }}
-          />
-          <ModalAddNewActivity visible={showModalAddNewActivity} closeFn={setShowModalAddNewActivity} />
+            />
+            <ModalAddNewActivity visible={showModalAddNewActivity} closeFn={setShowModalAddNewActivity} />
           </Divider>
         </Col>
       </StyledRow>

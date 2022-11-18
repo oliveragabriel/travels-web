@@ -1,7 +1,7 @@
-import { Input } from "antd";
-import styled from 'styled-components';
+import { Input } from 'antd'
+import styled from 'styled-components'
 
 const StyledInputPassword = styled(Input.Password)`
-`;
+`
 
-export { StyledInputPassword as InputPassword };
+export { StyledInputPassword as InputPassword }

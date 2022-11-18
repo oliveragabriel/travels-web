@@ -1,5 +1,5 @@
-import { Row, Col, Button, Tooltip } from "antd";
-import { DeleteTwoTone } from '@ant-design/icons';
+import { Row, Col, Button, Tooltip } from 'antd'
+import { DeleteTwoTone } from '@ant-design/icons'
 
 export const columnsTransports = (handleDelete = () => {}) => [
   {
@@ -16,10 +16,10 @@ export const columnsTransports = (handleDelete = () => {}) => [
     width: '30%',
     sorter: (a, b) => a.pickUp.localeCompare(b.pickUp),
     render: text => <Tooltip title={text}>
-    <span>
-      {text.substr(0, 18)}
-      {text.length >= 18 ? '...' : ''}
-    </span>
+      <span>
+        {text.substr(0, 18)}
+        {text.length >= 18 ? '...' : ''}
+      </span>
     </Tooltip>
   },
   {
@@ -29,10 +29,10 @@ export const columnsTransports = (handleDelete = () => {}) => [
     width: '30%',
     sorter: (a, b) => a.destiny.localeCompare(b.destiny),
     render: text => <Tooltip title={text}>
-    <span>
-      {text.substr(0, 18)}
-      {text.length >= 18 ? '...' : ''}
-    </span>
+      <span>
+        {text.substr(0, 18)}
+        {text.length >= 18 ? '...' : ''}
+      </span>
     </Tooltip>
   },
   {
@@ -51,10 +51,10 @@ export const columnsTransports = (handleDelete = () => {}) => [
     render: (record) => <Row gutter={8} justify='center'>
       <Col>
         <Button
-            type="text"            
-            title="Excluir"
-            icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
-            onClick={() => handleDelete(record)}
+          type="text"            
+          title="Excluir"
+          icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
+          onClick={() => handleDelete(record)}
         />
       </Col>
     </Row>

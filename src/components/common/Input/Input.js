@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledInput } from './styled'
 
-export const Input = (props) => {
+export function Input(props) {
   return (<StyledInput 
     {...props} 
   />)

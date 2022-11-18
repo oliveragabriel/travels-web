@@ -1,26 +1,26 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react";
-import { Row, Col, Divider, notification, Calendar, Button } from "antd";
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
+import { Row, Col, Divider, notification, Calendar, Button } from 'antd'
 import { 
-    GlobalOutlined, 
-    CheckCircleOutlined, 
-    ClockCircleOutlined,
-    PlusCircleTwoTone
-} from '@ant-design/icons';
+  GlobalOutlined, 
+  CheckCircleOutlined, 
+  ClockCircleOutlined,
+  PlusCircleTwoTone
+} from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
 import { styleIconSizeThirtyAndGhost } from '../../utils/styles'
-import { requestGenericTextMsg } from "../../utils/messages";
-import { ModalAddNewTravel } from '../../shared/Modals';
-import { travelsMock } from "./travelsMock";
-import { travelsReducer, initialState } from './reducer';
-import { actions } from "./reducer/actions";
-import { CollapseWithTable } from "../../components";
-import { columnsTravels } from "./columnsTravels";
-import { setSelectedTravel } from "../../redux/reducers/selectedTravelSlice";
-import { useDispatch } from "react-redux";
-import { ModalTravelDayList } from "../../shared/Modals/ModalTravelDayList/ModalTravelDayList";
+import { requestGenericTextMsg } from '../../utils/messages'
+import { ModalAddNewTravel } from '../../shared/Modals'
+import { travelsMock } from './travelsMock'
+import { travelsReducer, initialState } from './reducer'
+import { actions } from './reducer/actions'
+import { CollapseWithTable } from '../../components'
+import { columnsTravels } from './columnsTravels'
+import { setSelectedTravel } from '../../redux/reducers/selectedTravelSlice'
+import { ModalTravelDayList } from '../../shared/Modals/ModalTravelDayList/ModalTravelDayList'
 
-export const Context = React.createContext({state: {}, dispatch: () => {}});
+export const Context = React.createContext({ state: {}, dispatch: () => {} })
 
-export const Travels = () => {
+export function Travels() {
   const reduxDispatch = useDispatch()
   const [state, dispatch] = useReducer(travelsReducer, initialState)
   const [showModalAddNewTravel, setShowModalAddNewTravel] = useState(false)
@@ -33,7 +33,7 @@ export const Travels = () => {
   const handleEdit = useCallback((record) => {
     handleRedux(record)
     setShowModalAddNewTravel(true)
-    dispatch({type: actions.toogleEditTrip, payload: record})
+    dispatch({ type: actions.toogleEditTrip, payload: record })
   }, [handleRedux, dispatch])
 
   const handlePlanning = useCallback((record) => {
@@ -44,35 +44,35 @@ export const Travels = () => {
   const getLoggedUserData = useCallback(() => {
     try {
       // const resp =  
-      dispatch({type: actions.setLoggedUserData, payload: travelsMock});
+      dispatch({ type: actions.setLoggedUserData, payload: travelsMock })
     } catch (error) {
       notification.error({
         message: 'Erro',
         description: requestGenericTextMsg.error
-      });
+      })
     }
-  }, [dispatch]);
+  }, [dispatch])
 
   useEffect(() => getLoggedUserData(),
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [])
 
   return (
-    <Context.Provider value={{state, dispatch}}>
+    <Context.Provider value={{ state, dispatch }}>
       <ModalAddNewTravel visible={showModalAddNewTravel} closeFn={setShowModalAddNewTravel} />
       <ModalTravelDayList visible={showModalTravelDayList} closeFn={setShowModalTravelDayList} />
       <Row gutter={12} style={{ marginBottom: 12 }}>
         <Col span={24}>
           <Divider>
-          <Button 
-            type='primary'
-            icon={<PlusCircleTwoTone />}
-            title='Adicionar Nova Viagem'
-            onClick={() => handleAdd()}
-            style={{ height: 40 }}
-          >
+            <Button 
+              type='primary'
+              icon={<PlusCircleTwoTone />}
+              title='Adicionar Nova Viagem'
+              onClick={() => handleAdd()}
+              style={{ height: 40 }}
+            >
             Adicionar Nova Viagem
-          </Button>
+            </Button>
           </Divider>
         </Col>
         <Col sm={24} md={12}>
@@ -110,4 +110,4 @@ export const Travels = () => {
       </Row>
     </ Context.Provider>
   )
-};
+}

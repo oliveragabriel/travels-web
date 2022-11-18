@@ -1,5 +1,5 @@
-import { Table } from "antd";
-import styled from 'styled-components';
+import { Table } from 'antd'
+import styled from 'styled-components'
 
 const StyledTable = styled(Table)`
   .ant-table-thead>tr>th {
@@ -8,6 +8,6 @@ const StyledTable = styled(Table)`
     font-size: 12px;
     font-weight: 700;
   }
-`;
+`
 
-export { StyledTable as Table };
+export { StyledTable as Table }

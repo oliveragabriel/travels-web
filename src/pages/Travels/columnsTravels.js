@@ -1,8 +1,8 @@
-import { Row, Col, Button, Tooltip } from "antd";
-import { CalendarTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { Row, Col, Button, Tooltip } from 'antd'
+import { CalendarTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons'
 
 export const columnsTravels = (title, fn1 = () => {}, fn2 = () => {}) => {
-  let filteredColumns = [
+  const filteredColumns = [
     {
       title: 'Título',
       dataIndex: 'title',
@@ -23,10 +23,10 @@ export const columnsTravels = (title, fn1 = () => {}, fn2 = () => {}) => {
       width: '25%',
       sorter: (a, b) => a.date.localeCompare(b.date),
       render: text => <Tooltip title={text}>
-      <span>
-        {text.substr(0, 18)}
-        {text.length >= 18 ? '...' : ''}
-      </span>
+        <span>
+          {text.substr(0, 18)}
+          {text.length >= 18 ? '...' : ''}
+        </span>
       </Tooltip>
     },
   ]
@@ -67,17 +67,17 @@ export const columnsTravels = (title, fn1 = () => {}, fn2 = () => {}) => {
         </Col>
         <Col>
           <Button
-              type="text"
-              title="Editar"
-              icon={<EditTwoTone />} 
-              onClick={() => fn1(record)}
+            type="text"
+            title="Editar"
+            icon={<EditTwoTone />} 
+            onClick={() => fn1(record)}
           />
         </Col>
         <Col>
           <Button 
-              type="text"
-              title="Excluir"
-              icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
+            type="text"
+            title="Excluir"
+            icon={<DeleteTwoTone twoToneColor='#ff4d4f' />} 
           />
         </Col>
       </Row>

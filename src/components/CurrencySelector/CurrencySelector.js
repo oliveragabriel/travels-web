@@ -1,44 +1,44 @@
-import React from 'react';
-import { Select } from './styled';
+import React from 'react'
+import { Select } from './styled'
 
-export const CurrencySelector = (props) => {
+export function CurrencySelector(props) {
  
   const currencies = [
     {
-      label: "BRL - R$",
-      value: "BRL"
+      label: 'BRL - R$',
+      value: 'BRL'
     },
     {
-      label: "USD - $",
-      value: "USD"
+      label: 'USD - $',
+      value: 'USD'
     },
     {
-      label: "EUR - €",
-      value: "EUR"
+      label: 'EUR - €',
+      value: 'EUR'
     },
     {
-      label: "MXN - $",
-      value: "MXN"
+      label: 'MXN - $',
+      value: 'MXN'
     },
     {
-      label: "GBP - £",
-      value: "GBP"
+      label: 'GBP - £',
+      value: 'GBP'
     },
     {
-      label: "ARS - $",
-      value: "ARS"
+      label: 'ARS - $',
+      value: 'ARS'
     },
     {
-      label: "CNY - ¥",
-      value: "CNY"
+      label: 'CNY - ¥',
+      value: 'CNY'
     },
     {
-      label: "CLP - $",
-      value: "CLP"
+      label: 'CLP - $',
+      value: 'CLP'
     },
     {
-      label: "PEN - S/",
-      value: "PEN"
+      label: 'PEN - S/',
+      value: 'PEN'
     },
   ]
 
@@ -47,4 +47,4 @@ export const CurrencySelector = (props) => {
     placeholder="Moeda"
     options={currencies}
   />
-};
+}

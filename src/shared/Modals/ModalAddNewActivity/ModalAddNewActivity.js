@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Row, Col, Form } from 'antd'
 import { ScheduleOutlined, BankOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 import { Modal, Input, InputNumber, Select, CurrencySelector, Button, TextArea, FormItem, CollapseAdressInfo } from '../../../components'
 import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { typeOptions, statusOptions } from './options'
-import { useSelector } from "react-redux"
 
-export const ModalAddNewActivity = ({ visible, closeFn = () => {} }) => {
-  const [form] = Form.useForm();
+export function ModalAddNewActivity({ visible, closeFn = () => {} }) {
+  const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const activity = useSelector((state) => state.selectedActivity)
 
@@ -29,16 +29,16 @@ export const ModalAddNewActivity = ({ visible, closeFn = () => {} }) => {
     } finally {
       setLoading(false)
     }
-  },[form, handleCancel]);
+  },[form, handleCancel])
 
   const title = useMemo(() => {
     if(activity === null) { return 'Adicionar Atividade'}
-    else { return 'Editar Atividade'}
-  }, [activity]);
+    return 'Editar Atividade'
+  }, [activity])
 
   useEffect(() => {
-    form.resetFields();
-    setTimeout(() => form.setFieldsValue({...activity}), 0);
+    form.resetFields()
+    setTimeout(() => form.setFieldsValue({ ...activity }), 0)
   }, [form, activity])
 
   const FormAddNewActivity = useMemo(() => (
@@ -53,7 +53,7 @@ export const ModalAddNewActivity = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Nome') }
             ]}
-            >
+          >
             <Input 
               placeholder='Digite o Nome'
               addonAfter={<BankOutlined />}
@@ -69,7 +69,7 @@ export const ModalAddNewActivity = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Tipo') }
             ]}
-            >
+          >
             <Select 
               placeholder='Escolha uma opção'
               options={typeOptions}
@@ -104,12 +104,12 @@ export const ModalAddNewActivity = ({ visible, closeFn = () => {} }) => {
             rules={[
               { required: true, message: requiredFieldsTextMsg('Situação') }
             ]}
-            >
-              <Select 
-                placeholder='Escolha uma opção'
-                options={statusOptions}
-                allowClear
-              />
+          >
+            <Select 
+              placeholder='Escolha uma opção'
+              options={statusOptions}
+              allowClear
+            />
           </Form.Item>
         </Col>
         <Col span={24}>

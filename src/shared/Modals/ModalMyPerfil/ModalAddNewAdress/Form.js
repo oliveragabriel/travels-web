@@ -1,29 +1,29 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { Row, Col, Form } from 'antd';
-import { HomeOutlined, InfoCircleOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import React, { useState, useCallback, useContext } from 'react'
+import { Row, Col, Form } from 'antd'
+import { HomeOutlined, InfoCircleOutlined, FieldNumberOutlined, EnvironmentOutlined } from '@ant-design/icons'
 import { Input, CountrySelector, Button } from '../../../../components'
-import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages';
-import { actions } from '../reducer/actions';
-import { openNotification } from '../../../../utils/functions';
-import { Context } from '..';
+import { requiredFieldsTextMsg, requestGenericTextMsg } from '../../../../utils/messages'
+import { actions } from '../reducer/actions'
+import { openNotification } from '../../../../utils/functions'
+import { Context } from '..'
 
-export const FormAddNewAdress = ({ form }) => {
-  const [loading, setLoading] = useState(false);
-  const {state, dispatch} = useContext(Context);
+export function FormAddNewAdress({ form }) {
+  const [loading, setLoading] = useState(false)
+  const { state, dispatch } = useContext(Context)
   
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
-      const values = await form.validateFields();
-      console.log(values);
-      openNotification('success','Sucesso', requestGenericTextMsg.success);
-      dispatch({type: actions.controlShowModalAddNewAdress, payload: false})
+      setLoading(true)
+      const values = await form.validateFields()
+      console.log(values)
+      openNotification('success','Sucesso', requestGenericTextMsg.success)
+      dispatch({ type: actions.controlShowModalAddNewAdress, payload: false })
     } catch (error) {
-      openNotification('error','Erro', requestGenericTextMsg.error);
+      openNotification('error','Erro', requestGenericTextMsg.error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  },[form, dispatch]);
+  },[form, dispatch])
 
   return (
     <Form form={form} layout='vertical' size='middle' initialValues={state?.editing.adress || null}> 
@@ -126,9 +126,9 @@ export const FormAddNewAdress = ({ form }) => {
           >
             <CountrySelector 
               placeholder='Escolha um país'
-              allowClear={true}
-              showSearch={true}
-              optionFilterProp={'label'}
+              allowClear
+              showSearch
+              optionFilterProp="label"
             />
           </Form.Item>
         </Col>
@@ -162,5 +162,5 @@ export const FormAddNewAdress = ({ form }) => {
         </Col>
       </Row>
     </Form>
-  );
+  )
 }

@@ -5,4 +5,4 @@ export const actions = {
   toogleEditContact: 'TOOGLE_EDIT_CONTACT',
   toogleAddNewAdress: 'TOOGLE_ADD_NEW_ADRESS',
   toogleAddNewContact: 'TOOGLE_ADD-NEW_CONTACT',
-};
+}

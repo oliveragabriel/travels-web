@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyledButton } from './styled';
+import React from 'react'
+import { StyledButton } from './styled'
 
-export const Button = ({ type, htmlType, icon, title, label, handleSubmit = () => {}, loading, style }) => {
+export function Button({ type, htmlType, icon, title, label, handleSubmit = () => {}, loading, style }) {
   return <StyledButton
     type={type}
     icon={icon}
@@ -14,4 +14,4 @@ export const Button = ({ type, htmlType, icon, title, label, handleSubmit = () =
     {label}
   </StyledButton>
 
-};
+}

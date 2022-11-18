@@ -1,1 +1,1 @@
-export const requiredFieldsTextMsg = (field) => `O campo ${field} é obrigatório!`;
+export const requiredFieldsTextMsg = (field) => `O campo ${field} é obrigatório!`

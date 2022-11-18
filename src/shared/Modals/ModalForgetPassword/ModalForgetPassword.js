@@ -1,24 +1,24 @@
-import React, { useState, useCallback, useMemo } from "react"
+import React, { useState, useCallback, useMemo } from 'react'
 import { Row, Col, Form } from 'antd'
 import { LockOutlined, MailOutlined } from '@ant-design/icons'
 import { requestGenericTextMsg, requiredFieldsTextMsg } from '../../../utils/messages'
 import { openNotification } from '../../../utils/functions/notification'
 import { Modal, Button, Input } from '../../../components'
 
-export const ModalForgetPassword = ({ visible, closeFn = () => {} }) => {
+export function ModalForgetPassword({ visible, closeFn = () => {} }) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
 
   const handleCancel = useCallback(() => {
-    closeFn(false);
-    form.resetFields();
+    closeFn(false)
+    form.resetFields()
   }, [closeFn, form])
 
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       const values = await form.validateFields()
-      console.log(values);
+      console.log(values)
       openNotification('success','Sucesso', requestGenericTextMsg.success)
       handleCancel()
     } catch (error) {
@@ -26,7 +26,7 @@ export const ModalForgetPassword = ({ visible, closeFn = () => {} }) => {
     } finally {
       setLoading(false)
     }
-  },[form, handleCancel]);
+  },[form, handleCancel])
 
   const FormForgetPassword = useMemo(() => (
     <Form form={form} layout='vertical' size='middle'> 

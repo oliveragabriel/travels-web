@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledModal } from './styled'
 import { CloseCircleTwoTone } from '@ant-design/icons'
 import { Row, Col } from 'antd'
+import { StyledModal } from './styled'
 
-export const Modal = ({ width, title, visible, icon, handleCancel = () => {}, content }) => {
+export function Modal({ width, title, visible, icon, handleCancel = () => {}, content }) {
 
   return (<StyledModal  
     width={width ?? undefined}  
